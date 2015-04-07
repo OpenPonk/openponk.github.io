@@ -1,0 +1,16 @@
+h1. GUI
+
+*DynaCASE window with highlighted important models.:*
+!file://figures/gui.png!:file://figures/gui.png
+
+* DCWorkbench - top level window of DynaCASE
+* topMenu - menu bar providing basic project operations
+* DCNavigator - sidebar displaying all models available in the opened project
+* DCEditor - composition of other widgets representing an opened diagram. DCEditors are organized as Spec Tabs
+** [[Palette]] - palette of tools for interaction with the canvas
+** DCCanvasModel - Spec Model for Roassal's RTView
+* [[DCDynamicForm]] - form for editing model values
+
+
+*Composition between Spec models:*
+!file://figures/GUI%20composition.png!:file://figures/GUI%20composition.png
