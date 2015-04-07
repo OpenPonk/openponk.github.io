@@ -1,0 +1,770 @@
+THERE_BE_DRAGONS_HERE
+FileDoesNotExist: File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleton/Example/Example.pillar
+7 April 2015 1:11:33.009951 pm
+
+VM: unix - i686 - linux-gnu - NBCoInterpreter NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
+NBCogit NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
+https://github.com/pharo-project/pharo-vm.git Commit: ed4a4f59208968a21d82fd2406f75c2c4de558b2 Date: 2014-05-15 18:23:04 +0200 By: Esteban Lorenzano <estebanlm@gmail.com> Jenkins build #14826
+
+Image: Pharo3.0 [Latest update: #30864]
+
+FileHandle>>streamError
+	Receiver: a FileHandle
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		reference: 	File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleton/Ex...etc...
+		writable: 	false
+		id: 	nil
+
+
+FileHandle>>readStream
+	Receiver: a FileHandle
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		reference: 	File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleton/Ex...etc...
+		writable: 	false
+		id: 	nil
+
+
+FileSystem>>readStreamOn:
+	Receiver: a FileSystem
+	Arguments and temporary variables: 
+		aResolvable: 	Path / 'home' / 'peter' / 'prog' / 'dynacase' / 'dynacase.github.i...etc...
+	Receiver's instance variables: 
+		workingDirectory: 	Path / 'home' / 'peter' / 'prog' / 'dynacase' / 'dynacase.git...etc...
+		store: 	an UnixStore
+
+
+FileReference>>readStream
+	Receiver: File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleton/Example/Example.pillar
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		filesystem: 	a FileSystem
+		path: 	Path / 'home' / 'peter' / 'prog' / 'dynacase' / 'dynacase.github.io' / 'b...etc...
+
+
+FileReference(AbstractFileReference)>>readStreamDo:
+	Receiver: File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleton/Example/Example.pillar
+	Arguments and temporary variables: 
+		aBlock: 	[ :input | 
+| input2 |
+"The following are here because of case #12259: ...etc...
+		stream: 	nil
+	Receiver's instance variables: 
+		filesystem: 	a FileSystem
+		path: 	Path / 'home' / 'peter' / 'prog' / 'dynacase' / 'dynacase.github.io' / 'b...etc...
+
+
+PRCocoonConfiguration>>parseFile:
+	Receiver: a PRCocoonConfiguration[301989888]
+	Arguments and temporary variables: 
+		aFile: 	File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleton/Exampl...etc...
+	Receiver's instance variables: 
+		parent: 	a PRCocoonConfiguration[262668288]
+		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/dynacase/dyna...etc...
+
+
+PRCocoonConfiguration>>parseAllInputFiles
+	Receiver: a PRCocoonConfiguration[301989888]
+	Arguments and temporary variables: 
+		document: 	nil
+		stdin: 	MultiByteFileStream: #stdin
+	Receiver's instance variables: 
+		parent: 	a PRCocoonConfiguration[262668288]
+		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/dynacase/dyna...etc...
+
+
+PRCocoonConfiguration>>exportAllInOneOutputFile
+	Receiver: a PRCocoonConfiguration[301989888]
+	Arguments and temporary variables: 
+		document: 	nil
+		writer: 	nil
+	Receiver's instance variables: 
+		parent: 	a PRCocoonConfiguration[262668288]
+		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/dynacase/dyna...etc...
+
+
+PRCocoonConfiguration>>export
+	Receiver: a PRCocoonConfiguration[301989888]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		parent: 	a PRCocoonConfiguration[262668288]
+		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/dynacase/dyna...etc...
+
+
+PRCocoonConfiguration>>export:
+	Receiver: a PRCocoonConfiguration[262668288]
+	Arguments and temporary variables: 
+		configurationName: 	'LaTeX whole book'
+	Receiver's instance variables: 
+		parent: 	nil
+		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/dynacase/dyna...etc...
+
+
+[ subconfName ifNil: [ configuration export ] ifNotNil: [ configuration export: subconfName ] ] in PRExportCommandLineHandler>>export
+	Receiver: a PRExportCommandLineHandler
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+		baseDirectory: 	File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleto...etc...
+		configuration: 	a PRCocoonConfiguration[262668288]
+		subconfName: 	'LaTeX whole book'
+
+
+BlockClosure>>on:do:
+	Receiver: [ subconfName ifNil: [ configuration export ] ifNotNil: [ configuration export: subconfNam...etc...
+	Arguments and temporary variables: 
+		exception: 	an ExceptionSet
+		handlerAction: 	[ :error | self exitFailure: error messageText ]
+		handlerActive: 	true
+	Receiver's instance variables: 
+		outerContext: 	PRExportCommandLineHandler>>export
+		startpc: 	53
+		numArgs: 	0
+
+
+PRExportCommandLineHandler>>export
+	Receiver: a PRExportCommandLineHandler
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+		baseDirectory: 	File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleto...etc...
+		configuration: 	a PRCocoonConfiguration[262668288]
+		subconfName: 	'LaTeX whole book'
+
+
+PRExportCommandLineHandler>>activate
+	Receiver: a PRExportCommandLineHandler
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+		baseDirectory: 	File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleto...etc...
+		configuration: 	a PRCocoonConfiguration[262668288]
+		subconfName: 	'LaTeX whole book'
+
+
+PRExportCommandLineHandler class(CommandLineHandler class)>>activateWith:
+	Receiver: PRExportCommandLineHandler
+	Arguments and temporary variables: 
+		aCommandLine: 	a CommandLineArguments
+	Receiver's instance variables: 
+		superclass: 	PRWithConfigurationCommandLineHandler
+		methodDict: 	a MethodDictionary(#activate->PRExportCommandLineHandler>>#activate...etc...
+		format: 	144
+		layout: 	a FixedLayout
+		instanceVariables: 	#()
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#PRExportCommandLineHandler
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Pillar-Cli'
+		traitComposition: 	{}
+		localSelectors: 	nil
+
+
+[ aCommandLinehandler activateWith: commandLine ] in PRCommandLineHandler(BasicCommandLineHandler)>>activateSubCommand:
+	Receiver: a PRCommandLineHandler
+	Arguments and temporary variables: 
+		aCommandLinehandler: 	PRExportCommandLineHandler
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+
+
+BlockClosure>>on:do:
+	Receiver: [ aCommandLinehandler activateWith: commandLine ]
+	Arguments and temporary variables: 
+		exception: 	Exit
+		handlerAction: 	[ :exit | ^ self handleExit: exit for: aCommandLinehandler ]
+		handlerActive: 	true
+	Receiver's instance variables: 
+		outerContext: 	PRCommandLineHandler(BasicCommandLineHandler)>>activateSubCommand...etc...
+		startpc: 	34
+		numArgs: 	0
+
+
+PRCommandLineHandler(BasicCommandLineHandler)>>activateSubCommand:
+	Receiver: a PRCommandLineHandler
+	Arguments and temporary variables: 
+		aCommandLinehandler: 	PRExportCommandLineHandler
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+
+
+PRCommandLineHandler(BasicCommandLineHandler)>>handleSubcommand
+	Receiver: a PRCommandLineHandler
+	Arguments and temporary variables: 
+		handlers: 	an OrderedCollection(PRExportCommandLineHandler)
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+
+
+PRCommandLineHandler(BasicCommandLineHandler)>>handleArgument:
+	Receiver: a PRCommandLineHandler
+	Arguments and temporary variables: 
+		aString: 	'export'
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+
+
+[ self handleArgument: (self arguments ifEmpty: [ '' ] ifNotEmpty: [ :arguments | arguments first ]) ] in PRCommandLineHandler(BasicCommandLineHandler)>>activate
+	Receiver: a PRCommandLineHandler
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+
+
+BlockClosure>>on:do:
+	Receiver: [ self handleArgument: (self arguments ifEmpty: [ '' ] ifNotEmpty: [ :arguments | argument...etc...
+	Arguments and temporary variables: 
+		exception: 	Exit
+		handlerAction: 	[ :exit | ^ self handleExit: exit ]
+		handlerActive: 	true
+	Receiver's instance variables: 
+		outerContext: 	PRCommandLineHandler(BasicCommandLineHandler)>>activate
+		startpc: 	49
+		numArgs: 	0
+
+
+PRCommandLineHandler(BasicCommandLineHandler)>>activate
+	Receiver: a PRCommandLineHandler
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+
+
+PRCommandLineHandler class(CommandLineHandler class)>>activateWith:
+	Receiver: PRCommandLineHandler
+	Arguments and temporary variables: 
+		aCommandLine: 	a CommandLineArguments
+	Receiver's instance variables: 
+		superclass: 	BasicCommandLineHandler
+		methodDict: 	a MethodDictionary(#subCommandsRoot->PRCommandLineHandler>>#subComm...etc...
+		format: 	138
+		layout: 	a FixedLayout
+		instanceVariables: 	#()
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#PRCommandLineHandler
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Pillar-Cli'
+		traitComposition: 	{}
+		localSelectors: 	nil
+
+
+[ aCommandLinehandler activateWith: commandLine ] in PharoCommandLineHandler(BasicCommandLineHandler)>>activateSubCommand:
+	Receiver: a PharoCommandLineHandler
+	Arguments and temporary variables: 
+		aCommandLinehandler: 	PRCommandLineHandler
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+
+
+BlockClosure>>on:do:
+	Receiver: [ aCommandLinehandler activateWith: commandLine ]
+	Arguments and temporary variables: 
+		exception: 	Exit
+		handlerAction: 	[ :exit | ^ self handleExit: exit for: aCommandLinehandler ]
+		handlerActive: 	true
+	Receiver's instance variables: 
+		outerContext: 	PharoCommandLineHandler(BasicCommandLineHandler)>>activateSubComm...etc...
+		startpc: 	34
+		numArgs: 	0
+
+
+PharoCommandLineHandler(BasicCommandLineHandler)>>activateSubCommand:
+	Receiver: a PharoCommandLineHandler
+	Arguments and temporary variables: 
+		aCommandLinehandler: 	PRCommandLineHandler
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+
+
+PharoCommandLineHandler(BasicCommandLineHandler)>>handleSubcommand
+	Receiver: a PharoCommandLineHandler
+	Arguments and temporary variables: 
+		handlers: 	an OrderedCollection(PRCommandLineHandler)
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+
+
+PharoCommandLineHandler(BasicCommandLineHandler)>>handleArgument:
+	Receiver: a PharoCommandLineHandler
+	Arguments and temporary variables: 
+		aString: 	'pillar'
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+
+
+[ self handleArgument: (self arguments ifEmpty: [ '' ] ifNotEmpty: [ :arguments | arguments first ]) ] in PharoCommandLineHandler(BasicCommandLineHandler)>>activate
+	Receiver: a PharoCommandLineHandler
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+
+
+BlockClosure>>on:do:
+	Receiver: [ self handleArgument: (self arguments ifEmpty: [ '' ] ifNotEmpty: [ :arguments | argument...etc...
+	Arguments and temporary variables: 
+		exception: 	Exit
+		handlerAction: 	[ :exit | ^ self handleExit: exit ]
+		handlerActive: 	true
+	Receiver's instance variables: 
+		outerContext: 	PharoCommandLineHandler(BasicCommandLineHandler)>>activate
+		startpc: 	49
+		numArgs: 	0
+
+
+PharoCommandLineHandler(BasicCommandLineHandler)>>activate
+	Receiver: a PharoCommandLineHandler
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+
+
+PharoCommandLineHandler>>activate
+	Receiver: a PharoCommandLineHandler
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		commandLine: 	a CommandLineArguments
+		session: 	a Session
+		stdout: 	a VTermOutputDriver
+		stderr: 	a VTermOutputDriver
+
+
+PharoCommandLineHandler class(CommandLineHandler class)>>activateWith:
+	Receiver: PharoCommandLineHandler
+	Arguments and temporary variables: 
+		aCommandLine: 	a CommandLineArguments
+	Receiver's instance variables: 
+		superclass: 	BasicCommandLineHandler
+		methodDict: 	a MethodDictionary(#activate->PharoCommandLineHandler>>#activate #c...etc...
+		format: 	138
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#PharoCommandLineHandler
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'System-CommandLine'
+		traitComposition: 	{}
+		localSelectors: 	nil
+
+
+[ super activateWith: aCommandLine ] in PharoCommandLineHandler class>>activateWith:
+	Receiver: PharoCommandLineHandler
+	Arguments and temporary variables: 
+		aCommandLine: 	a CommandLineArguments
+	Receiver's instance variables: 
+		superclass: 	BasicCommandLineHandler
+		methodDict: 	a MethodDictionary(#activate->PharoCommandLineHandler>>#activate #c...etc...
+		format: 	138
+		layout: 	a FixedLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#PharoCommandLineHandler
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'System-CommandLine'
+		traitComposition: 	{}
+		localSelectors: 	nil
+
+
+WorldState>>runStepMethodsIn:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(511705088) [world]
+		queue: 	WaitfreeQueue with 0 items
+		nextInQueue: 	[ super activateWith: aCommandLine ]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(760479744))
+		viewBox: 	(0@0) corner: (976@662)
+		canvas: 	nil
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap()
+		lastStepTime: 	976
+		lastStepMessage: 	nil
+		lastCycleTime: 	16587
+		alarms: 	a Heap()
+		lastAlarmTime: 	16566
+		menuBuilder: 	nil
+
+
+WorldMorph>>runStepMethods
+	Receiver: a WorldMorph(511705088) [world]
+	Arguments and temporary variables: 
+
+	Receiver's instance variables: 
+		bounds: 	(0@0) corner: (976@662)
+		owner: 	nil
+		submorphs: 	an Array(a TaskbarMorph(984088576) a SystemWindow(629932032) an Imag...etc...
+		fullBounds: 	nil
+		color: 	(Color r: 0.937 g: 0.937 b: 0.937 alpha: 1.0)
+		extension: 	a MorphExtension (552861696) [other:  (dragEnabled -> true) (dropEna...etc...
+		borderWidth: 	0
+		borderColor: 	(Color r: 0.861 g: 1.0 b: 0.722 alpha: 1.0)
+		backgroundMorph: 	nil
+		worldState: 	a WorldState
+		griddingOn: 	nil
+
+
+WorldState>>doOneCycleNowFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(511705088) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(760479744))
+		viewBox: 	(0@0) corner: (976@662)
+		canvas: 	nil
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap()
+		lastStepTime: 	976
+		lastStepMessage: 	nil
+		lastCycleTime: 	16587
+		alarms: 	a Heap()
+		lastAlarmTime: 	16566
+		menuBuilder: 	nil
+
+
+WorldState>>doOneCycleFor:
+	Receiver: a WorldState
+	Arguments and temporary variables: 
+		aWorld: 	a WorldMorph(511705088) [world]
+	Receiver's instance variables: 
+		hands: 	an Array(a HandMorph(760479744))
+		viewBox: 	(0@0) corner: (976@662)
+		canvas: 	nil
+		damageRecorder: 	a DamageRecorder
+		stepList: 	a Heap()
+		lastStepTime: 	976
+		lastStepMessage: 	nil
+		lastCycleTime: 	16587
+		alarms: 	a Heap()
+		lastAlarmTime: 	16566
+		menuBuilder: 	nil
+
+
+
+--- The full stack ---
+FileHandle>>streamError
+FileHandle>>readStream
+FileSystem>>readStreamOn:
+FileReference>>readStream
+FileReference(AbstractFileReference)>>readStreamDo:
+PRCocoonConfiguration>>parseFile:
+PRCocoonConfiguration>>parseAllInputFiles
+PRCocoonConfiguration>>exportAllInOneOutputFile
+PRCocoonConfiguration>>export
+PRCocoonConfiguration>>export:
+[ subconfName ifNil: [ configuration export ] ifNotNil: [ configuration export: subconfName ] ] in PRExportCommandLineHandler>>export
+BlockClosure>>on:do:
+PRExportCommandLineHandler>>export
+PRExportCommandLineHandler>>activate
+PRExportCommandLineHandler class(CommandLineHandler class)>>activateWith:
+[ aCommandLinehandler activateWith: commandLine ] in PRCommandLineHandler(BasicCommandLineHandler)>>activateSubCommand:
+BlockClosure>>on:do:
+PRCommandLineHandler(BasicCommandLineHandler)>>activateSubCommand:
+PRCommandLineHandler(BasicCommandLineHandler)>>handleSubcommand
+PRCommandLineHandler(BasicCommandLineHandler)>>handleArgument:
+[ self handleArgument: (self arguments ifEmpty: [ '' ] ifNotEmpty: [ :arguments | arguments first ]) ] in PRCommandLineHandler(BasicCommandLineHandler)>>activate
+BlockClosure>>on:do:
+PRCommandLineHandler(BasicCommandLineHandler)>>activate
+PRCommandLineHandler class(CommandLineHandler class)>>activateWith:
+[ aCommandLinehandler activateWith: commandLine ] in PharoCommandLineHandler(BasicCommandLineHandler)>>activateSubCommand:
+BlockClosure>>on:do:
+PharoCommandLineHandler(BasicCommandLineHandler)>>activateSubCommand:
+PharoCommandLineHandler(BasicCommandLineHandler)>>handleSubcommand
+PharoCommandLineHandler(BasicCommandLineHandler)>>handleArgument:
+[ self handleArgument: (self arguments ifEmpty: [ '' ] ifNotEmpty: [ :arguments | arguments first ]) ] in PharoCommandLineHandler(BasicCommandLineHandler)>>activate
+BlockClosure>>on:do:
+PharoCommandLineHandler(BasicCommandLineHandler)>>activate
+PharoCommandLineHandler>>activate
+PharoCommandLineHandler class(CommandLineHandler class)>>activateWith:
+[ super activateWith: aCommandLine ] in PharoCommandLineHandler class>>activateWith:
+WorldState>>runStepMethodsIn:
+WorldMorph>>runStepMethods
+WorldState>>doOneCycleNowFor:
+WorldState>>doOneCycleFor:
+ - - - - - - - - - - - - - - -  
+			- - - - - - - - - - - - - - - - - -
+WorldMorph>>doOneCycle
+[ 
+World doOneCycle.
+Processor yield.
+false ] in MorphicUIManager>>spawnNewProcess
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+-------------------------------------------------------------------------------
+
+Processes and their stacks: 
+Process: a Process in nil
+  stack:
+
+Array(SequenceableCollection)>>do:
+[ :logger | 
+logger
+	nextPutAll: 'Processes and their stacks: ';
+	cr.
+Process allInstances
+	do: [ :each | 
+		| ctx |
+		logger
+			nextPutAll: 'Process: ';
+			print: each;
+			cr;
+			nextPutAll: '  stack:';
+			cr;
+			cr.
+		ctx := each isActiveProcess
+			ifTrue: [ thisContext sender ]
+			ifFalse: [ each suspendedContext ].
+		ctx
+			ifNotNil: [ 
+				(ctx stackOfSize: 20)
+					do: [ :s | 
+						logger
+							print: s;
+							cr ] ].
+		logger
+			nextPutAll: '------------------------------';
+			cr;
+			cr ] ] in [ 
+Smalltalk logError: aString inContext: aContext.	" Print stacks of all current processes "
+Smalltalk
+	logDuring: [ :logger | 
+		logger
+			nextPutAll: 'Processes and their stacks: ';
+			cr.
+		Process allInstances
+			do: [ :each | 
+				| ctx |
+				logger
+					nextPutAll: 'Process: ';
+					print: each;
+					cr;
+					nextPutAll: '  stack:';
+					cr;
+					cr.
+				ctx := each isActiveProcess
+					ifTrue: [ thisContext sender ]
+					ifFalse: [ each suspendedContext ].
+				ctx
+					ifNotNil: [ 
+						(ctx stackOfSize: 20)
+							do: [ :s | 
+								logger
+									print: s;
+									cr ] ].
+				logger
+					nextPutAll: '------------------------------';
+					cr;
+					cr ] ] ] in NonInteractiveUIManager(CommandLineUIManager)>>quitFrom:withMessage:
+[ 
+logStream := self openLog.
+aMonadicBlock value: logStream ] in SmalltalkImage>>logDuring:
+BlockClosure>>ensure:
+SmalltalkImage>>logDuring:
+[ 
+Smalltalk logError: aString inContext: aContext.	" Print stacks of all current processes "
+Smalltalk
+	logDuring: [ :logger | 
+		logger
+			nextPutAll: 'Processes and their stacks: ';
+			cr.
+		Process allInstances
+			do: [ :each | 
+				| ctx |
+				logger
+					nextPutAll: 'Process: ';
+					print: each;
+					cr;
+					nextPutAll: '  stack:';
+					cr;
+					cr.
+				ctx := each isActiveProcess
+					ifTrue: [ thisContext sender ]
+					ifFalse: [ each suspendedContext ].
+				ctx
+					ifNotNil: [ 
+						(ctx stackOfSize: 20)
+							do: [ :s | 
+								logger
+									print: s;
+									cr ] ].
+				logger
+					nextPutAll: '------------------------------';
+					cr;
+					cr ] ] ] in NonInteractiveUIManager(CommandLineUIManager)>>quitFrom:withMessage:
+BlockClosure>>ensure:
+NonInteractiveUIManager(CommandLineUIManager)>>quitFrom:withMessage:
+NonInteractiveUIManager(CommandLineUIManager)>>unhandledErrorDefaultAction:
+[ :class | class default unhandledErrorDefaultAction: self exception ] in UnhandledError>>defaultAction
+[ :v | ^ oneArgBlock value: v ] in SystemDictionary(Dictionary)>>at:ifPresent:ifAbsent:
+BlockClosure>>cull:
+SystemDictionary(Dictionary)>>at:ifPresent:
+SystemDictionary(Dictionary)>>at:ifPresent:ifAbsent:
+UnhandledError>>defaultAction
+UndefinedObject>>handleSignal:
+MethodContext(ContextPart)>>handleSignal:
+MethodContext(ContextPart)>>handleSignal:
+MethodContext(ContextPart)>>handleSignal:
+MethodContext(ContextPart)>>handleSignal:
+------------------------------
+
+Process: a Process in Delay class>>handleTimerEvent
+  stack:
+
+Delay class>>handleTimerEvent
+Delay class>>runTimerEventLoop
+[ self runTimerEventLoop ] in Delay class>>startTimerEventLoop
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+------------------------------
+
+Process: a Process in [ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+  stack:
+
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+------------------------------
+
+Process: a Process in [ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+  stack:
+
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+------------------------------
+
+Process: a Process in [ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+  stack:
+
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+------------------------------
+
+Process: a Process in [ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+  stack:
+
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+------------------------------
+
+Process: a Process in InputEventFetcher>>waitForInput
+  stack:
+
+InputEventFetcher>>waitForInput
+InputEventFetcher>>eventLoop
+[ self eventLoop ] in InputEventFetcher>>installEventLoop
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+------------------------------
+
+Process: a Process in SmalltalkImage>>lowSpaceWatcher
+  stack:
+
+SmalltalkImage>>lowSpaceWatcher
+[ self lowSpaceWatcher ] in SmalltalkImage>>installLowSpaceWatcher
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+------------------------------
+
+Process: a Process in [ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+  stack:
+
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+------------------------------
+
+Process: a Process in WeakArray class>>finalizationProcess
+  stack:
+
+WeakArray class>>finalizationProcess
+[ self finalizationProcess ] in WeakArray class>>restartFinalizationProcess
+[ 
+self value.
+Processor terminateActive ] in BlockClosure>>newProcess
+------------------------------
+
