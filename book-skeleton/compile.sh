@@ -76,7 +76,8 @@ function compile_latex_book() {
 }
 
 function latex_enabled() {
-  hash ${LATEX_COMPILER} 2>/dev/null
+	false
+#  hash ${LATEX_COMPILER} 2>/dev/null
 }
 
 if [[ $# -eq 1 ]]; then

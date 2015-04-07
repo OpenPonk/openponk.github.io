@@ -1,0 +1,300 @@
+% -*- mode: LaTeX; -*-
+
+\documentclass[a4paper,10pt,twoside]{book}
+\usepackage[
+        papersize={6.13in,9.21in},
+        hmargin={.75in,.75in},
+        vmargin={.75in,1in},
+        ignoreheadfoot
+]{geometry}
+\input{../support/latex/common.tex}
+% \input{../support/latex/commonLuaTex.tex}
+\setboolean{lulu}{true}
+%=================================================================
+% Add the path for the figures of each chapter here:
+\graphicspath{
+        {../figures/}
+        {../Example/}
+}
+%=================================================================
+\let\wholebook=\relax
+\makeindex
+\makeglossary
+%=================================================================
+\renewcommand{\nnbb}[2]{} % Disable editorial comments
+%=================================================================
+\begin{document}
+\frontmatter
+%=================================================================
+\setcounter{page}{1}
+\pagestyle{headings}
+%=================================================================
+\author{
+  <Put the authors here>
+}
+\title{\Huge\bf Roassal Layout - DRAFT }
+\isodate
+\date{\emph{Version of \today}}
+\maketitle
+%=================================================================
+\tableofcontents
+% \listoffigures
+% \listoftables
+
+% \lstlistoflistings
+\sloppy % To avoid LaTeX's annoying habit of letting lines stick over the margins!
+\mainmatter
+
+\chapter{ Layout - DRAFT}
+Layouting is an important aspect of data visualization. It gives us aesthetically pleasing, and more comprehensible presentation, and also allows us by proper structuring to display internal aspects of the presented data.
+
+Let's take the following example:
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/intro-random.png}\caption{Graph with randomly placed nodes.\label{intro-random}}\end{center}
+\end{figure}
+
+
+This image does not convey much useful information. But by applying \ct{RTTreeLayout} we get the following:
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/intro-tree.png}\caption{Layouted tree.\label{intro-tree}}\end{center}
+\end{figure}
+
+
+By mere repositioning of the elements we can immediately tell that it is a binary tree, what is the root node, and so on, and all that without the need of adding additional elements to the presentation.
+
+There are many other layouting methods, each useful in its own rights.
+\section{ Element-based Layouts}
+Element based layouts do not use edges to present relations between them. Instead they treat all elements based on their size, shape or position within a group. Of course the elements can still have edges.
+\subsection{ Circle Layouts}
+Circle layouts arrange elements in a circle. The order of the elements, as in all circle-based layouts, is the same as the collection on which the layout operates.
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/circle-layout.png}\caption{Circle layout applied on some elements .\label{circle-layout}}\end{center}
+\end{figure}
+
+
+Several properties can be configured for circular layouts:
+
+
+\begin{code}{}
+RTCircleLayout new
+	initialIncrementalAngle: 30 degreesToRadians;
+	initialAngle: 15 degreesToRadians;
+	initialRadius: 200;
+	on: es.
+\end{code}
+
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/circle-layout-config.png}\caption{Some options of Circular Layout.\label{circle-layout-config}}\end{center}
+\end{figure}
+
+
+If no options are provided, the algorithm will distribute all the elements evenly in a circle (\ct{2pi}$/$\ct{elements size}). Additionally radius can be either set absolutely via \ct{initialRadius:}, or as a scalable factor \ct{scaleBy:} - then the radius will be \ct{elements size * scaleFactor}.
+
+It is important to note, that \ct{RTCircleLayout} doesn't take into consideration size of the elements; this is enough when the elements are uniform, however if their sizes vary, different layout may be considered.
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/circle-layout-uniform.png}\caption{Uniform sizes.\label{circle-layout-uniform}}\end{center}
+\end{figure}
+
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/circle-layout-non-uniform.png}\caption{Non-uniform sizes.\label{circle-layout-non-uniform}}\end{center}
+\end{figure}
+
+
+This is where \textbf{Equidistant} and \textbf{Weighted} layouts comes to rescue.
+
+\ct{RTEquidistantCircleLayout} makes sure that there is the same distance between each element.
+\ct{RTWeightedCircleLayout} on the other hand adds spacing based on the size of the elements. Thus there will be less space between smaller elements, and more space between large ones.
+
+So now if we apply layout on non-uniform elements we get:
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/circle-weighted.png}\caption{Equidistant (left) and Weighted (right) layout with non-uniform sizes.\label{circle-weighted}}\end{center}
+\end{figure}
+
+\subsection{ Flow Layouts}
+A flow layout arranges elements in a 'flowing' manner. While we could consider Circle layouts to be also a flow in a clockwise direction, layouts presented here provide flow by lines and columns.
+\subsubsection{ Flow and Grid Layouts}
+Flow layout arranges elements in lines, each line flowing from left to right; Horizontal Flow on the other hand is in columns, flowing from top to bottom.
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/flow-layouts.png}\caption{Flow and Grid Layouts.\label{flow-layouts}}\end{center}
+\end{figure}
+
+
+In Flow layouts elements are positioned in each line (column) based on their size, with defined total width of the containing area (\ct{maxWidth:}). For Grid and Cell layout this limit is instead number of items in the line (\ct{lineItemsCount:}.
+By default Flow will attempt to fill roughly rectangular area, while Grid will approximate golden ratio.
+\subsubsection{ Alignment}
+Cells in Flow layouts can be aligned:
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/flow-alignment.png}\caption{RTFlowLayout alignments.\label{flow-alignment}}\end{center}
+\end{figure}
+
+
+To align \ct{RTHorizontalFlowLayout} use \ct{alignTop} for left, and \ct{alignBottom} for right alignment.
+\subsubsection{ Line Layouts}
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/line-layouts.png}\caption{RTVerticalLineLayout and RTHorizontalLineLayout.\label{line-layouts}}\end{center}
+\end{figure}
+
+\section{ Edge-driven layouts}
+The most basic of Edge-driven layouts is a tree:
+\subsection{ Tree Layout}
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/tree-gaps.png}\caption{RTTreeLayout demonstrating gap sizes.\label{tree-gaps}}\end{center}
+\end{figure}
+
+
+Note that in the picture above the horizontalGap is applied only to the leaves of the tree; distance between parents is then accommodated automatically, so no overlapping or crossing occurs. Alternative to Tree Layout is Horizontal Tree Layout, the only difference is root on the left side with growing branches to the right.
+\subsection{ Radial Tree Layout}
+One problem with trees is that they tend to have many leaves which often results in very wide visualizations. One way to deal with this problem is to present the tree in a circular structure.
+Since each new layer increases the radius of the circle, there is always more and more space available.
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/tree-vs-radial-tree.png}\caption{Comparison of Horizontal, Vertical and Radial Tree Layouts.\label{tree-vs-radial-tree}}\end{center}
+\end{figure}
+
+\subsection{ Dominance Tree Layout}
+This layout is especially useful for visualizing dependencies and flow charts, since it organizes elements in such manner, that the flow of the graph is emphasized.
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/dominance-tree.png}\caption{ RTDominanceTreeLayout showing dependencies between RTShape classes.\label{dominance-tree}}\end{center}
+\end{figure}
+
+\subsection{ Cluster Layout}
+Cluster is visually similar to radial tree; it groups related elements together.
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/cluster-layout.png}\caption{Four trees clustered together.\label{cluster-layout}}\end{center}
+\end{figure}
+
+\subsection{ Sugiyama}
+Sugyiama layout is a hierarchical layered layout. It places elements in hierarchical order such that the edge goes from higher layer to lower layer.
+At the same time the layout will try to minimize the amount of layers and edge crossings.
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/sugiyama.png}\caption{Sugiyama layout applied on hierarchy of `RTLayout` classes.\label{sugiyama}}\end{center}
+\end{figure}
+
+\subsection{ Force Based Layout}
+Force Based Layout applies force between related elements similar to electrical charge. Thus related elements will repulse each other. The \ct{charge} is usually negative since it represents repulsion.
+Additionally to \ct{charge:} you can also specify \ct{strength:}, which is the strength of the bonds (edges) between elements.
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/force-based.png}\caption{ RTForceBasedLayout used to layout hierarchy of classes.\label{force-based}}\end{center}
+\end{figure}
+
+\subsection{ Rectangle Pack}
+\ct{RTRectanglePackLayout} packs all the elements as tightly as possible. It uses element's bounding box, so using circles or polygons instead of boxes will have no effect. One use for this layout is to provide comparative view of some elements — name clouds, source code size of classes etc.
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/rectangle-pack.png}\caption{Pack of different elements.\label{rectangle-pack}}\end{center}
+\end{figure}
+
+
+\ct{RTNameCloud} also internally uses \ct{RTRectanglePackLayout}
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/name-cloud.png}\caption{ RTRectanglePackLayout used to layout a name cloud.\label{name-cloud}}\end{center}
+\end{figure}
+
+\section{ Creating custom layout}
+If you want to add your own layout you just need to subclass \ct{RTLayout} and implement \ct{RTLayout$>$$>$doExecute: elements}.
+
+For more fine-graded control you have three main methods available.
+
+
+\begin{code}{}
+RTLayout>>executeOnElements: elements
+	self doInitialize: elements.
+	self doExecute: elements asOrderedCollection.
+	self doPost: elements.
+\end{code}
+
+
+\begin{enumerate}
+\item  \ct{doInitialize:} can be used for elements preprocessing, if needed. For example \ct{RTAbstractGraphLayout} uses this for removing cycles from the graph, so the layouts can work only with trees.
+\item  \ct{doExecute:} is the main method, and the only method that must be implemented. Perform your layout here.
+\item  \ct{doPost:} can do some finishing touches after the layout has been performed.
+\end{enumerate}
+\chapter{GUI}
+some text
+
+
+% another try
+% \printglossary
+\bibliographystyle{jurabib}
+\bibliography{scg}
+
+\printindex
+
+\end{document}
+
+%=================================================================
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-master: t
+%%% TeX-PDF-mode: t
+%%% ispell-local-dictionary: "english"
+%%% End:

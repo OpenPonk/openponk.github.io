@@ -1,0 +1,18 @@
+h1. DynaCASE-FSM
+
+Package contains the needed classes for representation of simple Finite State Machine diagrams which consist of states (simple state,initial state and final state) and transitions. The classes extend the core of DynaCase (simple vizualisation on picture below).
+
+!file://figures/FSM_Dyna_connection.png:file://figures/FSM_Dyna_connection.png!
+
+h2. Documentation of classes
+
+This part gives only an overall brief description on controller and model classes.
+
+h3. Controllers
+
+Except the controlling role the controllers can specify the look of some elements: the DCFsmController tells how the palette should look like (#initializePalette:), the DCFsmTransitionContoller, DCFsmStateController, DCFsmInitialController and DCFsmFinalStateController hold the information about the shape of the element which they are responsible for.   
+
+
+h3. Models
+
+The classes carries the information about the diagram and each element. They represent the semantics also the method #removedFrom: in DCFsmVertex specifies what should be deleted when the specific vertex is removed from diagram (the incoming and outcoming transitions). The DCFsmTransition instance holds the information about which state are connected with it. 

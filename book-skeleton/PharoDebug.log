@@ -1,108 +1,387 @@
+
+*** Warning: PRReferenceNotFound: Can't find anchor named 'Non-uniform circles'
+
+*** Warning: PRReferenceNotFound: Can't find anchor named 'Non-uniform circles'
 THERE_BE_DRAGONS_HERE
-FileDoesNotExist: File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleton/Example/Example.pillar
-7 April 2015 1:11:33.009951 pm
+ZnInvalidUTF8: Invalid utf8 input detected
+31 March 2015 1:51:40.889013 am
 
 VM: unix - i686 - linux-gnu - NBCoInterpreter NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
 NBCogit NativeBoost-CogPlugin-GuillermoPolito.19 uuid: acc98e51-2fba-4841-a965-2975997bba66 May 15 2014
 https://github.com/pharo-project/pharo-vm.git Commit: ed4a4f59208968a21d82fd2406f75c2c4de558b2 Date: 2014-05-15 18:23:04 +0200 By: Esteban Lorenzano <estebanlm@gmail.com> Jenkins build #14826
 
-Image: Pharo3.0 [Latest update: #30864]
+Image: Pharo3.0 [Latest update: #30863]
 
-FileHandle>>streamError
-	Receiver: a FileHandle
+UTF8TextConverter>>errorMalformedInput
+	Receiver: an UTF8TextConverter
 	Arguments and temporary variables: 
 
 	Receiver's instance variables: 
-		reference: 	File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleton/Ex...etc...
-		writable: 	false
-		id: 	nil
+		latin1Map: 	#[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...etc...
+		latin1Encodings: 	#(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil ...etc...
 
 
-FileHandle>>readStream
-	Receiver: a FileHandle
+UTF8TextConverter>>nextFromStream:
+	Receiver: an UTF8TextConverter
+	Arguments and temporary variables: 
+		aStream: 	MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.po...etc...
+		character1: 	$
+		value1: 	137
+		character2: 	$P
+		value2: 	80
+		unicode: 	nil
+		character3: 	$N
+		value3: 	78
+		character4: 	nil
+		value4: 	nil
+	Receiver's instance variables: 
+		latin1Map: 	#[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ...etc...
+		latin1Encodings: 	#(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil ...etc...
+
+
+MultiByteFileStream>>next
+	Receiver: MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.post.pillar'
+	Arguments and temporary variables: 
+		char: 	nil
+		secondChar: 	nil
+		state: 	nil
+	Receiver's instance variables: 
+
+
+
+[ 
+(ch := self next) == nil
+	or: [ 
+		(delimiters includes: ch)
+			and: [ 
+				aBlock value: ch.
+				true ] ] ] in MultiByteFileStream>>upToAnyOf:do:
+	Receiver: MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.post.pillar'
+	Arguments and temporary variables: 
+		delimiters: 	a CharacterSet(Character lf Character cr)
+		aBlock: 	[ :char | 
+char = Character cr
+	ifTrue: [ self peekFor: Character lf ] ...etc...
+		stream: 	a WriteStream
+		ch: 	nil
+	Receiver's instance variables: 
+
+
+
+ByteString class(SequenceableCollection class)>>new:streamContents:
+	Receiver: ByteString
+	Arguments and temporary variables: 
+		newSize: 	1000
+		blockWithArg: 	[ 
+(ch := self next) == nil
+	or: [ 
+		(delimiters includes: ch)
+	...etc...
+		stream: 	a WriteStream
+	Receiver's instance variables: 
+		superclass: 	String
+		methodDict: 	a MethodDictionary(#asByteArray->ByteString>>#asByteArray #asKeyCom...etc...
+		format: 	23554
+		layout: 	a ByteLayout
+		instanceVariables: 	nil
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#ByteString
+		classPool: 	a Dictionary(#NonAsciiMap->#[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0...etc...
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Collections-Strings'
+		traitComposition: 	{}
+		localSelectors: 	nil
+
+
+MultiByteFileStream>>upToAnyOf:do:
+	Receiver: MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.post.pillar'
+	Arguments and temporary variables: 
+		delimiters: 	a CharacterSet(Character lf Character cr)
+		aBlock: 	[ :char | 
+char = Character cr
+	ifTrue: [ self peekFor: Character lf ] ...etc...
+	Receiver's instance variables: 
+
+
+
+MultiByteFileStream(PositionableStream)>>nextLine
+	Receiver: MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.post.pillar'
 	Arguments and temporary variables: 
 
 	Receiver's instance variables: 
-		reference: 	File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleton/Ex...etc...
-		writable: 	false
-		id: 	nil
 
 
-FileSystem>>readStreamOn:
-	Receiver: a FileSystem
+
+PRTextParser>>handleNoEndMarkupFoundIn:
+	Receiver: a PRTextParser
 	Arguments and temporary variables: 
-		aResolvable: 	Path / 'home' / 'peter' / 'prog' / 'dynacase' / 'dynacase.github.i...etc...
+		aString: 	'[[['
 	Receiver's instance variables: 
-		workingDirectory: 	Path / 'home' / 'peter' / 'prog' / 'dynacase' / 'dynacase.git...etc...
-		store: 	an UnixStore
+		currentMarkup: 	'[[['
+		currentStart: 	1
+		documentParser: 	a PRDocumentParser
+		itemParser: 	PRScript
+		alreadySeenString: 	'[[['
+		currentStop: 	0
+		stream: 	MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.pos...etc...
 
 
-FileReference>>readStream
-	Receiver: File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleton/Example/Example.pillar
+PRTextParser>>parse:
+	Receiver: a PRTextParser
+	Arguments and temporary variables: 
+		aString: 	'[[['
+		workingString: 	'[[['
+	Receiver's instance variables: 
+		currentMarkup: 	'[[['
+		currentStart: 	1
+		documentParser: 	a PRDocumentParser
+		itemParser: 	PRScript
+		alreadySeenString: 	'[[['
+		currentStop: 	0
+		stream: 	MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.pos...etc...
+
+
+PRDocumentParser>>parseTopText:
+	Receiver: a PRDocumentParser
+	Arguments and temporary variables: 
+		aString: 	'[[['
+	Receiver's instance variables: 
+		document: 	a PRDocument[849608704]
+		stream: 	MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.pos...etc...
+		matcherManager: 	nil
+
+
+PRParagraph class>>parse:with:
+	Receiver: PRParagraph
+	Arguments and temporary variables: 
+		aString: 	'[[['
+		aParser: 	a PRDocumentParser
+	Receiver's instance variables: 
+		superclass: 	PRDocumentGroup
+		methodDict: 	a MethodDictionary(#accept:->PRParagraph>>#accept: )
+		format: 	134
+		layout: 	a FixedLayout
+		instanceVariables: 	#()
+		organization: 	a ClassOrganization
+		subclasses: 	{PRAnnotatedParagraph. PREmptyParagraph}
+		name: 	#PRParagraph
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Pillar-Model-Document'
+		traitComposition: 	{}
+		localSelectors: 	nil
+
+
+[ :itemParser | itemParser parse: aString with: self ] in PRDocumentParser>>parseLine:
+	Receiver: a PRDocumentParser
+	Arguments and temporary variables: 
+		aString: 	'[[['
+		itemParser: 	PRParagraph
+	Receiver's instance variables: 
+		document: 	a PRDocument[849608704]
+		stream: 	MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.pos...etc...
+		matcherManager: 	nil
+
+
+PRMatcherManager>>withItemParserForLine:do:
+	Receiver: a PRMatcherManager
+	Arguments and temporary variables: 
+		aLine: 	'[[['
+		aBlock: 	[ :itemParser | itemParser parse: aString with: self ]
+	Receiver's instance variables: 
+		textMarkups: 	#('[[[' '{{{' '""' '@@' '--' '==' '''''' '__' '^^' '+' '*')
+		lineMarkups: 	#('@@' '= ' '%' '|' '_' '#' ':' '@' '!' ';' '-')
+
+
+PRDocumentParser>>parseLine:
+	Receiver: a PRDocumentParser
+	Arguments and temporary variables: 
+		aString: 	'[[['
+	Receiver's instance variables: 
+		document: 	a PRDocument[849608704]
+		stream: 	MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.pos...etc...
+		matcherManager: 	nil
+
+
+PRDocumentParser>>parse
+	Receiver: a PRDocumentParser
 	Arguments and temporary variables: 
 
 	Receiver's instance variables: 
-		filesystem: 	a FileSystem
-		path: 	Path / 'home' / 'peter' / 'prog' / 'dynacase' / 'dynacase.github.io' / 'b...etc...
+		document: 	a PRDocument[849608704]
+		stream: 	MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.pos...etc...
+		matcherManager: 	nil
 
 
-FileReference(AbstractFileReference)>>readStreamDo:
-	Receiver: File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleton/Example/Example.pillar
+PRDocumentParser class>>parseStream:
+	Receiver: PRDocumentParser
+	Arguments and temporary variables: 
+		aStream: 	MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.po...etc...
+	Receiver's instance variables: 
+		superclass: 	PRBasicObject
+		methodDict: 	a MethodDictionary(#add:->PRDocumentParser>>#add: #addNested:->PRDo...etc...
+		format: 	136
+		layout: 	a FixedLayout
+		instanceVariables: 	#(#document #stream #matcherManager)
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#PRDocumentParser
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Pillar-Model-Core'
+		traitComposition: 	{}
+		localSelectors: 	nil
+
+
+PRDocumentParser class>>parse:
+	Receiver: PRDocumentParser
+	Arguments and temporary variables: 
+		aStringOrStream: 	MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/L...etc...
+	Receiver's instance variables: 
+		superclass: 	PRBasicObject
+		methodDict: 	a MethodDictionary(#add:->PRDocumentParser>>#add: #addNested:->PRDo...etc...
+		format: 	136
+		layout: 	a FixedLayout
+		instanceVariables: 	#(#document #stream #matcherManager)
+		organization: 	a ClassOrganization
+		subclasses: 	nil
+		name: 	#PRDocumentParser
+		classPool: 	a Dictionary()
+		sharedPools: 	an OrderedCollection()
+		environment: 	a SystemDictionary(lots of globals)
+		category: 	#'Pillar-Model-Core'
+		traitComposition: 	{}
+		localSelectors: 	nil
+
+
+[ :input | 
+| input2 |
+"The following are here because of case #12259: 'FileSystem memory reads/writes using a binary stream by default'."
+input2 := input.
+(aFile fileSystem store isKindOf: MemoryStore)
+	ifTrue: [ input2 := input2 contents asString readStream ].
+PRDocumentParser parse: input2 ] in PRExportConfiguration>>parseFile:
+	Receiver: a PRExportConfiguration[653787136]
+	Arguments and temporary variables: 
+		aFile: 	File @ /home/peter/prog/pillar/roassal/Layout/Layout.post.pillar
+		input: 	MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.post...etc...
+		input2: 	MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.pos...etc...
+	Receiver's instance variables: 
+		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/pillar/roassa...etc...
+		parent: 	a PRExportConfiguration[48234496]
+
+
+[ aBlock value: stream ] in FileReference(AbstractFileReference)>>readStreamDo:
+	Receiver: File @ /home/peter/prog/pillar/roassal/Layout/Layout.post.pillar
 	Arguments and temporary variables: 
 		aBlock: 	[ :input | 
 | input2 |
 "The following are here because of case #12259: ...etc...
-		stream: 	nil
+		stream: 	MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.pos...etc...
 	Receiver's instance variables: 
 		filesystem: 	a FileSystem
-		path: 	Path / 'home' / 'peter' / 'prog' / 'dynacase' / 'dynacase.github.io' / 'b...etc...
+		path: 	Path / 'home' / 'peter' / 'prog' / 'pillar' / 'roassal' / 'Layout' / 'Lay...etc...
 
 
-PRCocoonConfiguration>>parseFile:
-	Receiver: a PRCocoonConfiguration[301989888]
+BlockClosure>>ensure:
+	Receiver: [ aBlock value: stream ]
 	Arguments and temporary variables: 
-		aFile: 	File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleton/Exampl...etc...
+		aBlock: 	[ stream close ]
+		complete: 	nil
+		returnValue: 	nil
 	Receiver's instance variables: 
-		parent: 	a PRCocoonConfiguration[262668288]
-		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/dynacase/dyna...etc...
+		outerContext: 	FileReference(AbstractFileReference)>>readStreamDo:
+		startpc: 	34
+		numArgs: 	0
 
 
-PRCocoonConfiguration>>parseAllInputFiles
-	Receiver: a PRCocoonConfiguration[301989888]
+FileReference(AbstractFileReference)>>readStreamDo:
+	Receiver: File @ /home/peter/prog/pillar/roassal/Layout/Layout.post.pillar
 	Arguments and temporary variables: 
-		document: 	nil
-		stdin: 	MultiByteFileStream: #stdin
+		aBlock: 	[ :input | 
+| input2 |
+"The following are here because of case #12259: ...etc...
+		stream: 	MultiByteFileStream: '/home/peter/prog/pillar/roassal/Layout/Layout.pos...etc...
 	Receiver's instance variables: 
-		parent: 	a PRCocoonConfiguration[262668288]
-		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/dynacase/dyna...etc...
+		filesystem: 	a FileSystem
+		path: 	Path / 'home' / 'peter' / 'prog' / 'pillar' / 'roassal' / 'Layout' / 'Lay...etc...
 
 
-PRCocoonConfiguration>>exportAllInOneOutputFile
-	Receiver: a PRCocoonConfiguration[301989888]
+PRExportConfiguration>>parseFile:
+	Receiver: a PRExportConfiguration[653787136]
 	Arguments and temporary variables: 
+		aFile: 	File @ /home/peter/prog/pillar/roassal/Layout/Layout.post.pillar
+	Receiver's instance variables: 
+		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/pillar/roassa...etc...
+		parent: 	a PRExportConfiguration[48234496]
+
+
+[ :file | 
+| document writer |
+document := self parseFile: file.
+document next ifNil: [ document next: nextDocument ].
+nextDocument := document.
+writer := self instantiateWriter
+	configuration: self;
+	yourself.
+self outputFile: file , writer fileExtension.
+[ self write: document using: writer ]
+	on: PRExportError
+	do: [ :err | 
+		err
+			inputFile: file;
+			signal ] ] in PRExportConfiguration>>exportSeparatedOutputFiles
+	Receiver: a PRExportConfiguration[653787136]
+	Arguments and temporary variables: 
+		nextDocument: 	nil
+		file: 	File @ /home/peter/prog/pillar/roassal/Layout/Layout.post.pillar
 		document: 	nil
 		writer: 	nil
 	Receiver's instance variables: 
-		parent: 	a PRCocoonConfiguration[262668288]
-		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/dynacase/dyna...etc...
+		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/pillar/roassa...etc...
+		parent: 	a PRExportConfiguration[48234496]
 
 
-PRCocoonConfiguration>>export
-	Receiver: a PRCocoonConfiguration[301989888]
+Array(SequenceableCollection)>>reverseDo:
+	Receiver: an Array(File @ /home/peter/prog/pillar/roassal/Layout/Layout.post.pillar)
+	Arguments and temporary variables: 
+		aBlock: 	[ :file | 
+| document writer |
+document := self parseFile: file.
+docume...etc...
+		index: 	1
+	Receiver's instance variables: 
+an Array(File @ /home/peter/prog/pillar/roassal/Layout/Layout.post.pillar)
+
+PRExportConfiguration>>exportSeparatedOutputFiles
+	Receiver: a PRExportConfiguration[653787136]
+	Arguments and temporary variables: 
+		nextDocument: 	nil
+	Receiver's instance variables: 
+		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/pillar/roassa...etc...
+		parent: 	a PRExportConfiguration[48234496]
+
+
+PRExportConfiguration>>export
+	Receiver: a PRExportConfiguration[653787136]
 	Arguments and temporary variables: 
 
 	Receiver's instance variables: 
-		parent: 	a PRCocoonConfiguration[262668288]
-		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/dynacase/dyna...etc...
+		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/pillar/roassa...etc...
+		parent: 	a PRExportConfiguration[48234496]
 
 
-PRCocoonConfiguration>>export:
-	Receiver: a PRCocoonConfiguration[262668288]
+PRExportConfiguration>>export:
+	Receiver: a PRExportConfiguration[48234496]
 	Arguments and temporary variables: 
-		configurationName: 	'LaTeX whole book'
+		configurationName: 	'LaTeX by chapter'
 	Receiver's instance variables: 
+		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/pillar/roassa...etc...
 		parent: 	nil
-		properties: 	a Dictionary('baseDirectory'->File @ /home/peter/prog/dynacase/dyna...etc...
 
 
 [ subconfName ifNil: [ configuration export ] ifNotNil: [ configuration export: subconfName ] ] in PRExportCommandLineHandler>>export
@@ -114,9 +393,9 @@ PRCocoonConfiguration>>export:
 		session: 	a Session
 		stdout: 	a VTermOutputDriver
 		stderr: 	a VTermOutputDriver
-		baseDirectory: 	File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleto...etc...
-		configuration: 	a PRCocoonConfiguration[262668288]
-		subconfName: 	'LaTeX whole book'
+		baseDirectory: 	File @ /home/peter/prog/pillar/roassal
+		configuration: 	a PRExportConfiguration[48234496]
+		subconfName: 	'LaTeX by chapter'
 
 
 BlockClosure>>on:do:
@@ -140,9 +419,9 @@ PRExportCommandLineHandler>>export
 		session: 	a Session
 		stdout: 	a VTermOutputDriver
 		stderr: 	a VTermOutputDriver
-		baseDirectory: 	File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleto...etc...
-		configuration: 	a PRCocoonConfiguration[262668288]
-		subconfName: 	'LaTeX whole book'
+		baseDirectory: 	File @ /home/peter/prog/pillar/roassal
+		configuration: 	a PRExportConfiguration[48234496]
+		subconfName: 	'LaTeX by chapter'
 
 
 PRExportCommandLineHandler>>activate
@@ -154,9 +433,9 @@ PRExportCommandLineHandler>>activate
 		session: 	a Session
 		stdout: 	a VTermOutputDriver
 		stderr: 	a VTermOutputDriver
-		baseDirectory: 	File @ /home/peter/prog/dynacase/dynacase.github.io/book-skeleto...etc...
-		configuration: 	a PRCocoonConfiguration[262668288]
-		subconfName: 	'LaTeX whole book'
+		baseDirectory: 	File @ /home/peter/prog/pillar/roassal
+		configuration: 	a PRExportConfiguration[48234496]
+		subconfName: 	'LaTeX by chapter'
 
 
 PRExportCommandLineHandler class(CommandLineHandler class)>>activateWith:
@@ -259,267 +538,61 @@ BlockClosure>>on:do:
 		numArgs: 	0
 
 
-PRCommandLineHandler(BasicCommandLineHandler)>>activate
-	Receiver: a PRCommandLineHandler
-	Arguments and temporary variables: 
-
-	Receiver's instance variables: 
-		commandLine: 	a CommandLineArguments
-		session: 	a Session
-		stdout: 	a VTermOutputDriver
-		stderr: 	a VTermOutputDriver
-
-
-PRCommandLineHandler class(CommandLineHandler class)>>activateWith:
-	Receiver: PRCommandLineHandler
-	Arguments and temporary variables: 
-		aCommandLine: 	a CommandLineArguments
-	Receiver's instance variables: 
-		superclass: 	BasicCommandLineHandler
-		methodDict: 	a MethodDictionary(#subCommandsRoot->PRCommandLineHandler>>#subComm...etc...
-		format: 	138
-		layout: 	a FixedLayout
-		instanceVariables: 	#()
-		organization: 	a ClassOrganization
-		subclasses: 	nil
-		name: 	#PRCommandLineHandler
-		classPool: 	a Dictionary()
-		sharedPools: 	an OrderedCollection()
-		environment: 	a SystemDictionary(lots of globals)
-		category: 	#'Pillar-Cli'
-		traitComposition: 	{}
-		localSelectors: 	nil
-
-
-[ aCommandLinehandler activateWith: commandLine ] in PharoCommandLineHandler(BasicCommandLineHandler)>>activateSubCommand:
-	Receiver: a PharoCommandLineHandler
-	Arguments and temporary variables: 
-		aCommandLinehandler: 	PRCommandLineHandler
-	Receiver's instance variables: 
-		commandLine: 	a CommandLineArguments
-		session: 	a Session
-		stdout: 	a VTermOutputDriver
-		stderr: 	a VTermOutputDriver
-
-
-BlockClosure>>on:do:
-	Receiver: [ aCommandLinehandler activateWith: commandLine ]
-	Arguments and temporary variables: 
-		exception: 	Exit
-		handlerAction: 	[ :exit | ^ self handleExit: exit for: aCommandLinehandler ]
-		handlerActive: 	true
-	Receiver's instance variables: 
-		outerContext: 	PharoCommandLineHandler(BasicCommandLineHandler)>>activateSubComm...etc...
-		startpc: 	34
-		numArgs: 	0
-
-
-PharoCommandLineHandler(BasicCommandLineHandler)>>activateSubCommand:
-	Receiver: a PharoCommandLineHandler
-	Arguments and temporary variables: 
-		aCommandLinehandler: 	PRCommandLineHandler
-	Receiver's instance variables: 
-		commandLine: 	a CommandLineArguments
-		session: 	a Session
-		stdout: 	a VTermOutputDriver
-		stderr: 	a VTermOutputDriver
-
-
-PharoCommandLineHandler(BasicCommandLineHandler)>>handleSubcommand
-	Receiver: a PharoCommandLineHandler
-	Arguments and temporary variables: 
-		handlers: 	an OrderedCollection(PRCommandLineHandler)
-	Receiver's instance variables: 
-		commandLine: 	a CommandLineArguments
-		session: 	a Session
-		stdout: 	a VTermOutputDriver
-		stderr: 	a VTermOutputDriver
-
-
-PharoCommandLineHandler(BasicCommandLineHandler)>>handleArgument:
-	Receiver: a PharoCommandLineHandler
-	Arguments and temporary variables: 
-		aString: 	'pillar'
-	Receiver's instance variables: 
-		commandLine: 	a CommandLineArguments
-		session: 	a Session
-		stdout: 	a VTermOutputDriver
-		stderr: 	a VTermOutputDriver
-
-
-[ self handleArgument: (self arguments ifEmpty: [ '' ] ifNotEmpty: [ :arguments | arguments first ]) ] in PharoCommandLineHandler(BasicCommandLineHandler)>>activate
-	Receiver: a PharoCommandLineHandler
-	Arguments and temporary variables: 
-
-	Receiver's instance variables: 
-		commandLine: 	a CommandLineArguments
-		session: 	a Session
-		stdout: 	a VTermOutputDriver
-		stderr: 	a VTermOutputDriver
-
-
-BlockClosure>>on:do:
-	Receiver: [ self handleArgument: (self arguments ifEmpty: [ '' ] ifNotEmpty: [ :arguments | argument...etc...
-	Arguments and temporary variables: 
-		exception: 	Exit
-		handlerAction: 	[ :exit | ^ self handleExit: exit ]
-		handlerActive: 	true
-	Receiver's instance variables: 
-		outerContext: 	PharoCommandLineHandler(BasicCommandLineHandler)>>activate
-		startpc: 	49
-		numArgs: 	0
-
-
-PharoCommandLineHandler(BasicCommandLineHandler)>>activate
-	Receiver: a PharoCommandLineHandler
-	Arguments and temporary variables: 
-
-	Receiver's instance variables: 
-		commandLine: 	a CommandLineArguments
-		session: 	a Session
-		stdout: 	a VTermOutputDriver
-		stderr: 	a VTermOutputDriver
-
-
-PharoCommandLineHandler>>activate
-	Receiver: a PharoCommandLineHandler
-	Arguments and temporary variables: 
-
-	Receiver's instance variables: 
-		commandLine: 	a CommandLineArguments
-		session: 	a Session
-		stdout: 	a VTermOutputDriver
-		stderr: 	a VTermOutputDriver
-
-
-PharoCommandLineHandler class(CommandLineHandler class)>>activateWith:
-	Receiver: PharoCommandLineHandler
-	Arguments and temporary variables: 
-		aCommandLine: 	a CommandLineArguments
-	Receiver's instance variables: 
-		superclass: 	BasicCommandLineHandler
-		methodDict: 	a MethodDictionary(#activate->PharoCommandLineHandler>>#activate #c...etc...
-		format: 	138
-		layout: 	a FixedLayout
-		instanceVariables: 	nil
-		organization: 	a ClassOrganization
-		subclasses: 	nil
-		name: 	#PharoCommandLineHandler
-		classPool: 	a Dictionary()
-		sharedPools: 	an OrderedCollection()
-		environment: 	a SystemDictionary(lots of globals)
-		category: 	#'System-CommandLine'
-		traitComposition: 	{}
-		localSelectors: 	nil
-
-
-[ super activateWith: aCommandLine ] in PharoCommandLineHandler class>>activateWith:
-	Receiver: PharoCommandLineHandler
-	Arguments and temporary variables: 
-		aCommandLine: 	a CommandLineArguments
-	Receiver's instance variables: 
-		superclass: 	BasicCommandLineHandler
-		methodDict: 	a MethodDictionary(#activate->PharoCommandLineHandler>>#activate #c...etc...
-		format: 	138
-		layout: 	a FixedLayout
-		instanceVariables: 	nil
-		organization: 	a ClassOrganization
-		subclasses: 	nil
-		name: 	#PharoCommandLineHandler
-		classPool: 	a Dictionary()
-		sharedPools: 	an OrderedCollection()
-		environment: 	a SystemDictionary(lots of globals)
-		category: 	#'System-CommandLine'
-		traitComposition: 	{}
-		localSelectors: 	nil
-
-
-WorldState>>runStepMethodsIn:
-	Receiver: a WorldState
-	Arguments and temporary variables: 
-		aWorld: 	a WorldMorph(511705088) [world]
-		queue: 	WaitfreeQueue with 0 items
-		nextInQueue: 	[ super activateWith: aCommandLine ]
-	Receiver's instance variables: 
-		hands: 	an Array(a HandMorph(760479744))
-		viewBox: 	(0@0) corner: (976@662)
-		canvas: 	nil
-		damageRecorder: 	a DamageRecorder
-		stepList: 	a Heap()
-		lastStepTime: 	976
-		lastStepMessage: 	nil
-		lastCycleTime: 	16587
-		alarms: 	a Heap()
-		lastAlarmTime: 	16566
-		menuBuilder: 	nil
-
-
-WorldMorph>>runStepMethods
-	Receiver: a WorldMorph(511705088) [world]
-	Arguments and temporary variables: 
-
-	Receiver's instance variables: 
-		bounds: 	(0@0) corner: (976@662)
-		owner: 	nil
-		submorphs: 	an Array(a TaskbarMorph(984088576) a SystemWindow(629932032) an Imag...etc...
-		fullBounds: 	nil
-		color: 	(Color r: 0.937 g: 0.937 b: 0.937 alpha: 1.0)
-		extension: 	a MorphExtension (552861696) [other:  (dragEnabled -> true) (dropEna...etc...
-		borderWidth: 	0
-		borderColor: 	(Color r: 0.861 g: 1.0 b: 0.722 alpha: 1.0)
-		backgroundMorph: 	nil
-		worldState: 	a WorldState
-		griddingOn: 	nil
-
-
-WorldState>>doOneCycleNowFor:
-	Receiver: a WorldState
-	Arguments and temporary variables: 
-		aWorld: 	a WorldMorph(511705088) [world]
-	Receiver's instance variables: 
-		hands: 	an Array(a HandMorph(760479744))
-		viewBox: 	(0@0) corner: (976@662)
-		canvas: 	nil
-		damageRecorder: 	a DamageRecorder
-		stepList: 	a Heap()
-		lastStepTime: 	976
-		lastStepMessage: 	nil
-		lastCycleTime: 	16587
-		alarms: 	a Heap()
-		lastAlarmTime: 	16566
-		menuBuilder: 	nil
-
-
-WorldState>>doOneCycleFor:
-	Receiver: a WorldState
-	Arguments and temporary variables: 
-		aWorld: 	a WorldMorph(511705088) [world]
-	Receiver's instance variables: 
-		hands: 	an Array(a HandMorph(760479744))
-		viewBox: 	(0@0) corner: (976@662)
-		canvas: 	nil
-		damageRecorder: 	a DamageRecorder
-		stepList: 	a Heap()
-		lastStepTime: 	976
-		lastStepMessage: 	nil
-		lastCycleTime: 	16587
-		alarms: 	a Heap()
-		lastAlarmTime: 	16566
-		menuBuilder: 	nil
-
-
 
 --- The full stack ---
-FileHandle>>streamError
-FileHandle>>readStream
-FileSystem>>readStreamOn:
-FileReference>>readStream
+UTF8TextConverter>>errorMalformedInput
+UTF8TextConverter>>nextFromStream:
+MultiByteFileStream>>next
+[ 
+(ch := self next) == nil
+	or: [ 
+		(delimiters includes: ch)
+			and: [ 
+				aBlock value: ch.
+				true ] ] ] in MultiByteFileStream>>upToAnyOf:do:
+ByteString class(SequenceableCollection class)>>new:streamContents:
+MultiByteFileStream>>upToAnyOf:do:
+MultiByteFileStream(PositionableStream)>>nextLine
+PRTextParser>>handleNoEndMarkupFoundIn:
+PRTextParser>>parse:
+PRDocumentParser>>parseTopText:
+PRParagraph class>>parse:with:
+[ :itemParser | itemParser parse: aString with: self ] in PRDocumentParser>>parseLine:
+PRMatcherManager>>withItemParserForLine:do:
+PRDocumentParser>>parseLine:
+PRDocumentParser>>parse
+PRDocumentParser class>>parseStream:
+PRDocumentParser class>>parse:
+[ :input | 
+| input2 |
+"The following are here because of case #12259: 'FileSystem memory reads/writes using a binary stream by default'."
+input2 := input.
+(aFile fileSystem store isKindOf: MemoryStore)
+	ifTrue: [ input2 := input2 contents asString readStream ].
+PRDocumentParser parse: input2 ] in PRExportConfiguration>>parseFile:
+[ aBlock value: stream ] in FileReference(AbstractFileReference)>>readStreamDo:
+BlockClosure>>ensure:
 FileReference(AbstractFileReference)>>readStreamDo:
-PRCocoonConfiguration>>parseFile:
-PRCocoonConfiguration>>parseAllInputFiles
-PRCocoonConfiguration>>exportAllInOneOutputFile
-PRCocoonConfiguration>>export
-PRCocoonConfiguration>>export:
+PRExportConfiguration>>parseFile:
+[ :file | 
+| document writer |
+document := self parseFile: file.
+document next ifNil: [ document next: nextDocument ].
+nextDocument := document.
+writer := self instantiateWriter
+	configuration: self;
+	yourself.
+self outputFile: file , writer fileExtension.
+[ self write: document using: writer ]
+	on: PRExportError
+	do: [ :err | 
+		err
+			inputFile: file;
+			signal ] ] in PRExportConfiguration>>exportSeparatedOutputFiles
+Array(SequenceableCollection)>>reverseDo:
+PRExportConfiguration>>exportSeparatedOutputFiles
+PRExportConfiguration>>export
+PRExportConfiguration>>export:
 [ subconfName ifNil: [ configuration export ] ifNotNil: [ configuration export: subconfName ] ] in PRExportCommandLineHandler>>export
 BlockClosure>>on:do:
 PRExportCommandLineHandler>>export
@@ -532,6 +605,8 @@ PRCommandLineHandler(BasicCommandLineHandler)>>handleSubcommand
 PRCommandLineHandler(BasicCommandLineHandler)>>handleArgument:
 [ self handleArgument: (self arguments ifEmpty: [ '' ] ifNotEmpty: [ :arguments | arguments first ]) ] in PRCommandLineHandler(BasicCommandLineHandler)>>activate
 BlockClosure>>on:do:
+ - - - - - - - - - - - - - - -  
+			- - - - - - - - - - - - - - - - - -
 PRCommandLineHandler(BasicCommandLineHandler)>>activate
 PRCommandLineHandler class(CommandLineHandler class)>>activateWith:
 [ aCommandLinehandler activateWith: commandLine ] in PharoCommandLineHandler(BasicCommandLineHandler)>>activateSubCommand:
@@ -549,8 +624,6 @@ WorldState>>runStepMethodsIn:
 WorldMorph>>runStepMethods
 WorldState>>doOneCycleNowFor:
 WorldState>>doOneCycleFor:
- - - - - - - - - - - - - - - -  
-			- - - - - - - - - - - - - - - - - -
 WorldMorph>>doOneCycle
 [ 
 World doOneCycle.
