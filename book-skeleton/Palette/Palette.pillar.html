@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Roassal Layout - DRAFT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Highlight js -->
+    <link rel="stylesheet" href="../support/html/highlightjs/styles/default.css">
+    <link rel="stylesheet" href="../support/html/css/highlight-commands.css">
+    <script src="../support/html/highlightjs/highlight.pack.js"></script>
+    <script src="../support/html/js/highlight-commands.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="../support/html/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../support/html/css/bootstrap-theme.min.css" rel="stylesheet">
+    <style>
+        .container { max-width: 55em; }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <div class="container text-justify">
+      <h2> Palette</h2>
+<p>Palette is a UI widget providing a <em>palette</em> of tools for interaction with the canvas.</p>
+<p><figure><img src="../figures/palette-example.png"></img><figcaption>Finite State Machine palette</figcaption></figure></p>
+<p>Currently there are available three different kinds of tools.</p>
+<h3>1.  Selection Tool</h3>
+<p>The purpose of selection tool is to select objects in canvas. This tool is also selected by default and is also switched to after some other tool has completed its purposed action.
+This tool is always available and cannot be removed.</p>
+<p>Selecting an element will highlight this element while removing the highlight of previously selected element. Highlight behavior of each element can be controlled via <code>DCController&gt;&gt;hideSelectionFeedback</code> and <code>DCController&gt;&gt;showSelectionFeedback</code>.
+Secondly selecting will also open editable form for this element (if provided). The form is to be specified in <code>DCController&gt;&gt;buildEditorForm:</code>.</p>
+<p><figure><img src="../figures/selection%20sequence.png"></img><figcaption></figcaption></figure></p>
+<h3>2.  Creation Tool</h3>
+<p>Creation tool is used to add new elements to the canvas. It can be added into the palette by sending <code>DCPalette&gt;&gt;newCreationTool:factory:</code>. Factory should a block producing a new instance of element's DCController.
+When adding a new element one always places the element inside a target - whether the canvas itself (represented by DCDiagramController) or another element (e.g. putting state inside statemachine region). To successfully add a new element the target must accept it, this is controlled by target's controller method <code>DCController&gt;&gt;canBeTargetFor: aController</code>; by default nobody accepts anything. If the target accepts it, it must also implement method <code>&gt;&gt;addAsTargetFor: aController</code> since the target is providing context within the new element is being created.</p>
+<p>Similarly to selection highlighting, Creation Tool uses accept/deny feedback to display whether target element accepts the creation. This behavior is provided by <code>DCAcceptDenyFeedbackBuilder</code> which at the moment displays green (accept) or red (deny) border around the target (or changes the color of a line if the target is an edge).</p>
+<p><figure><img src="../figures/creation%20tool%20sequence.png"></img><figcaption></figcaption></figure></p>
+<h3>3.  Connection Creation Tool</h3>
+<p><code>DCPalette&gt;&gt;newConnectionCreationTool: aLabel factory: aBlock</code>
+This is a tool for creating connections between two other existing elements. The basis of functionality is similar to creation tool, but with two main differences.
+The first is that <code>DCController&gt;&gt;canBeTargetFor:</code> (and <code>DCController&gt;&gt;addAsTargetFor:</code>) is used for the second connected element, while for the specification of the first one there is <code>DCController&gt;&gt;canBeSourceFor:</code> (resp. <code>DCController&gt;&gt;addAsSourceFor:</code>).
+Secondly the new element's controller is must implement <code>DCRelationshipController&gt;&gt;connectionFeedback</code>. This provides visual feedback for the newly created line before it is finalized - essentially a connection between the source element and current mouse position. [[Pkg-DynaCASE-Roassal2#DCInteractiveLine|DCInteractiveLine]] can be used to simplify creation of the feedback.</p>
+<p><figure><img src="../figures/connection%20creation%20tool%20sequence.png"></img><figcaption>An attempt to visualize ConnectionCreationTool's behavior</figcaption></figure></p>
+<h3>4.  Separator</h3>
+<p>Currently there is no support for groups - so one cannot logically group together tools. As a temporary replacement one can add separator to provide extra horizontal spacing between tools. <code>DCPalette&gt;&gt;newSeparator</code></p>
+<h3>5.  Example</h3>
+<p><figure><pre><code class="smalltalk">aPalette
+	newCreationTool: 'element' &quot;tool label&quot;
+		factory: [ ElementController new ] &quot;a descendant of DCElementController&quot;
+		icon: Smalltalk ui icons nautilusIcon; &quot;optional icon&quot;
+	newSeparator; &quot;add extra spacing&quot;
+	newConnectionCreationTool: 'edge'
+		factory: [ TransitionController new ] &quot;a descendant of DCRelationshipController&quot;</code></pre><figcaption></figcaption></figure></p>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../support/html/js/bootstrap.min.js"></script>
+
+    <!-- Syntax highlighting of code blocks -->
+    <script>hljs.initHighlightingOnLoad();</script>
+
+  </body>
+</html>

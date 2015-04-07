@@ -28,12 +28,16 @@
   <body>
 
     <div class="container text-justify">
-      <h2> GUI</h2>
-<p><figure><img src="figures/gui.png"></img><figcaption>DynaCASE window with highlighted important models</figcaption></figure></p>
-<ul><li> DCWorkbench - top level window of DynaCASE</li><li> topMenu - menu bar providing basic project operations</li><li> DCNavigator - sidebar displaying all models available in the opened project</li><li> DCEditor - composition of other widgets representing an opened diagram. DCEditors are organized as Spec Tabs</li></ul><p> - <a href="#Palette/Palette">¿?</a> - palette of tools for interaction with the canvas
- - DCCanvasModel - Spec Model for Roassal's RTView</p><ul><li> <a href="#DCDynamicForm">¿?</a> - form for editing model values</li></ul>
-
-<p><figure><img src="figures/gui_composition.png"></img><figcaption>Composition between Spec models</figcaption></figure></p>
+      <h2> Pkg-DynaCASE-Trachel</h2>
+<p>This package contains classes which extend the Trachel (from Roassal2 project) for DynaCASE purposes.
+Trachel is layer which defines visual aspects, for example shapes definition and canvas manipulation.</p>
+<h3>1.  Core</h3>
+<h4>1.1.  DCTRConstraint</h4>
+<p>A DCTRConstraint is an extension of Trachel TRContraint (which serve to adapt element's properties according to other element(s)).</p>
+<h4>1.2.  (DC)TRCanvasExporter</h4>
+<p>Class used for exporting Trachel canvas into various raster images.
+Has been included into Roassal itself with name DCTRCanvasExporter, but here is more current version. Will be deleted when updated in Roassal.</p>
+<h3>2.  Shapes</h3>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

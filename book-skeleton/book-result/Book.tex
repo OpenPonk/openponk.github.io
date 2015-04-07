@@ -45,241 +45,220 @@
 \sloppy % To avoid LaTeX's annoying habit of letting lines stick over the margins!
 \mainmatter
 
-\chapter{ Layout - DRAFT}
-Layouting is an important aspect of data visualization. It gives us aesthetically pleasing, and more comprehensible presentation, and also allows us by proper structuring to display internal aspects of the presented data.
+\chapter{ GUI}
 
-Let's take the following example:
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{figures/gui.png}\caption{DynaCASE window with highlighted important models.\label{figures/gui.png}}\end{center}
+\end{figure}
+
+
+\begin{itemize}
+\item  DCWorkbench - top level window of DynaCASE
+\item  topMenu - menu bar providing basic project operations
+\item  DCNavigator - sidebar displaying all models available in the opened project
+\item  DCEditor - composition of other widgets representing an opened diagram. DCEditors are organized as Spec Tabs
+\end{itemize}
+
+ - \ref{Palette/Palette} - palette of tools for interaction with the canvas
+ - DCCanvasModel - Spec Model for Roassal's RTView
+
+\begin{itemize}
+\item  \ref{DCDynamicForm} - form for editing model values
+\end{itemize}
 
 
 \begin{figure}
 
 \begin{center}
-\includegraphics[width=1.0\textwidth]{figures/intro-random.png}\caption{Graph with randomly placed nodes.\label{intro-random}}\end{center}
+\includegraphics[width=1.0\textwidth]{figures/gui_composition.png}\caption{Composition between Spec models.\label{figures/gui_composition.png}}\end{center}
 \end{figure}
 
-
-This image does not convey much useful information. But by applying \ct{RTTreeLayout} we get the following:
+\chapter{ Overall Architecture}\section{ DC $/$ Spec $/$ Roassal composition}
+DynaCASE is attempting to follow in some respect MVC architecture.
+\subsection{ Model}
+The model itself is separated from the rest of the application and in fact can be used completely independently on any other part of the DynaCASE application.
 
 
 \begin{figure}
 
 \begin{center}
-\includegraphics[width=1.0\textwidth]{figures/intro-tree.png}\caption{Layouted tree.\label{intro-tree}}\end{center}
+\includegraphics[width=1.0\textwidth]{../figures/Models.png}\caption{file:$/$$/$..$/$figures$/$Models.png.\label{../figures/Models.png}}\end{center}
+\end{figure}
+
+Element represents a singular object within the model (e.g. UML class or UML generalization). Diagram then encompasses all elements applicable to the given model.
+
+Project is abstraction on top of collection of diagrams. This is mainly for application use, however it can still be used independently. It is also aware of layout of each diagram.
+\subsubsection{ Events}
+Model is communicating with the outside world through it's API and events.
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{../figures/Events.png}\caption{file:$/$$/$..$/$figures$/$Events.png.\label{../figures/Events.png}}\end{center}
 \end{figure}
 
 
-By mere repositioning of the elements we can immediately tell that it is a binary tree, what is the root node, and so on, and all that without the need of adding additional elements to the presentation.
-
-There are many other layouting methods, each useful in its own rights.
-\section{ Element-based Layouts}
-Element based layouts do not use edges to present relations between them. Instead they treat all elements based on their size, shape or position within a group. Of course the elements can still have edges.
-\subsection{ Circle Layouts}
-Circle layouts arrange elements in a circle. The order of the elements, as in all circle-based layouts, is the same as the collection on which the layout operates.
+Added$/$Removed event is fired when an element is added$/$removed into a diagram. Change event is fired when either element or a digram has changed in any respect. This could be change of some value (e.g. name of an element), or for diagram when the collection of elements is changed. So for example when we add an element into diagram, both AddedEvent is fired from added element and ChangedEvent from the diagram.
+\subsection{ Controllers}
+Controllers provide binding between model, visualization and GUI. Generally each model is controlled by it's own controller (an appropriate descendant of DCController). The responsibility of controller is to update model when some outside event requests it (e.g. value is changed from a form), and in turn update the visualization (when model is changed).
 
 
 \begin{figure}
 
 \begin{center}
-\includegraphics[width=1.0\textwidth]{figures/circle-layout.png}\caption{Circle layout applied on some elements .\label{circle-layout}}\end{center}
+\includegraphics[width=1.0\textwidth]{../figures/All%20layers%20simplified.png}\caption{file:$/$$/$..$/$figures$/$All\%20layers\%20simplified.png.\label{../figures/All%20layers%20simplified.png}}\end{center}
 \end{figure}
 
 
-Several properties can be configured for circular layouts:
+More complex and chaotic model of interactions between model, controllers, gui, roassal and trachel.
 
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{../figures/Architecture%20layers.png}\caption{file:$/$$/$..$/$figures$/$Architecture\%20layers.png.\label{../figures/Architecture%20layers.png}}\end{center}
+\end{figure}
+
+\subsection{ View (Roassal)}
+DynaCASE uses Roassal2 from \href{http://www.moosetechnology.org/}{Moose project}
+
+Roassal (and Trachel) is well documented at \href{http://agilevisualization.com/#book}{Agile Visualization}
+
+Visualisation comes in multiple layers, application itself interacts mostly only with the top one
+
+\begin{itemize}
+\item  Roassal
+\item  Trachel (part of Roassal)
+\item  Athens (part of Pharo)
+\item  graphics library we should not care about
+\end{itemize}
+\subsubsection{ Roassal}
+Roassal2 is layer for manipulation with visual aspects in high-level manners, for example manipulating with elements and connecting them with edges.
+
+Main behavior and drawing via Roassal is based on these Roassal parts:
+
+\begin{itemize}
+\item  RTShapedObject (RTElement or RTEdge), which are semantic part, telling what we have and what is connected
+\item  RTShape (RTEllipse, RTArrowedLine, etc.), which control what shapes and looks should elements and edges use
+\item  RTView, which is where objects above take place
+\end{itemize}
+
+Most of interaction from Roassal TO application is made using events. Any object can tell (subscribe) RTAnnouncableObject (RTShapedObject and RTView) to make given action (announce) when given event occurs. For example, when mouse clicks on such object (Trachel event TRMouseClick occurs).
+\subsubsection{ Trachel}
+Trachel under it defines how exactly should shapes look (TRShape). All these shapes are drawn on surface called canvas (TRCanvas). For controlling what part of canvas is displayed Trachel uses TRCamera, defining zoom (scale), size and position of current crop of canvas.
+
+Trachel uses callbacks, which are somewhat similar to announcements$/$events, making specified action if predefined events with Trachel shapes occur (when trachel object is resized, moved or removed).
+\chapter{ Palette}
+Palette is a UI widget providing a \textit{palette} of tools for interaction with the canvas.
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{../figures/palette-example.png}\caption{Finite State Machine palette.\label{../figures/palette-example.png}}\end{center}
+\end{figure}
+
+
+Currently there are available three different kinds of tools.
+\section{ Selection Tool}
+The purpose of selection tool is to select objects in canvas. This tool is also selected by default and is also switched to after some other tool has completed its purposed action.
+This tool is always available and cannot be removed.
+
+Selecting an element will highlight this element while removing the highlight of previously selected element. Highlight behavior of each element can be controlled via \ct{DCController$>$$>$hideSelectionFeedback} and \ct{DCController$>$$>$showSelectionFeedback}.
+Secondly selecting will also open editable form for this element (if provided). The form is to be specified in \ct{DCController$>$$>$buildEditorForm:}.
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{../figures/selection%20sequence.png}\caption{file:$/$$/$..$/$figures$/$selection\%20sequence.png.\label{../figures/selection%20sequence.png}}\end{center}
+\end{figure}
+
+\section{ Creation Tool}
+Creation tool is used to add new elements to the canvas. It can be added into the palette by sending \ct{DCPalette$>$$>$newCreationTool:factory:}. Factory should a block producing a new instance of element's DCController.
+When adding a new element one always places the element inside a target - whether the canvas itself (represented by DCDiagramController) or another element (e.g. putting state inside statemachine region). To successfully add a new element the target must accept it, this is controlled by target's controller method \ct{DCController$>$$>$canBeTargetFor: aController}; by default nobody accepts anything. If the target accepts it, it must also implement method \ct{$>$$>$addAsTargetFor: aController} since the target is providing context within the new element is being created.
+
+Similarly to selection highlighting, Creation Tool uses accept$/$deny feedback to display whether target element accepts the creation. This behavior is provided by \ct{DCAcceptDenyFeedbackBuilder} which at the moment displays green (accept) or red (deny) border around the target (or changes the color of a line if the target is an edge).
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{../figures/creation%20tool%20sequence.png}\caption{file:$/$$/$..$/$figures$/$creation\%20tool\%20sequence.png.\label{../figures/creation%20tool%20sequence.png}}\end{center}
+\end{figure}
+
+\section{ Connection Creation Tool}
+\ct{DCPalette$>$$>$newConnectionCreationTool: aLabel factory: aBlock}
+This is a tool for creating connections between two other existing elements. The basis of functionality is similar to creation tool, but with two main differences.
+The first is that \ct{DCController$>$$>$canBeTargetFor:} (and \ct{DCController$>$$>$addAsTargetFor:}) is used for the second connected element, while for the specification of the first one there is \ct{DCController$>$$>$canBeSourceFor:} (resp. \ct{DCController$>$$>$addAsSourceFor:}).
+Secondly the new element's controller is must implement \ct{DCRelationshipController$>$$>$connectionFeedback}. This provides visual feedback for the newly created line before it is finalized - essentially a connection between the source element and current mouse position. {[}{[}Pkg-DynaCASE-Roassal2\#DCInteractiveLine\textbar{}DCInteractiveLine{]}{]} can be used to simplify creation of the feedback.
+
+
+\begin{figure}
+
+\begin{center}
+\includegraphics[width=1.0\textwidth]{../figures/connection%20creation%20tool%20sequence.png}\caption{An attempt to visualize ConnectionCreationTool's behavior.\label{../figures/connection%20creation%20tool%20sequence.png}}\end{center}
+\end{figure}
+
+\section{ Separator}
+Currently there is no support for groups - so one cannot logically group together tools. As a temporary replacement one can add separator to provide extra horizontal spacing between tools. \ct{DCPalette$>$$>$newSeparator}
+\section{ Example}
 
 \begin{code}{}
-RTCircleLayout new
-	initialIncrementalAngle: 30 degreesToRadians;
-	initialAngle: 15 degreesToRadians;
-	initialRadius: 200;
-	on: es.
+aPalette
+	newCreationTool: 'element' "tool label"
+		factory: [ ElementController new ] "a descendant of DCElementController"
+		icon: Smalltalk ui icons nautilusIcon; "optional icon"
+	newSeparator; "add extra spacing"
+	newConnectionCreationTool: 'edge'
+		factory: [ TransitionController new ] "a descendant of DCRelationshipController"
 \end{code}
 
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/circle-layout-config.png}\caption{Some options of Circular Layout.\label{circle-layout-config}}\end{center}
-\end{figure}
-
-
-If no options are provided, the algorithm will distribute all the elements evenly in a circle (\ct{2pi}$/$\ct{elements size}). Additionally radius can be either set absolutely via \ct{initialRadius:}, or as a scalable factor \ct{scaleBy:} - then the radius will be \ct{elements size * scaleFactor}.
-
-It is important to note, that \ct{RTCircleLayout} doesn't take into consideration size of the elements; this is enough when the elements are uniform, however if their sizes vary, different layout may be considered.
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/circle-layout-uniform.png}\caption{Uniform sizes.\label{circle-layout-uniform}}\end{center}
-\end{figure}
-
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/circle-layout-non-uniform.png}\caption{Non-uniform sizes.\label{circle-layout-non-uniform}}\end{center}
-\end{figure}
-
-
-This is where \textbf{Equidistant} and \textbf{Weighted} layouts comes to rescue.
-
-\ct{RTEquidistantCircleLayout} makes sure that there is the same distance between each element.
-\ct{RTWeightedCircleLayout} on the other hand adds spacing based on the size of the elements. Thus there will be less space between smaller elements, and more space between large ones.
-
-So now if we apply layout on non-uniform elements we get:
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/circle-weighted.png}\caption{Equidistant (left) and Weighted (right) layout with non-uniform sizes.\label{circle-weighted}}\end{center}
-\end{figure}
-
-\subsection{ Flow Layouts}
-A flow layout arranges elements in a 'flowing' manner. While we could consider Circle layouts to be also a flow in a clockwise direction, layouts presented here provide flow by lines and columns.
-\subsubsection{ Flow and Grid Layouts}
-Flow layout arranges elements in lines, each line flowing from left to right; Horizontal Flow on the other hand is in columns, flowing from top to bottom.
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/flow-layouts.png}\caption{Flow and Grid Layouts.\label{flow-layouts}}\end{center}
-\end{figure}
-
-
-In Flow layouts elements are positioned in each line (column) based on their size, with defined total width of the containing area (\ct{maxWidth:}). For Grid and Cell layout this limit is instead number of items in the line (\ct{lineItemsCount:}.
-By default Flow will attempt to fill roughly rectangular area, while Grid will approximate golden ratio.
-\subsubsection{ Alignment}
-Cells in Flow layouts can be aligned:
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/flow-alignment.png}\caption{RTFlowLayout alignments.\label{flow-alignment}}\end{center}
-\end{figure}
-
-
-To align \ct{RTHorizontalFlowLayout} use \ct{alignTop} for left, and \ct{alignBottom} for right alignment.
-\subsubsection{ Line Layouts}
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/line-layouts.png}\caption{RTVerticalLineLayout and RTHorizontalLineLayout.\label{line-layouts}}\end{center}
-\end{figure}
-
-\section{ Edge-driven layouts}
-The most basic of Edge-driven layouts is a tree:
-\subsection{ Tree Layout}
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/tree-gaps.png}\caption{RTTreeLayout demonstrating gap sizes.\label{tree-gaps}}\end{center}
-\end{figure}
-
-
-Note that in the picture above the horizontalGap is applied only to the leaves of the tree; distance between parents is then accommodated automatically, so no overlapping or crossing occurs. Alternative to Tree Layout is Horizontal Tree Layout, the only difference is root on the left side with growing branches to the right.
-\subsection{ Radial Tree Layout}
-One problem with trees is that they tend to have many leaves which often results in very wide visualizations. One way to deal with this problem is to present the tree in a circular structure.
-Since each new layer increases the radius of the circle, there is always more and more space available.
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/tree-vs-radial-tree.png}\caption{Comparison of Horizontal, Vertical and Radial Tree Layouts.\label{tree-vs-radial-tree}}\end{center}
-\end{figure}
-
-\subsection{ Dominance Tree Layout}
-This layout is especially useful for visualizing dependencies and flow charts, since it organizes elements in such manner, that the flow of the graph is emphasized.
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/dominance-tree.png}\caption{ RTDominanceTreeLayout showing dependencies between RTShape classes.\label{dominance-tree}}\end{center}
-\end{figure}
-
-\subsection{ Cluster Layout}
-Cluster is visually similar to radial tree; it groups related elements together.
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/cluster-layout.png}\caption{Four trees clustered together.\label{cluster-layout}}\end{center}
-\end{figure}
-
-\subsection{ Sugiyama}
-Sugyiama layout is a hierarchical layered layout. It places elements in hierarchical order such that the edge goes from higher layer to lower layer.
-At the same time the layout will try to minimize the amount of layers and edge crossings.
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/sugiyama.png}\caption{Sugiyama layout applied on hierarchy of `RTLayout` classes.\label{sugiyama}}\end{center}
-\end{figure}
-
-\subsection{ Force Based Layout}
-Force Based Layout applies force between related elements similar to electrical charge. Thus related elements will repulse each other. The \ct{charge} is usually negative since it represents repulsion.
-Additionally to \ct{charge:} you can also specify \ct{strength:}, which is the strength of the bonds (edges) between elements.
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/force-based.png}\caption{ RTForceBasedLayout used to layout hierarchy of classes.\label{force-based}}\end{center}
-\end{figure}
-
-\subsection{ Rectangle Pack}
-\ct{RTRectanglePackLayout} packs all the elements as tightly as possible. It uses element's bounding box, so using circles or polygons instead of boxes will have no effect. One use for this layout is to provide comparative view of some elements — name clouds, source code size of classes etc.
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/rectangle-pack.png}\caption{Pack of different elements.\label{rectangle-pack}}\end{center}
-\end{figure}
-
-
-\ct{RTNameCloud} also internally uses \ct{RTRectanglePackLayout}
-
-
-\begin{figure}
-
-\begin{center}
-\includegraphics[width=1.0\textwidth]{figures/name-cloud.png}\caption{ RTRectanglePackLayout used to layout a name cloud.\label{name-cloud}}\end{center}
-\end{figure}
-
-\section{ Creating custom layout}
-If you want to add your own layout you just need to subclass \ct{RTLayout} and implement \ct{RTLayout$>$$>$doExecute: elements}.
-
-For more fine-graded control you have three main methods available.
-
-
-\begin{code}{}
-RTLayout>>executeOnElements: elements
-	self doInitialize: elements.
-	self doExecute: elements asOrderedCollection.
-	self doPost: elements.
-\end{code}
-
-
-\begin{enumerate}
-\item  \ct{doInitialize:} can be used for elements preprocessing, if needed. For example \ct{RTAbstractGraphLayout} uses this for removing cycles from the graph, so the layouts can work only with trees.
-\item  \ct{doExecute:} is the main method, and the only method that must be implemented. Perform your layout here.
-\item  \ct{doPost:} can do some finishing touches after the layout has been performed.
-\end{enumerate}
-\chapter{GUI}
-some text
-
+\chapter{ Pkg-DynaCASE-Roassal2}
+This package contains classes which extend the Roassal2 for DynaCASE purposes.
+Roassal2 is layer for manipulation with visual aspects in high-level manners, for example manipulating with elements and connecting them with edges.
+\section{ Builders}
+Contains classes used to prepare and create other classes and elements.
+\subsection{ Feedback builders}
+Serve for visualising whether given edge, element, view etc. can or can not be used withing current context.
+\href{../figures/connection%20creation%20tool%20sequence.png}{usage for connection creation}.
+\subsection{ DCRTCallbackBuilder}\subsection{ DCRTEdgeBuilder}
+Serve for creation of lines and edges used in DC
+\subsection{ DCStarAssociationBuilder}
+Handler for visualisation of association between multiple elements, connected with 'star topology'. Usable for example for generalization.
+\section{ Core}\subsection{ Constraints}
+Constraint classes are inspired by TRConstraint classes, which serve to adapt element's properties according to other element(s).
+
+EdgeConstraint are applicable only for positioning of an element according to properties (mostly position) of roassal edge.
+'Along' constraint uses relative position from center of line (based also on lenght of line), 'End' constraint uses distance of start or end of line.
+
+ElementsConstaint are applicable only for two elements.
+\subsection{ DCRTToSelf(WithOffset)AttachPoint}
+A DCRTToSelfAttachPoint is attachpoint for connecting an element with itself.
+Offset version: If multiple connections are made, each one has its attach point moved by offset.
+\section{ Interactivity}\subsection{ DCInteractiveLine}
+Temporary line displayed while creating associations. After the first element is chosen, it shows how could the line look like at the current moment.
+\href{../figures/connection%20creation%20tool%20sequence.png}{usage for connection creation}
+\subsection{ DCRTFocusable}
+Implementation of RTAbstractHighlightable, highlighting an element or edge when the item is clicked. Previously selected item automatically loses focus.
+\section{ Line Decoration}
+System of classes used as replacement for Roassal2 RTLineDecoration classes, which serve as line heads (for example with arrowed line).
+DCRTLineHead (and DCRTLineTail) could be used in place of RTLineDecoration classes, acting like them.
+DCRTLineDecorationShape and its subclasses define its shape.
+\section{ Shapes}\subsection{ DCRTClass}
+Rectangle-shaped standard class, containing name (and stereotype) in upper part and attributes in lower part.
+\subsection{ DCRTMultiLine}
+Multi-purpose line with possibility of being made from multiple parts, having head and$/$or tail (like arrow) and being styled (dashed, dotted...).
+\chapter{ Pkg-DynaCASE-Trachel}
+This package contains classes which extend the Trachel (from Roassal2 project) for DynaCASE purposes.
+Trachel is layer which defines visual aspects, for example shapes definition and canvas manipulation.
+\section{ Core}\subsection{ DCTRConstraint}
+A DCTRConstraint is an extension of Trachel TRContraint (which serve to adapt element's properties according to other element(s)).
+\subsection{ (DC)TRCanvasExporter}
+Class used for exporting Trachel canvas into various raster images.
+Has been included into Roassal itself with name DCTRCanvasExporter, but here is more current version. Will be deleted when updated in Roassal.
+\section{ Shapes}
 
 % another try
 % \printglossary
