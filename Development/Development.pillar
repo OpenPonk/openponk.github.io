@@ -1,0 +1,45 @@
+! Development
+
+!!!! 1. Obtain latest Pharo 4.0 image (*http://pharo.org/download*)
+
+!!!! 2. Clone all required git repositories
+
+For read-write access make sure it's ==git@github== and not ==https://==
+
+[[[language=bash
+git clone git@github.com:dynacase/dynacase.git dynacase
+git clone git@github.com:dynacase/dynacase-model.git dynacase-model
+]]]
+
+!!!! 3. Inside image (in Playground) load GitFileTree and project
+
+""Point Metacello to ==repository== subfolder of the repo.""
+
+The script will complain about conflicts, allow them.
+
+[[[
+"install GitFileTree"
+Gofer new
+    url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo40/main';
+    configurationOf: 'GitFileTree';
+    loadDevelopment.
+
+"load DynaCASE-Model"
+Metacello new
+    baseline: 'DynaCASEModel';
+    repository: 'gitfiletree:///my_path_to_dynacase_model/repository';
+    lock.
+
+"load DynaCASE"
+Metacello new
+    baseline: 'DynaCASE';
+    repository: 'gitfiletree:///my_path_to_dynacase/repository';
+    onConflict: [ :ex | ex allow ];
+    load.
+]]]
+
+""Windows note:"" Use forward slashes (/) even on Windows. For example
+
+[[[
+    repository: 'gitfiletree:///C:/Users/Username/Pharo/dynacase/repository';
+]]]
