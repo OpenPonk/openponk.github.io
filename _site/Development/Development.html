@@ -57,28 +57,59 @@
 			<div class="col-sm-9">
 				<div class="post-area post-list-item">
 					<section>
-<h1>DynaCASE</h1>
+<h1> Development</h1>
+
+<section>
+<h4> 1. Obtain latest Pharo 4.0 image (<a href="http://pharo.org/download">http://pharo.org/download</a>)</h4>
+
+</section><section>
+<h4> 2. Clone all required git repositories</h4>
 
 <p>
-Get latest &quot;stable&quot; image from <a href="https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/">Jenkins</a>
-(<a href="https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/DynaCASE.zip">DynaCASE.zip</a>)
+For read-write access make sure it's <code>git@github</code> and not <code>https://</code>
 </p>
 <p>
-Alternatively download the latest version via Metacello (for non-development only).
-<figure><pre><code class="smalltalk">Metacello new
+<figure><pre><code class="bash">git clone git@github.com:dynacase/dynacase.git dynacase
+git clone git@github.com:dynacase/dynacase-model.git dynacase-model</code></pre><figcaption></figcaption></figure>
+
+</p>
+</section><section>
+<h4> 3. Inside image (in Playground) load GitFileTree and project</h4>
+
+<p>
+<strong>Point Metacello to <code>repository</code> subfolder of the repo.</strong>
+</p>
+<p>
+The script will complain about conflicts, allow them.
+</p>
+<p>
+<figure><pre><code class="smalltalk">&quot;install GitFileTree&quot;
+Gofer new
+    url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo40/main';
+    configurationOf: 'GitFileTree';
+    loadDevelopment.
+
+&quot;load DynaCASE-Model&quot;
+Metacello new
+    baseline: 'DynaCASEModel';
+    repository: 'gitfiletree:///my_path_to_dynacase_model/repository';
+    lock.
+
+&quot;load DynaCASE&quot;
+Metacello new
     baseline: 'DynaCASE';
-    repository: 'github://dynacase/dynacase/repository';
+    repository: 'gitfiletree:///my_path_to_dynacase/repository';
+    onConflict: [ :ex | ex allow ];
     load.</code></pre><figcaption></figcaption></figure>
 
 </p>
 <p>
-or download BormEditor (which includes all from the above)
-<figure><pre><code class="smalltalk">Metacello new
-    baseline: 'BormEditor';
-    repository: 'github://dynacase/borm-editor/repository';
-    load.</code></pre><figcaption></figcaption></figure>
+<strong>Windows note:</strong> Use forward slashes (/) even on Windows. For example
+</p>
+<p>
+<figure><pre><code class="smalltalk">    repository: 'gitfiletree:///C:/Users/Username/Pharo/dynacase/repository';</code></pre><figcaption></figcaption></figure>
 
-</p></section>
+</p></section></section>
 				</div>
 			</div>
 			<div class="col-sm-3">
