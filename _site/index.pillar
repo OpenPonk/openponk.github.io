@@ -1,0 +1,4 @@
+!DynaCASE
+
+Get latest "stable" image from *Jenkins>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/*
+(*DynaCASE.zip>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/DynaCASE.zip*)

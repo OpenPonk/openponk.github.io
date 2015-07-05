@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  	<meta charset="utf-8">
+  	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<title></title>
+  	<meta name="description" content="">
+	
+  	<!--<link rel="canonical" href="">
+  	<link rel="alternate" type="application/rss+xml" title="" href="" />-->
+  	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/theme/concise.css">
+	<!--<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/monokai_sublime.min.css">-->
+	<link rel="stylesheet" type="text/css" href="/theme/styles/monokai_sublime.css">
+	<link rel="stylesheet" type="text/css" href="/theme/styles.css">
+
+  </head>
+  <body>
+	<div class="container-fluid">
+	<header>
+
+	<!-- navbar -->
+	  <nav class="navbar navbar-inverse">
+	  <div class="container">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="/"></a>
+	      <p class="navbar-text">DynaCASE</p>
+	    </div>
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-right">
+
+	        
+	            <li>
+					<a href="/index.html"><span class="glyphicon "></span> Home</a>
+				</li>
+	        
+	      </ul>
+	    </div><!-- /.navbar-collapse -->
+	  </div><!-- /.container-fluid -->
+	</nav>
+
+	</header>
+
+
+    <div id="main" class="container main">
+		<div id="index" class="row">
+			<div class="col-sm-9">
+				<div class="post-area post-list-item">
+					<section>
+<h1> Overall Architecture</h1>
+
+<section>
+<h2> DC / Spec / Roassal composition</h2>
+
+<p>
+DynaCASE is attempting to follow in some respect MVC architecture.
+</p>
+<section>
+<h3> Model</h3>
+
+<p>
+The model itself is separated from the rest of the application and in fact can be used completely independently on any other part of the DynaCASE application.
+</p>
+<p>
+
+<figure>
+	<img src="../figures/Models.png"/>
+	<figcaption></figcaption>
+</figure>
+Element represents a singular object within the model (e.g. UML class or UML generalization). Diagram then encompasses all elements applicable to the given model.
+</p>
+<p>
+Project is abstraction on top of collection of diagrams. This is mainly for application use, however it can still be used independently. It is also aware of layout of each diagram.
+</p>
+<section>
+<h4> Events</h4>
+
+<p>
+Model is communicating with the outside world through it's API and events.
+
+<figure>
+	<img src="../figures/Events.png"/>
+	<figcaption></figcaption>
+</figure>
+</p>
+<p>
+Added/Removed event is fired when an element is added/removed into a diagram. Change event is fired when either element or a digram has changed in any respect. This could be change of some value (e.g. name of an element), or for diagram when the collection of elements is changed. So for example when we add an element into diagram, both AddedEvent is fired from added element and ChangedEvent from the diagram.
+</p>
+</section></section><section>
+<h3> Controllers</h3>
+
+<p>
+Controllers provide binding between model, visualization and GUI. Generally each model is controlled by it's own controller (an appropriate descendant of DCController). The responsibility of controller is to update model when some outside event requests it (e.g. value is changed from a form), and in turn update the visualization (when model is changed).
+</p>
+<p>
+
+<figure>
+	<img src="../figures/All%20layers%20simplified.png"/>
+	<figcaption></figcaption>
+</figure>
+</p>
+<p>
+More complex and chaotic model of interactions between model, controllers, gui, roassal and trachel.
+
+<figure>
+	<img src="../figures/Architecture%20layers.png"/>
+	<figcaption></figcaption>
+</figure>
+</p>
+</section><section>
+<h3> View (Roassal)</h3>
+
+<p>
+DynaCASE uses Roassal2 from <a href="http://www.moosetechnology.org/">Moose project</a>
+</p>
+<p>
+Roassal (and Trachel) is well documented at <a href="http://agilevisualization.com/#book">Agile Visualization</a>
+</p>
+<p>
+Visualisation comes in multiple layers, application itself interacts mostly only with the top one
+</p><ul>
+<li> Roassal</li>
+<li> Trachel (part of Roassal)</li>
+<li> Athens (part of Pharo)</li>
+<li> graphics library we should not care about</li>
+</ul>
+
+<section>
+<h4> Roassal</h4>
+
+<p>
+Roassal2 is layer for manipulation with visual aspects in high-level manners, for example manipulating with elements and connecting them with edges.
+</p>
+<p>
+Main behavior and drawing via Roassal is based on these Roassal parts:
+</p><ul>
+<li> RTShapedObject (RTElement or RTEdge), which are semantic part, telling what we have and what is connected</li>
+<li> RTShape (RTEllipse, RTArrowedLine, etc.), which control what shapes and looks should elements and edges use</li>
+<li> RTView, which is where objects above take place</li>
+</ul>
+
+<p>
+Most of interaction from Roassal TO application is made using events. Any object can tell (subscribe) RTAnnouncableObject (RTShapedObject and RTView) to make given action (announce) when given event occurs. For example, when mouse clicks on such object (Trachel event TRMouseClick occurs).
+</p>
+</section><section>
+<h4> Trachel</h4>
+
+<p>
+Trachel under it defines how exactly should shapes look (TRShape). All these shapes are drawn on surface called canvas (TRCanvas). For controlling what part of canvas is displayed Trachel uses TRCamera, defining zoom (scale), size and position of current crop of canvas.
+</p>
+<p>
+Trachel uses callbacks, which are somewhat similar to announcements/events, making specified action if predefined events with Trachel shapes occur (when trachel object is resized, moved or removed).
+</p></section></section></section></section>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<div class="shadow-corner-curl hidden-xs">
+				<!--<div class="categories-list-header"></div>-->
+				
+					<a class="categories-list-item" href="/Framework/Framework.html">Framework</a>
+				
+					<a class="categories-list-item" href="/GUI/GUI.html">GUI</a>
+				
+					<a class="categories-list-item" href="/Palette/Palette.html">Palette</a>
+				
+					<a class="categories-list-item" href="/Form/Form.html">Form</a>
+				
+					<a class="categories-list-item" href="/Pkg-Roassal/Pkg-Roassal.html">Pkg-Roassal</a>
+				
+					<a class="categories-list-item" href="/Pkg-Trachel/Pkg-Trachel.html">Pkg-Trachel</a>
+				
+				</div>
+			</div>
+		</div>
+    </div>
+
+    
+    <div id="top" data-toggle="tooltip" data-placement="left">
+      <a href="javascript:;">
+        <div class="arrow"></div>
+        <div class="stick"></div>
+      </a>
+    </div>
+
+	<footer class="footer">
+	  <div class="container">
+	    <div class="row">
+	      <div class="col-md-12">
+	        <a href="mailto:i.uhnak(at)gmail.com"><span class="glyphicon glyphicon-envelope"></span> i.uhnak(at)gmail.com</a>
+	        <span class="point"> · </span>
+
+	          <a href="https://github.com/dynacase/dynacase">
+	            <span class="icon">
+	              <svg viewBox="0 0 16 16">
+	                <path fill="#aaa" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/>
+	              </svg>
+	            </span>
+	            Github
+	            <span></span>
+	          </a>
+
+	          <!--<span class="point"> · </span>
+			  <span><a href="/feed.xml">RSS</a></span>-->
+	          <span class="point"> · </span>
+	          <span>DynaCASE</span>
+	          <span class="point"> · </span>
+	          <span>&copy; 2015 Peter Uhnák</span>
+	          <span class="point"> · </span>
+	          <span>Concise theme by <a href="https://github.com/Gaohaoyang">HyG</a>. Adapted by <a href="https://github.com/guillep">Guille</a></span>
+
+	      </div>
+	    </div>
+	  </div>
+	</footer>
+
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  	
+	<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script> -->
+	<script type="text/javascript" src="/theme/highlight.pack.js"></script>
+  	<script>hljs.initHighlightingOnLoad();</script>
+	<script type="text/javascript" src="/theme/images.js"></script>
+  </body>
+</html>
