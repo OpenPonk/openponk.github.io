@@ -2,3 +2,19 @@
 
 Get latest "stable" image from *Jenkins>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/*
 (*DynaCASE.zip>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/DynaCASE.zip*)
+
+Alternatively download the latest version via Metacello (for non-development only).
+[[[
+Metacello new
+    baseline: 'DynaCASE';
+    repository: 'github://dynacase/dynacase/repository';
+    load.
+]]]
+
+or download BormEditor (which includes all from the above)
+[[[
+Metacello new
+    baseline: 'BormEditor';
+    repository: 'github://dynacase/borm-editor/repository';
+    load.
+]]]
