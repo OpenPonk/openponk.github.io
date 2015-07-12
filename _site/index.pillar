@@ -1,20 +1,28 @@
 !DynaCASE
 
+{{{html:
+<a href='https://ci.inria.fr/pharo-contribution/job/DynaCASE/'><img src='https://ci.inria.fr/pharo-contribution/job/DynaCASE/badge/icon'></a>
+}}}
+
 Get latest "stable" image from *Jenkins>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/*
 (*DynaCASE.zip>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/DynaCASE.zip*)
 
-Alternatively download the latest version via Metacello (for non-development only).
-[[[
-Metacello new
-    baseline: 'DynaCASE';
-    repository: 'github://dynacase/dynacase/repository';
-    load.
-]]]
+""Showcase *video>https://www.youtube.com/watch?v=slIcmccsgyo*""
 
-or download BormEditor (which includes all from the above)
+Alternatively download the latest version via Metacello (for non-development only).
+
 [[[
 Metacello new
     baseline: 'BormEditor';
     repository: 'github://dynacase/borm-editor/repository';
+    load.
+]]]
+
+or just Core without BORM Editor.
+
+[[[
+Metacello new
+    baseline: 'DynaCASE';
+    repository: 'github://dynacase/dynacase/repository';
     load.
 ]]]
