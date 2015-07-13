@@ -57,57 +57,156 @@
 			<div class="col-sm-9">
 				<div class="post-area post-list-item">
 					<section>
-<h1> Development</h1>
+<h1> DCNavigator</h1>
+
+<p>
+
+<figure>
+	<img src="figures/navigator.png"/>
+	<figcaption></figcaption>
+</figure>
+</p>
+<p>
+Navigator is a tree view of your project (models).
+</p>
+<p>
+As semantics of models vary, it may be needed to explicitly
+specify what kind of relations are between elements, what are elements
+named, or what kind of icon should accompany it.
+</p>
+<p>
+To do this, simply subclass <code>DCNavigatorAdapter</code> and define your mappings.
+If you do not specify some mapping (or do not create your adapter at all),
+the default one will be used instead <code>DCDefaultNavigatorAdapter</code>.
+</p>
 
 <section>
-<h4> 1. Download latest Pharo 4.0 image (<a href="http://pharo.org/download">http://pharo.org/download</a>)</h4>
+<h2> Mappings</h2>
+
+<p>
+The mapping itself is an array of mappings
+</p>
+<p>
+<code>model class -&gt; block/symbol/object</code>
+</p>
+<p>
+e.g.
+</p>
+<p>
+<code>DCFsmVertex -&gt; #outgoing</code>
+</p>
+<p>
+If the right value is block or symbol, it will be applied on actual model.
+So <code>#outgoing</code> is equivalent to [ :vertex | vertex outgoing ].
+If it is some other object (string, collection, …), it will be returned
+as specified.
+</p>
+</section><section>
+<h2> </h2>
+
+
+<section>
+<h3> <code>childrenMapping</code></h3>
+
+<p>
+Children mapping defines what elements should be displayed as children
+in the navigator.
+</p>
+<p>
+<figure><pre><code class="smalltalk">DCFsmNavigatorAdapter&gt;&gt;childrenMapping
+	^ {
+		DCFsm -&gt; #states. &quot;show all states of the diagram as children&quot;
+		DCFsmVertex -&gt; #outgoing. &quot;show all outgoing transitions&quot;
+		DCFsmTransition -&gt; #() &quot;transition has no children&quot;
+	}</code></pre><figcaption></figcaption></figure>
+
+</p>
 
 </section><section>
-<h4> 2. Clone all required git repositories</h4>
+<h3> <code>displayMapping</code></h3>
+
+<p class="todo">Rename it to displaySuffixMapping?</p>
+<p>
+Display mapping customizes the suffix of the displayed string, by default
+the class name is displayed 
+(so element named &quot;Example&quot; of class &quot;DCDiagram&quot; will show <em>Example (DCDiagram)</em>).
+</p>
 
 <p>
-For read-write access make sure it's <code>git@github</code> and not <code>https://</code>
-</p>
-<p>
-<figure><pre><code class="bash">git clone git@github.com:dynacase/dynacase.git dynacase
-git clone git@github.com:dynacase/dynacase-model.git dynacase-model</code></pre><figcaption></figcaption></figure>
+<figure><pre><code class="smalltalk">DCFsmNavigatorAdapter&gt;&gt;displayMapping
+	^ {
+		DCFsm -&gt; 'Diagram'.
+		DCFsmInitialState -&gt; 'Initial State'.
+		DCFsmState -&gt; [ :o | o isNormal
+			ifTrue: [ 'State' ]
+			ifFalse: [ 'Final State' ]
+		].
+		DCFsmTransition -&gt; 'Transition'
+	}</code></pre><figcaption></figcaption></figure>
 
 </p>
 </section><section>
-<h4> 3. Inside image (in Playground) load GitFileTree and project</h4>
+<h3> <code>iconMapping</code></h3>
 
 <p>
-<strong>Point Metacello to <code>repository</code> subfolder of the repo.</strong>
+Icon mapping defines the icon displayed for the item. Icon is a 16x16 <code>Form</code> instance.
+If you want to ease creation of icons, you can use <a href="http://smalltalkhub.com/#!/~peteruhnak/IconFactory">http://smalltalkhub.com/#!/~peteruhnak/IconFactory</a>
 </p>
 <p>
-The script will complain about conflicts, allow them.
-</p>
-<p>
-<figure><pre><code class="smalltalk">&quot;install GitFileTree&quot;
-Gofer new
-    url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo40/main';
-    configurationOf: 'GitFileTree';
-    loadDevelopment.
-
-&quot;load DynaCASE-Model&quot;
-Metacello new
-    baseline: 'DynaCASEModel';
-    repository: 'gitfiletree:///my_path_to_dynacase_model/repository';
-    lock.
-
-&quot;load DynaCASE&quot;
-Metacello new
-    baseline: 'DynaCASE';
-    repository: 'gitfiletree:///my_path_to_dynacase/repository';
-    onConflict: [ :ex | ex allow ];
-    load.</code></pre><figcaption></figcaption></figure>
+<figure><pre><code class="smalltalk">DCFsmNavigatorAdapter&gt;&gt;iconMapping
+	^ {
+		DCFsm -&gt; DCIcons current dcFsmDiagramIcon.
+		DCFsmInitialState -&gt; DCIcons current dcFsmInitialStateIcon.
+		DCFsmTransition -&gt; DCIcons current dcFsmTransitionIcon.
+	}</code></pre><figcaption></figcaption></figure>
 
 </p>
+</section><section>
+<h3> <code>actionMapping</code></h3>
+
+<p class="todo">This is not yet implemented.</p>
 <p>
-<strong>Windows note:</strong> Use forward slashes (/) even on Windows. For example
+In the future action mapping should define the action that occures when double clicking on an element.
+Currently this is hardcoded to have no action for elements and open diagram for diagram.
+</p>
+</section><section>
+<h3> <code>menuMapping</code></h3>
+
+<p class="todo">This is not yet implemented.</p>
+<p>
+This will control menu displayed on right mouse click, currently there are only basic options available like Rename, Inspect, and Delete.
+</p>
+</section></section><section>
+<h2> Using same mapping for hierarchy of classes</h2>
+
+<p>
+When looking for mapping for an object, it's class hierarchy is used starting from the most generic one and stopping on the first match.
 </p>
 <p>
-<figure><pre><code class="smalltalk">    repository: 'gitfiletree:///C:/Users/Username/Pharo/dynacase/repository';</code></pre><figcaption></figcaption></figure>
+So for hierarchy
+</p>
+<p>
+<figure><pre><code class="smalltalk">DCNamedElement
+ |
+ |- DCFsmVertex
+     |
+	 |- DCFsmInitialState
+	 |- DCFsmState</code></pre><figcaption></figcaption></figure>
+
+</p>
+<p>
+you can specify the mapping for any class in the hierarchy.
+</p>
+<p>
+<strong>Note:</strong> if you use class to far up in the hierarchy, like <code>DCNamedElement</code> you will also need a way to tell that your particular mapping is
+only for your specific model, e.g. any subclass of <code>DCNamedElement</code>, but only if the object is part of <code>FSM</code> plugin.
+</p>
+<p>
+To do so, override method <code>hasMappingFor:</code>
+</p>
+<p>
+<figure><pre><code class="smalltalk">DCFsmNavigatorAdapter&gt;&gt;hasMappingFor: anObject
+	^ anObject className beginsWith: 'DCFsm' &quot;define whatever rule you want as long as it returns boolean&quot;</code></pre><figcaption></figcaption></figure>
 
 </p></section></section>
 				</div>
