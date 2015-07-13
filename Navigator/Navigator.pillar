@@ -112,7 +112,7 @@ DCNamedElement
 
 you can specify the mapping for any class in the hierarchy.
 
-""Note:"" if you use class to far up in the hierarchy, like ==DCNamedElement== you will also need a way to tell that your particular mapping is
+""Note:"" if you use class too far up in the hierarchy, like ==DCNamedElement== you will also need a way to tell that your particular mapping is
 only for your specific model, e.g. any subclass of ==DCNamedElement==, but only if the object is part of ==FSM== plugin.
 
 To do so, override method ==hasMappingFor:==
