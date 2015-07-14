@@ -1,0 +1,26 @@
+! Creating new plugin
+
+@@todo Work-In-Progress
+
+!! Plugin definition file
+
+To provide basic description for your plugin subclass ==DCPlugin== and provide basic information.
+
+[[[
+"Name of the plugin"
+MyCustomPlugin>>name
+	^ 'My Custom Plugin'
+
+"Toplevel class of the diagram"
+MyCustomPlugin>>diagramClass
+	^ MCPDiagram
+
+"Controller for the diagramClass"
+MyCustomPlugin>>diagramControllerClass
+	^ MCPDiagramController
+
+"Icon, 16x16 Form instance"
+MyCustomPlugin>>icon
+	^ Smalltalk ui icons databaseIcon
+]]]
+
