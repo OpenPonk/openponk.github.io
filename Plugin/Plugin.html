@@ -60,30 +60,33 @@
 			<div class="col-sm-9">
 				<div class="post-area post-list-item">
 					<section>
-<h1> Pkg-DynaCASE-Trachel</h1>
+<h1> Creating new plugin</h1>
 
-<p>
-This package contains classes which extend the Trachel (from Roassal2 project) for DynaCASE purposes.
-Trachel is layer which defines visual aspects, for example shapes definition and canvas manipulation.
-</p>
+<p class="todo">Work-In-Progress</p>
 <section>
-<h2> Core</h2>
-
-<section>
-<h3> DCTRConstraint</h3>
+<h2> Plugin definition file</h2>
 
 <p>
-A DCTRConstraint is an extension of Trachel TRContraint (which serve to adapt element's properties according to other element(s)).
+To provide basic description for your plugin subclass <code>DCPlugin</code> and provide basic information.
 </p>
-</section><section>
-<h3> (DC)TRCanvasExporter</h3>
-
 <p>
-Class used for exporting Trachel canvas into various raster images.
-Has been included into Roassal itself with name DCTRCanvasExporter, but here is more current version. Will be deleted when updated in Roassal.
+<figure><pre><code class="smalltalk">&quot;Name of the plugin&quot;
+MyCustomPlugin&gt;&gt;name
+	^ 'My Custom Plugin'
+
+&quot;Toplevel class of the diagram&quot;
+MyCustomPlugin&gt;&gt;diagramClass
+	^ MCPDiagram
+
+&quot;Controller for the diagramClass&quot;
+MyCustomPlugin&gt;&gt;diagramControllerClass
+	^ MCPDiagramController
+
+&quot;Icon, 16x16 Form instance&quot;
+MyCustomPlugin&gt;&gt;icon
+	^ Smalltalk ui icons databaseIcon</code></pre><figcaption></figcaption></figure>
+
 </p>
-</section></section><section>
-<h2> Shapes</h2>
 </section></section>
 				</div>
 			</div>
