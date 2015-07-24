@@ -1,6 +1,6 @@
 ! Development
 
-!!!! 1. Download latest Pharo 4.0 image (*http://pharo.org/download*)
+!!!! 1. Download latest Pharo 5.0 image (*http://files.pharo.org/image/50/*)
 
 !!!! 2. Clone all required git repositories
 
@@ -20,7 +20,7 @@ The script will complain about conflicts, allow them.
 [[[
 "install GitFileTree"
 Gofer new
-    url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo40/main';
+    url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main';
     configurationOf: 'GitFileTree';
     loadDevelopment.
 

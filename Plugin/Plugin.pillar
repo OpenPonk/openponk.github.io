@@ -24,3 +24,10 @@ MyCustomPlugin>>icon
 	^ Smalltalk ui icons databaseIcon
 ]]]
 
+!! Extending UI
+
+[[[
+MyCustomPlugin>>editorToolbarFor: aGroup
+	"extends DCEditor's toolbar"
+]]]
+
