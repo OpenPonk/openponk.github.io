@@ -4,12 +4,18 @@
 <a href='https://ci.inria.fr/pharo-contribution/job/DynaCASE/'><img src='https://ci.inria.fr/pharo-contribution/job/DynaCASE/badge/icon'></a>
 }}}
 
-Get latest "stable" image from *Jenkins>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/*
-(*DynaCASE.zip>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/DynaCASE.zip*)
 
 ""Showcase *video>https://www.youtube.com/watch?v=slIcmccsgyo*""
 
 Alternatively download the latest version via Metacello (for non-development only).
+
+!! Installation
+
+Get latest "stable" image from *Jenkins>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/*
+(*DynaCASE.zip>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/DynaCASE.zip*)
+
+
+{{{latex:
 
 [[[
 Metacello new
@@ -26,3 +32,5 @@ Metacello new
     repository: 'github://dynacase/dynacase/repository';
     load.
 ]]]
+
+}}}
