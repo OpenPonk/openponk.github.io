@@ -5,9 +5,12 @@
 }}}
 
 
-""Showcase *video>https://www.youtube.com/watch?v=slIcmccsgyo*""
+""*Showcase video for ESUG 2015>https://www.youtube.com/watch?v=slIcmccsgyo*""
 
-Alternatively download the latest version via Metacello (for non-development only).
+{{{html:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/slIcmccsgyo" frameborder="0" allowfullscreen></iframe>
+}}}
+
 
 !! Installation
 
@@ -35,6 +38,8 @@ clicking anywhere on the window or reopening it should make it work until the is
 
 
 {{{latex:
+
+Alternatively download the latest version via Metacello (for non-development only).
 
 [[[
 Metacello new
