@@ -11,8 +11,27 @@ Alternatively download the latest version via Metacello (for non-development onl
 
 !! Installation
 
-Get latest "stable" image from *Jenkins>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/*
-(*DynaCASE.zip>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=40,VERSION=development,VM=vm/artifact/DynaCASE.zip*)
+Get latest ''"stable"'' image from *Jenkins>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=50,VERSION=development,VM=vm/artifact/*
+(*DynaCASE.zip>https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=50,VERSION=development,VM=vm/artifact/DynaCASE.zip*)
+
+The image is also available in Pharo Launcher in ''Pharo Contributions Jenkins'' template.
+
+
+After launching the image open DynaCASE from world menu.
+
++>file://figures/world-menu.png+
+
+
+!! Blank screen issue
+
+If you see blank screen after opening DynaCASE, such as depicted,
+clicking anywhere on the window or reopening it should make it work until the issue is properly resolved.
+
++>file://figures/spec-race.png+
+
+
+
+
 
 
 {{{latex:
