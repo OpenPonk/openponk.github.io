@@ -1,6 +1,8 @@
 ! Development
 
-!!!! 1. Download latest Pharo 5.0 image (*http://files.pharo.org/image/50/*)
+!!!! --1. Download latest Pharo 5.0 image (*http://files.pharo.org/image/50/*)-- (not working atm)
+
+!!!! 1. Download latest Moose 6.0 image (*http://www.moosetechnology.org/#install* or Pharo Launcher)
 
 !!!! 2. Clone all required git repositories
 
@@ -16,6 +18,9 @@ git clone git@github.com:dynacase/dynacase-model.git dynacase-model
 ""Point Metacello to ==repository== subfolder of the repo.""
 
 The script will complain about conflicts, allow them.
+
+I strongly suggest adding this to a startup script --- e.g. when your new image contains
+"DynaCASE" in it's name it will automatically download and setup everything.
 
 [[[
 "install GitFileTree"
@@ -36,7 +41,25 @@ Metacello new
     repository: 'gitfiletree:///my_path_to_dynacase/repository';
     onConflict: [ :ex | ex allow ];
     load.
+
+"adding BORM"
+
+"BORM Model"
+Metacello new
+	baseline: 'BormModel';
+	repository: 'gitfiletree:///my_path_to_borm_model/repository';
+	lock.
+
+"BORM Editor"
+Metacello new
+	baseline: 'BormEditor';
+	repository: 'gitfiletree:///my_path_to_borm_editor/repository';
+	onConflict: [ :ex | ex allow ];
+	load.
 ]]]
+
+
+
 
 ""Windows note:"" Use forward slashes (/) even on Windows. For example
 
