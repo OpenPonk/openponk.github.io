@@ -89,11 +89,11 @@ git clone git@github.com:dynacase/dynacase-model.git dynacase-model</code></pre>
 The script will complain about conflicts, allow them.
 </p>
 <p>
-I strongly suggest adding this to a startup script --- e.g. when your new image contains
+I strongly suggest adding this to a startup script — e.g. when your new image contains
 &quot;DynaCASE&quot; in it's name it will automatically download and setup everything.
-
-[[[
-&quot;install GitFileTree&quot;
+</p>
+<p>
+<figure><pre><code class="smalltalk">&quot;install GitFileTree&quot;
 Gofer new
     url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main';
     configurationOf: 'GitFileTree';
@@ -125,17 +125,15 @@ Metacello new
 	baseline: 'BormEditor';
 	repository: 'gitfiletree:///my_path_to_borm_editor/repository';
 	onConflict: [ :ex | ex allow ];
-	load.
-]]]
+	load.</code></pre><figcaption></figcaption></figure>
 
+</p>
+<p>
+<strong>Windows note:</strong> Use forward slashes (/) even on Windows. For example
+</p>
+<p>
+<figure><pre><code class="smalltalk">    repository: 'gitfiletree:///C:/Users/Username/Pharo/dynacase/repository';</code></pre><figcaption></figcaption></figure>
 
-
-
-&quot;&quot;Windows note:&quot;&quot; Use forward slashes (/) even on Windows. For example
-
-[[[
-    repository: 'gitfiletree:///C:/Users/Username/Pharo/dynacase/repository';
-]]]
 </p></section></section>
 				</div>
 			</div>
