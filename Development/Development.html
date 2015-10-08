@@ -63,7 +63,10 @@
 <h1> Development</h1>
 
 <section>
-<h4> 1. Download latest Pharo 5.0 image (<a href="http://files.pharo.org/image/50/">http://files.pharo.org/image/50/</a>)</h4>
+<h4> <s>1. Download latest Pharo 5.0 image (<a href="http://files.pharo.org/image/50/">http://files.pharo.org/image/50/</a>)</s> (not working atm)</h4>
+
+</section><section>
+<h4> 1. Download latest Moose 6.0 image (<a href="http://www.moosetechnology.org/#install">http://www.moosetechnology.org/#install</a> or Pharo Launcher)</h4>
 
 </section><section>
 <h4> 2. Clone all required git repositories</h4>
@@ -86,7 +89,11 @@ git clone git@github.com:dynacase/dynacase-model.git dynacase-model</code></pre>
 The script will complain about conflicts, allow them.
 </p>
 <p>
-<figure><pre><code class="smalltalk">&quot;install GitFileTree&quot;
+I strongly suggest adding this to a startup script --- e.g. when your new image contains
+&quot;DynaCASE&quot; in it's name it will automatically download and setup everything.
+
+[[[
+&quot;install GitFileTree&quot;
 Gofer new
     url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main';
     configurationOf: 'GitFileTree';
@@ -103,15 +110,32 @@ Metacello new
     baseline: 'DynaCASE';
     repository: 'gitfiletree:///my_path_to_dynacase/repository';
     onConflict: [ :ex | ex allow ];
-    load.</code></pre><figcaption></figcaption></figure>
+    load.
 
-</p>
-<p>
-<strong>Windows note:</strong> Use forward slashes (/) even on Windows. For example
-</p>
-<p>
-<figure><pre><code class="smalltalk">    repository: 'gitfiletree:///C:/Users/Username/Pharo/dynacase/repository';</code></pre><figcaption></figcaption></figure>
+&quot;adding BORM&quot;
 
+&quot;BORM Model&quot;
+Metacello new
+	baseline: 'BormModel';
+	repository: 'gitfiletree:///my_path_to_borm_model/repository';
+	lock.
+
+&quot;BORM Editor&quot;
+Metacello new
+	baseline: 'BormEditor';
+	repository: 'gitfiletree:///my_path_to_borm_editor/repository';
+	onConflict: [ :ex | ex allow ];
+	load.
+]]]
+
+
+
+
+&quot;&quot;Windows note:&quot;&quot; Use forward slashes (/) even on Windows. For example
+
+[[[
+    repository: 'gitfiletree:///C:/Users/Username/Pharo/dynacase/repository';
+]]]
 </p></section></section>
 				</div>
 			</div>
