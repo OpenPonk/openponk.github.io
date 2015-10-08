@@ -19,7 +19,7 @@ git clone git@github.com:dynacase/dynacase-model.git dynacase-model
 
 The script will complain about conflicts, allow them.
 
-I strongly suggest adding this to a startup script --- e.g. when your new image contains
+I strongly suggest adding this to a startup script — e.g. when your new image contains
 "DynaCASE" in it's name it will automatically download and setup everything.
 
 [[[
@@ -56,10 +56,8 @@ Metacello new
 	repository: 'gitfiletree:///my_path_to_borm_editor/repository';
 	onConflict: [ :ex | ex allow ];
 	load.
+
 ]]]
-
-
-
 
 ""Windows note:"" Use forward slashes (/) even on Windows. For example
 
