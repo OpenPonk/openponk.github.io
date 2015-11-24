@@ -72,15 +72,52 @@
 <iframe width="560" height="315" src="https://www.youtube.com/embed/slIcmccsgyo" frameborder="0" allowfullscreen></iframe>
 
 <section>
-<h2> Installation</h2>
+<h2> Download</h2>
 
 <p>
-Get latest <em>&quot;stable&quot;</em> image from <a href="https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=50,VERSION=development,VM=vm/artifact/">Jenkins</a>
-(<a href="https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=50,VERSION=development,VM=vm/artifact/DynaCASE.zip">DynaCASE.zip</a>)
+You can download the latest image from <a href="https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/">Jenkins</a>.
 </p>
 <p>
-The image is also available in Pharo Launcher in <em>Pharo Contributions Jenkins</em> template.
+Alternatively you can execute the appropriate Metacello script to download it into your image.
 </p>
+
+<table>
+	<thead>
+		<tr>
+			<th>Build</th>
+			<th>Link</th>
+			<th>Metacello script</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><b>BORM + UML (recommended)</b></td>
+			<td><b><a href="https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=50,PROJECT=moose,VERSION=development,VM=vm,slave=pharo-contribution-linux64.ci.inria.fr/">download</a></b></td>
+			<td><pre><code>Metacello new baseline: 'BormEditor'; repository: 'github://dynacase/borm-editor/repository'; load.
+Metacello new baseline: 'DCUmlClassEditor'; repository: 'github://dynacase/class-editor/repository'; load.</code></pre></td>
+		</tr>
+		<tr>
+			<td>BORM only</td>
+			<td><a href="https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=50,PROJECT=borm,VERSION=development,VM=vm,slave=pharo-contribution-linux64.ci.inria.fr/">download</a></td>
+			<td><pre><code>Metacello new baseline: 'BormEditor'; repository: 'github://dynacase/borm-editor/repository'; load.</code></pre></td>
+		</tr>
+		<tr>
+			<td>UML only</td>
+			<td><a href="https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=50,PROJECT=class-editor,VERSION=development,VM=vm,slave=pharo-contribution-linux64.ci.inria.fr/">download</a></td>
+			<td><pre><code>Metacello new baseline: 'DCUmlClassEditor'; repository: 'github://dynacase/class-editor/repository'; load.</code></pre></td>
+		</tr>
+		<tr>
+			<td>Core only</td>
+			<td><a href="https://ci.inria.fr/pharo-contribution/job/DynaCASE/lastSuccessfulBuild/PHARO=50,PROJECT=core,VERSION=development,VM=vm,slave=pharo-contribution-linux64.ci.inria.fr/">download</a></td>
+			<td><pre><code>Metacello new baseline: 'DynaCASE'; repository: 'github://dynacase/dynacase/repository'; load.</code></pre></td>
+		</tr>
+	</tbody>
+</table>
+<p>
+All the images are also available in Pharo Launcher in <em>Pharo Contributions Jenkins</em> template.
+</p>
+</section><section>
+<h2> Opening</h2>
 
 <p>
 After launching the image open DynaCASE from world menu.
@@ -106,13 +143,7 @@ clicking anywhere on the window or reopening it should make it work until the is
 	<img src="figures/spec-race.png"/>
 	<figcaption></figcaption>
 </figure>
-</p>
-
-
-
-
-
-</section></section>
+</p></section></section>
 				</div>
 			</div>
 			<div class="col-sm-3">
