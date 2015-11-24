@@ -1,8 +1,6 @@
 ! Development
 
-!!!! --1. Download latest Pharo 5.0 image (*http://files.pharo.org/image/50/*)-- (not working atm)
-
-!!!! 1. Download latest Moose 6.0 image (*http://www.moosetechnology.org/#install* or Pharo Launcher)
+!!!! 1. Download latest Pharo 5.0 image (or Moose 6.0)
 
 !!!! 2. Clone all required git repositories
 
