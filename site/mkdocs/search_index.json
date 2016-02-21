@@ -1,0 +1,224 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "DynaCASE\n\n\n \n\n\nDynaCASE is a modeling platform implemented in the dynamic environment \nPharo\n aimed at supporting activities surrounding software and business engineering such as modeling, execution, simulation, source code generation, etc.\n\n\nShowcase video for \nESUG 2015 conference\n\n\n\n\n\nDownload\n\n\nYou can download preinstalled Pharo image containing all currently supported notations:\n\n\n\n\nFSM - Finite State Machines\n\n\nBORM ORD \u2014 \nBusiness Objects Relation Modeling\n Object-Relation Diagrams\n\n\nDEMO (early alpha) \u2014 \nDesign & Engineering Methodology for Organizations\n\n\nUML Class Diagrams\n\n\n\n\nKeep in mind that DynaCASE is still in alpha stage and contains many bugs and missing features.\n\n\n\n\n\n\n\n\nBuild\n\n\nLinux \n\n\nMac \n\n\nWindows \n\n\nimage only \n\n\n\n\n\n\n\n\n\n\nall-in-one (alpha build)\n\n\ndownload\n\n\ndownload\n\n\ndownload\n\n\ndownload\n\n\n\n\n\n\n\n\nDirect installation\n\n\nIf you are an experienced Pharo user and you want to download DynaCASE directly into your image, you can do so by executing the following code:\n\n\nMetacello new\n    baseline: 'DynaCASE';\n    repository: 'github://dynacase/dynacase/repository';\n    load: 'complete'.\n\n\n\n\nOpening\n\n\nThe downloaded package contains \nREADME.md\n with additional instructions, however on properly configured system launching \ndynacase.sh\n (under Linux & Mac) or \nDynaCASE.exe\n (under Windows) should be sufficient.\n\n\n@todo: in-image guide\n\n\nRequirements\n\n\nUnder Windows and Mac it should work out of the box.\n\n\nLinux may require extra configuration\n as Pharo VM is currently only 32bit. Please refer to Pharo's \nofficial guide\n.\n\n\nAdditionally you will require 32bit \ncairo2\n library, usually available in distribution package managers as \nlibcairo2:i386\n (debian), \nlibcairo2\n, etc.\n\n\nThe bundled launcher will check those requirements and will warn you and provide some tips if your system is not configured properly.",
+            "title": "DynaCASE"
+        },
+        {
+            "location": "/#dynacase",
+            "text": "DynaCASE is a modeling platform implemented in the dynamic environment  Pharo  aimed at supporting activities surrounding software and business engineering such as modeling, execution, simulation, source code generation, etc.  Showcase video for  ESUG 2015 conference",
+            "title": "DynaCASE"
+        },
+        {
+            "location": "/#download",
+            "text": "You can download preinstalled Pharo image containing all currently supported notations:   FSM - Finite State Machines  BORM ORD \u2014  Business Objects Relation Modeling  Object-Relation Diagrams  DEMO (early alpha) \u2014  Design & Engineering Methodology for Organizations  UML Class Diagrams   Keep in mind that DynaCASE is still in alpha stage and contains many bugs and missing features.     Build  Linux   Mac   Windows   image only       all-in-one (alpha build)  download  download  download  download",
+            "title": "Download"
+        },
+        {
+            "location": "/#direct-installation",
+            "text": "If you are an experienced Pharo user and you want to download DynaCASE directly into your image, you can do so by executing the following code:  Metacello new\n    baseline: 'DynaCASE';\n    repository: 'github://dynacase/dynacase/repository';\n    load: 'complete'.",
+            "title": "Direct installation"
+        },
+        {
+            "location": "/#opening",
+            "text": "The downloaded package contains  README.md  with additional instructions, however on properly configured system launching  dynacase.sh  (under Linux & Mac) or  DynaCASE.exe  (under Windows) should be sufficient.  @todo: in-image guide",
+            "title": "Opening"
+        },
+        {
+            "location": "/#requirements",
+            "text": "Under Windows and Mac it should work out of the box.  Linux may require extra configuration  as Pharo VM is currently only 32bit. Please refer to Pharo's  official guide .  Additionally you will require 32bit  cairo2  library, usually available in distribution package managers as  libcairo2:i386  (debian),  libcairo2 , etc.  The bundled launcher will check those requirements and will warn you and provide some tips if your system is not configured properly.",
+            "title": "Requirements"
+        },
+        {
+            "location": "/fsm/fsm/",
+            "text": "Finite State Machines\n\n\n@todo",
+            "title": "FSM"
+        },
+        {
+            "location": "/fsm/fsm/#finite-state-machines",
+            "text": "@todo",
+            "title": "Finite State Machines"
+        },
+        {
+            "location": "/uml/uml/",
+            "text": "UML Class Diagrams\n\n\n@todo",
+            "title": "UML"
+        },
+        {
+            "location": "/uml/uml/#uml-class-diagrams",
+            "text": "@todo",
+            "title": "UML Class Diagrams"
+        },
+        {
+            "location": "/borm/borm/",
+            "text": "BORM OR Diagrams\n\n\n@todo",
+            "title": "BORM"
+        },
+        {
+            "location": "/borm/borm/#borm-or-diagrams",
+            "text": "@todo",
+            "title": "BORM OR Diagrams"
+        },
+        {
+            "location": "/dev/installation/",
+            "text": "Installation\n\n\n\n\n\n\n1. Download latest Pharo 5.0 image (or Moose 6.0)\n\n\n\n\n\n\n2. Clone all required git repositories\n\n\n\n\n\n\nFor read-write access make sure it's \ngit@github\n and not \nhttps://\n\n\n    git clone git@github.com:dynacase/dynacase.git dynacase\n    git clone git@github.com:dynacase/dynacase-model.git dynacase-model\n\n\n\n\n\n\n3. Inside image (in Playground) load GitFileTree and project\n\n\n\n\nPoint Metacello to \nrepository\n subfolder of the repo.\n\n\nThe script will complain about conflicts, allow them.\n\n\nI strongly suggest adding this to a startup script \u2014 e.g. when your new image contains\n\"DynaCASE\" in it's name it will automatically download and setup everything.\n\n\n\u00a0\n\n\n    \"install GitFileTree\"\n    Gofer new\n        url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main';\n        configurationOf: 'GitFileTree';\n        loadDevelopment.\n\n    \"load DynaCASE-Model\"\n    Metacello new\n        baseline: 'DynaCASEModel';\n        repository: 'gitfiletree:///my_path_to_dynacase_model/repository';\n        lock.\n\n    \"load DynaCASE\"\n    Metacello new\n        baseline: 'DynaCASE';\n        repository: 'gitfiletree:///my_path_to_dynacase/repository';\n        onConflict: [ :ex | ex allow ];\n        load.\n\n    \"adding BORM\"\n\n    \"BORM Model\"\n    Metacello new\n        baseline: 'BormModel';\n        repository: 'gitfiletree:///my_path_to_borm_model/repository';\n        lock.\n\n    \"BORM Editor\"\n    Metacello new\n        baseline: 'BormEditor';\n        repository: 'gitfiletree:///my_path_to_borm_editor/repository';\n        onConflict: [ :ex | ex allow ];\n        load.\n\n\n\n\nWindows note:\n Use forward slashes (/) even on Windows. For example\n\n\n\u00a0\n\n\nrepository: 'gitfiletree:///C:/Users/Username/Pharo/dynacase/repository';",
+            "title": "Installation"
+        },
+        {
+            "location": "/dev/installation/#installation",
+            "text": "1. Download latest Pharo 5.0 image (or Moose 6.0)    2. Clone all required git repositories    For read-write access make sure it's  git@github  and not  https://      git clone git@github.com:dynacase/dynacase.git dynacase\n    git clone git@github.com:dynacase/dynacase-model.git dynacase-model   3. Inside image (in Playground) load GitFileTree and project   Point Metacello to  repository  subfolder of the repo.  The script will complain about conflicts, allow them.  I strongly suggest adding this to a startup script \u2014 e.g. when your new image contains\n\"DynaCASE\" in it's name it will automatically download and setup everything.  \u00a0      \"install GitFileTree\"\n    Gofer new\n        url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo50/main';\n        configurationOf: 'GitFileTree';\n        loadDevelopment.\n\n    \"load DynaCASE-Model\"\n    Metacello new\n        baseline: 'DynaCASEModel';\n        repository: 'gitfiletree:///my_path_to_dynacase_model/repository';\n        lock.\n\n    \"load DynaCASE\"\n    Metacello new\n        baseline: 'DynaCASE';\n        repository: 'gitfiletree:///my_path_to_dynacase/repository';\n        onConflict: [ :ex | ex allow ];\n        load.\n\n    \"adding BORM\"\n\n    \"BORM Model\"\n    Metacello new\n        baseline: 'BormModel';\n        repository: 'gitfiletree:///my_path_to_borm_model/repository';\n        lock.\n\n    \"BORM Editor\"\n    Metacello new\n        baseline: 'BormEditor';\n        repository: 'gitfiletree:///my_path_to_borm_editor/repository';\n        onConflict: [ :ex | ex allow ];\n        load.  Windows note:  Use forward slashes (/) even on Windows. For example  \u00a0  repository: 'gitfiletree:///C:/Users/Username/Pharo/dynacase/repository';",
+            "title": "Installation"
+        },
+        {
+            "location": "/dev/overview/",
+            "text": "Overall Architecture\n\n\nDynaCASE is attempting to follow in some respect MVC architecture.\n\n\nModel\n\n\nThe model itself is separated from the rest of the application and in fact can be used completely independently on any other part of the DynaCASE application.\n\n\n\n\nElement represents a singular object within the model (e.g. UML class or UML generalization). Diagram then encompasses all elements applicable to the given model.\n\n\nProject is abstraction on top of collection of diagrams. This is mainly for application use, however it can still be used independently. It is also aware of layout of each diagram.\n\n\nEvents\n\n\nModel is communicating with the outside world through it's API and events.\n\n\n\nAdded/Removed event is fired when an element is added/removed into a diagram. Change event is fired when either element or a digram has changed in any respect. This could be change of some value (e.g. name of an element), or for diagram when the collection of elements is changed. So for example when we add an element into diagram, both AddedEvent is fired from added element and ChangedEvent from the diagram.\n\n\nControllers\n\n\nControllers provide binding between model, visualization and GUI. Generally each model is controlled by it's own controller (an appropriate descendant of DCController). The responsibility of controller is to update model when some outside event requests it (e.g. value is changed from a form), and in turn update the visualization (when model is changed).\n\n\n\n\nMore complex and chaotic model of interactions between model, controllers, gui, roassal and trachel.\n\n\n\nView (Roassal)\n\n\nDynaCASE uses Roassal2 from \nMoose project\n\n\nRoassal (and Trachel) is well documented at \nAgile Visualization\n\n\nVisualisation comes in multiple layers, application itself interacts mostly only with the top one\n\n\n\n\nRoassal\n\n\nTrachel (part of Roassal)\n\n\nAthens (part of Pharo)\n\n\ngraphics library we should not care about\n\n\n\n\nRoassal\n\n\nRoassal2 is layer for manipulation with visual aspects in high-level manners, for example manipulating with elements and connecting them with edges.\n\n\nMain behavior and drawing via Roassal is based on these Roassal parts:\n\n\n\u00a0\n\n\n\n\nRTShapedObject (RTElement or RTEdge), which are semantic part, telling what we have and what is connected\n\n\nRTShape (RTEllipse, RTArrowedLine, etc.), which control what shapes and looks should elements and edges use\n\n\nRTView, which is where objects above take place\n\n\n\n\nMost of interaction from Roassal TO application is made using events. Any object can tell (subscribe) RTAnnouncableObject (RTShapedObject and RTView) to make given action (announce) when given event occurs. For example, when mouse clicks on such object (Trachel event TRMouseClick occurs).\n\n\nTrachel\n\n\nTrachel under it defines how exactly should shapes look (TRShape). All these shapes are drawn on surface called canvas (TRCanvas). For controlling what part of canvas is displayed Trachel uses TRCamera, defining zoom (scale), size and position of current crop of canvas.\n\n\nTrachel uses callbacks, which are somewhat similar to announcements/events, making specified action if predefined events with Trachel shapes occur (when trachel object is resized, moved or removed).",
+            "title": "Overview"
+        },
+        {
+            "location": "/dev/overview/#overall-architecture",
+            "text": "DynaCASE is attempting to follow in some respect MVC architecture.",
+            "title": "Overall Architecture"
+        },
+        {
+            "location": "/dev/overview/#model",
+            "text": "The model itself is separated from the rest of the application and in fact can be used completely independently on any other part of the DynaCASE application.   Element represents a singular object within the model (e.g. UML class or UML generalization). Diagram then encompasses all elements applicable to the given model.  Project is abstraction on top of collection of diagrams. This is mainly for application use, however it can still be used independently. It is also aware of layout of each diagram.",
+            "title": "Model"
+        },
+        {
+            "location": "/dev/overview/#events",
+            "text": "Model is communicating with the outside world through it's API and events.  Added/Removed event is fired when an element is added/removed into a diagram. Change event is fired when either element or a digram has changed in any respect. This could be change of some value (e.g. name of an element), or for diagram when the collection of elements is changed. So for example when we add an element into diagram, both AddedEvent is fired from added element and ChangedEvent from the diagram.",
+            "title": "Events"
+        },
+        {
+            "location": "/dev/overview/#controllers",
+            "text": "Controllers provide binding between model, visualization and GUI. Generally each model is controlled by it's own controller (an appropriate descendant of DCController). The responsibility of controller is to update model when some outside event requests it (e.g. value is changed from a form), and in turn update the visualization (when model is changed).   More complex and chaotic model of interactions between model, controllers, gui, roassal and trachel.",
+            "title": "Controllers"
+        },
+        {
+            "location": "/dev/overview/#view-40roassal41",
+            "text": "DynaCASE uses Roassal2 from  Moose project  Roassal (and Trachel) is well documented at  Agile Visualization  Visualisation comes in multiple layers, application itself interacts mostly only with the top one   Roassal  Trachel (part of Roassal)  Athens (part of Pharo)  graphics library we should not care about   Roassal  Roassal2 is layer for manipulation with visual aspects in high-level manners, for example manipulating with elements and connecting them with edges.  Main behavior and drawing via Roassal is based on these Roassal parts:  \u00a0   RTShapedObject (RTElement or RTEdge), which are semantic part, telling what we have and what is connected  RTShape (RTEllipse, RTArrowedLine, etc.), which control what shapes and looks should elements and edges use  RTView, which is where objects above take place   Most of interaction from Roassal TO application is made using events. Any object can tell (subscribe) RTAnnouncableObject (RTShapedObject and RTView) to make given action (announce) when given event occurs. For example, when mouse clicks on such object (Trachel event TRMouseClick occurs).  Trachel  Trachel under it defines how exactly should shapes look (TRShape). All these shapes are drawn on surface called canvas (TRCanvas). For controlling what part of canvas is displayed Trachel uses TRCamera, defining zoom (scale), size and position of current crop of canvas.  Trachel uses callbacks, which are somewhat similar to announcements/events, making specified action if predefined events with Trachel shapes occur (when trachel object is resized, moved or removed).",
+            "title": "View (Roassal)"
+        },
+        {
+            "location": "/dev/gui/",
+            "text": "GUI\n\n\n\n\nDynaCASE window with highlighted important models\n\n\n\n\nDCWorkbench - top level window of DynaCASE\n\n\ntopMenu - menu bar providing basic project operations\n\n\nDCNavigator - sidebar displaying all models available in the opened project\n\n\nDCEditor - composition of other widgets representing an opened diagram. DCEditors are organized as Spec Tabs\n\n\nDCPalette - palette of tools for interaction with the canvas\n\n\nDCCanvasModel - Spec Model for Roassal's RTView\n\n\n\n\n\n\nDCForm - form for editing model values\n\n\n\n\n\nComposition between Spec models",
+            "title": "GUI"
+        },
+        {
+            "location": "/dev/gui/#gui",
+            "text": "DynaCASE window with highlighted important models   DCWorkbench - top level window of DynaCASE  topMenu - menu bar providing basic project operations  DCNavigator - sidebar displaying all models available in the opened project  DCEditor - composition of other widgets representing an opened diagram. DCEditors are organized as Spec Tabs  DCPalette - palette of tools for interaction with the canvas  DCCanvasModel - Spec Model for Roassal's RTView    DCForm - form for editing model values   \nComposition between Spec models",
+            "title": "GUI"
+        },
+        {
+            "location": "/dev/plugin/",
+            "text": "Creating new plugin\n\n\nWork\\-In\\-Progress\n\n\n\nPlugin definition file\n\n\nTo provide basic description for your plugin subclass \nDCPlugin\n and provide basic information.\n\n\n\u00a0\n\n\n\"Name of the plugin\"\nMyCustomPlugin>>name\n    ^ 'My Custom Plugin'\n\n\"Toplevel class of the diagram\"\nMyCustomPlugin>>diagramClass\n    ^ MCPDiagram\n\n\"Controller for the diagramClass\"\nMyCustomPlugin>>diagramControllerClass\n    ^ MCPDiagramController\n\n\"Icon, 16x16 Form instance\"\nMyCustomPlugin>>icon\n    ^ Smalltalk ui icons databaseIcon\n\n\n\nExtending UI\n\n\n\u00a0\n\n\nMyCustomPlugin>>editorToolbarFor: aGroup\n    \"extends DCEditor's toolbar\"",
+            "title": "New plugin"
+        },
+        {
+            "location": "/dev/plugin/#creating-new-plugin",
+            "text": "Work\\-In\\-Progress",
+            "title": "Creating new plugin"
+        },
+        {
+            "location": "/dev/plugin/#plugin-definition-file",
+            "text": "To provide basic description for your plugin subclass  DCPlugin  and provide basic information.  \u00a0  \"Name of the plugin\"\nMyCustomPlugin>>name\n    ^ 'My Custom Plugin'\n\n\"Toplevel class of the diagram\"\nMyCustomPlugin>>diagramClass\n    ^ MCPDiagram\n\n\"Controller for the diagramClass\"\nMyCustomPlugin>>diagramControllerClass\n    ^ MCPDiagramController\n\n\"Icon, 16x16 Form instance\"\nMyCustomPlugin>>icon\n    ^ Smalltalk ui icons databaseIcon",
+            "title": "Plugin definition file"
+        },
+        {
+            "location": "/dev/plugin/#extending-ui",
+            "text": "MyCustomPlugin>>editorToolbarFor: aGroup\n    \"extends DCEditor's toolbar\"",
+            "title": "Extending UI"
+        },
+        {
+            "location": "/dev/navigator/",
+            "text": "DCNavigator\n\n\n\n\nNavigator is a tree view of your project (models).\n\n\nAs semantics of models vary, it may be needed to explicitly\nspecify what kind of relations are between elements, what are elements\nnamed, or what kind of icon should accompany it.\n\n\nTo do this, simply subclass \nDCNavigatorAdapter\n and define your mappings.\nIf you do not specify some mapping (or do not create your adapter at all),\nthe default one will be used instead \nDCDefaultNavigatorAdapter\n.\n\n\nMappings\n\n\nThe mapping itself is an array of mappings\n\n\nmodel class -> block/symbol/object\n\n\ne.g.\n\n\nDCFsmVertex -> #outgoing\n\n\nIf the right value is block or symbol, it will be applied on actual model.\nSo \n#outgoing\n is equivalent to [ :vertex \\| vertex outgoing ].\nIf it is some other object (string, collection, \u2026), it will be returned\nas specified.\n\n\n\n\nchildrenMapping\n\n\nChildren mapping defines what elements should be displayed as children\nin the navigator.\n\n\nDCFsmNavigatorAdapter>>childrenMapping\n    ^ {\n        DCFsm -> #states. \"show all states of the diagram as children\"\n        DCFsmVertex -> #outgoing. \"show all outgoing transitions\"\n        DCFsmTransition -> #() \"transition has no children\"\n    }\n\n\n\ndisplayMapping\n\n\n\u00a0\n\nRename it to displaySuffixMapping?\n\nDisplay mapping customizes the suffix of the displayed string, by default\nthe class name is displayed \n(so element named \"Example\" of class \"DCDiagram\" will show \nExample (DCDiagram)\n).\n\n\n\u00a0\n\n\nDCFsmNavigatorAdapter>>displayMapping\n    ^ {\n        DCFsm -> 'Diagram'.\n        DCFsmInitialState -> 'Initial State'.\n        DCFsmState -> [ :o | o isNormal\n            ifTrue: [ 'State' ]\n            ifFalse: [ 'Final State' ]\n        ].\n        DCFsmTransition -> 'Transition'\n    }\n\n\n\niconMapping\n\n\nIcon mapping defines the icon displayed for the item. Icon is a 16x16 \nForm\n instance.\nIf you want to ease creation of icons, you can use \nhttp://smalltalkhub.com/#!/~peteruhnak/IconFactory\n\n\n\u00a0\n\n\nDCFsmNavigatorAdapter>>iconMapping\n    ^ {\n        DCFsm -> DCIcons current dcFsmDiagramIcon.\n        DCFsmInitialState -> DCIcons current dcFsmInitialStateIcon.\n        DCFsmTransition -> DCIcons current dcFsmTransitionIcon.\n    }\n\n\n\nactionMapping\n\n\n\u00a0\n\nThis is not yet implemented.\n\nIn the future action mapping should define the action that occures when double clicking on an element.\nCurrently this is hardcoded to have no action for elements and open diagram for diagram.\n\n\nmenuMapping\n\n\n\u00a0\n\nThis is not yet implemented.\n\nThis will control menu displayed on right mouse click, currently there are only basic options available like Rename, Inspect, and Delete.\n\n\nUsing same mapping for hierarchy of classes\n\n\nWhen looking for mapping for an object, it's class hierarchy is used starting from the most generic one and stopping on the first match.\n\n\nSo for hierarchy\n\n\n\u00a0\n\n\nDCNamedElement\n |\n |- DCFsmVertex\n     |\n     |- DCFsmInitialState\n     |- DCFsmState\n\n\n\nyou can specify the mapping for any class in the hierarchy.\n\n\nNote:\n if you use class too far up in the hierarchy, like \nDCNamedElement\n you will also need a way to tell that your particular mapping is\nonly for your specific model, e.g. any subclass of \nDCNamedElement\n, but only if the object is part of \nFSM\n plugin.\n\n\nTo do so, override method \nhasMappingFor:\n\n\n\u00a0\n\n\nDCFsmNavigatorAdapter>>hasMappingFor: anObject\n    ^ anObject className beginsWith: 'DCFsm' \"define whatever rule you want as long as it returns boolean\"",
+            "title": "Navigator"
+        },
+        {
+            "location": "/dev/navigator/#dcnavigator",
+            "text": "Navigator is a tree view of your project (models).  As semantics of models vary, it may be needed to explicitly\nspecify what kind of relations are between elements, what are elements\nnamed, or what kind of icon should accompany it.  To do this, simply subclass  DCNavigatorAdapter  and define your mappings.\nIf you do not specify some mapping (or do not create your adapter at all),\nthe default one will be used instead  DCDefaultNavigatorAdapter .",
+            "title": "DCNavigator"
+        },
+        {
+            "location": "/dev/navigator/#mappings",
+            "text": "The mapping itself is an array of mappings  model class -> block/symbol/object  e.g.  DCFsmVertex -> #outgoing  If the right value is block or symbol, it will be applied on actual model.\nSo  #outgoing  is equivalent to [ :vertex \\| vertex outgoing ].\nIf it is some other object (string, collection, \u2026), it will be returned\nas specified.",
+            "title": "Mappings"
+        },
+        {
+            "location": "/dev/navigator/#using-same-mapping-for-hierarchy-of-classes",
+            "text": "When looking for mapping for an object, it's class hierarchy is used starting from the most generic one and stopping on the first match.  So for hierarchy  \u00a0  DCNamedElement\n |\n |- DCFsmVertex\n     |\n     |- DCFsmInitialState\n     |- DCFsmState  you can specify the mapping for any class in the hierarchy.  Note:  if you use class too far up in the hierarchy, like  DCNamedElement  you will also need a way to tell that your particular mapping is\nonly for your specific model, e.g. any subclass of  DCNamedElement , but only if the object is part of  FSM  plugin.  To do so, override method  hasMappingFor:  \u00a0  DCFsmNavigatorAdapter>>hasMappingFor: anObject\n    ^ anObject className beginsWith: 'DCFsm' \"define whatever rule you want as long as it returns boolean\"",
+            "title": "Using same mapping for hierarchy of classes"
+        },
+        {
+            "location": "/dev/palette/",
+            "text": "Palette\n\n\nPalette is a UI widget providing a \npalette\n of tools for interaction with the canvas.\n\n\n\n\nCurrently there are available three different kinds of tools.\n\n\nSelection Tool\n\n\nThe purpose of selection tool is to select objects in canvas. This tool is also selected by default and is also switched to after some other tool has completed its purposed action.\nThis tool is always available and cannot be removed.\n\n\nSelecting an element will highlight this element while removing the highlight of previously selected element. Highlight behavior of each element can be controlled via \nDCController>>hideSelectionFeedback\n and \nDCController>>showSelectionFeedback\n.\nSecondly selecting will also open editable form for this element (if provided). The form is to be specified in \nDCController>>buildEditorForm:\n.\n\n\n\n\nCreation Tool\n\n\nCreation tool is used to add new elements to the canvas. It can be added into the palette by sending \nDCPalette>>newCreationTool:factory:\n. Factory should a block producing a new instance of element's DCController.\nWhen adding a new element one always places the element inside a target - whether the canvas itself (represented by DCDiagramController) or another element (e.g. putting state inside statemachine region). To successfully add a new element the target must accept it, this is controlled by target's controller method \nDCController>>canBeTargetFor: aController\n; by default nobody accepts anything. If the target accepts it, it must also implement method \n>>addAsTargetFor: aController\n since the target is providing context within the new element is being created.\n\n\nSimilarly to selection highlighting, Creation Tool uses accept/deny feedback to display whether target element accepts the creation. This behavior is provided by \nDCAcceptDenyFeedbackBuilder\n which at the moment displays green (accept) or red (deny) border around the target (or changes the color of a line if the target is an edge).\n\n\n\n\nConnection Creation Tool\n\n\nDCPalette>>newConnectionCreationTool: aLabel factory: aBlock\n\nThis is a tool for creating connections between two other existing elements. The basis of functionality is similar to creation tool, but with two main differences.\nThe first is that \nDCController>>canBeTargetFor:\n (and \nDCController>>addAsTargetFor:\n) is used for the second connected element, while for the specification of the first one there is \nDCController>>canBeSourceFor:\n (resp. \nDCController>>addAsSourceFor:\n).\nSecondly the new element's controller is must implement \nDCRelationshipController>>connectionFeedback\n. This provides visual feedback for the newly created line before it is finalized - essentially a connection between the source element and current mouse position. [[Pkg-DynaCASE-Roassal2#DCInteractiveLine\\|DCInteractiveLine]] can be used to simplify creation of the feedback.\n\n\n\n\nSeparator\n\n\nCurrently there is no support for groups - so one cannot logically group together tools. As a temporary replacement one can add separator to provide extra horizontal spacing between tools. \nDCPalette>>newSeparator\n\n\nExample\n\n\naPalette\n    newCreationTool: 'element' \"tool label\"\n        factory: [ ElementController new ] \"a descendant of DCElementController\"\n        icon: Smalltalk ui icons nautilusIcon; \"optional icon\"\n    newSeparator; \"add extra spacing\"\n    newConnectionCreationTool: 'edge'\n        factory: [ TransitionController new ] \"a descendant of DCRelationshipController\"",
+            "title": "Palette"
+        },
+        {
+            "location": "/dev/palette/#palette",
+            "text": "Palette is a UI widget providing a  palette  of tools for interaction with the canvas.   Currently there are available three different kinds of tools.",
+            "title": "Palette"
+        },
+        {
+            "location": "/dev/palette/#selection-tool",
+            "text": "The purpose of selection tool is to select objects in canvas. This tool is also selected by default and is also switched to after some other tool has completed its purposed action.\nThis tool is always available and cannot be removed.  Selecting an element will highlight this element while removing the highlight of previously selected element. Highlight behavior of each element can be controlled via  DCController>>hideSelectionFeedback  and  DCController>>showSelectionFeedback .\nSecondly selecting will also open editable form for this element (if provided). The form is to be specified in  DCController>>buildEditorForm: .",
+            "title": "Selection Tool"
+        },
+        {
+            "location": "/dev/palette/#creation-tool",
+            "text": "Creation tool is used to add new elements to the canvas. It can be added into the palette by sending  DCPalette>>newCreationTool:factory: . Factory should a block producing a new instance of element's DCController.\nWhen adding a new element one always places the element inside a target - whether the canvas itself (represented by DCDiagramController) or another element (e.g. putting state inside statemachine region). To successfully add a new element the target must accept it, this is controlled by target's controller method  DCController>>canBeTargetFor: aController ; by default nobody accepts anything. If the target accepts it, it must also implement method  >>addAsTargetFor: aController  since the target is providing context within the new element is being created.  Similarly to selection highlighting, Creation Tool uses accept/deny feedback to display whether target element accepts the creation. This behavior is provided by  DCAcceptDenyFeedbackBuilder  which at the moment displays green (accept) or red (deny) border around the target (or changes the color of a line if the target is an edge).",
+            "title": "Creation Tool"
+        },
+        {
+            "location": "/dev/palette/#connection-creation-tool",
+            "text": "DCPalette>>newConnectionCreationTool: aLabel factory: aBlock \nThis is a tool for creating connections between two other existing elements. The basis of functionality is similar to creation tool, but with two main differences.\nThe first is that  DCController>>canBeTargetFor:  (and  DCController>>addAsTargetFor: ) is used for the second connected element, while for the specification of the first one there is  DCController>>canBeSourceFor:  (resp.  DCController>>addAsSourceFor: ).\nSecondly the new element's controller is must implement  DCRelationshipController>>connectionFeedback . This provides visual feedback for the newly created line before it is finalized - essentially a connection between the source element and current mouse position. [[Pkg-DynaCASE-Roassal2#DCInteractiveLine\\|DCInteractiveLine]] can be used to simplify creation of the feedback.",
+            "title": "Connection Creation Tool"
+        },
+        {
+            "location": "/dev/palette/#separator",
+            "text": "Currently there is no support for groups - so one cannot logically group together tools. As a temporary replacement one can add separator to provide extra horizontal spacing between tools.  DCPalette>>newSeparator",
+            "title": "Separator"
+        },
+        {
+            "location": "/dev/palette/#example",
+            "text": "aPalette\n    newCreationTool: 'element' \"tool label\"\n        factory: [ ElementController new ] \"a descendant of DCElementController\"\n        icon: Smalltalk ui icons nautilusIcon; \"optional icon\"\n    newSeparator; \"add extra spacing\"\n    newConnectionCreationTool: 'edge'\n        factory: [ TransitionController new ] \"a descendant of DCRelationshipController\"",
+            "title": "Example"
+        },
+        {
+            "location": "/dev/form/",
+            "text": "Form\n\n\nTo be able to edit a model through a form you need model's controller to describe what and how should be edited.\n\n\nOverride \nDCController>>buildEditorForm:\n and describe all the elements required. The recieved \naForm\n argument is an instance of \nDCDynamicForm\n.\n\n\nbuildEditorForm: aForm\n    \"base class automatically adds edit field for `name`\"\n    super buildEditorForm: aForm.\n\n    (aForm addText: 'Alternative name')\n        text: self model altName;\n        whenTextIsAccepted: [ :newValue | self model altName: newValue ].\n\n\n\nAll \nadd*:\n methods of \nDCDynamicForm\n return appropriate \nSpec\n models, so you have their full API at your disposal.\nThe argument of \nadd*:\n is a string label that will be displayed alongside the control.\n\n\nThe description of available controls follows.\n\n\naddLabel:\n\n\nAdd a single label.\n\n\n\u00a0\n\n\naForm addLabel: aString.\n\n\n\nUsually not needed as all the other methods add their own label automatically.\n\n\naddText:\n\n\nAdd a multiline text area.\n\n\n\u00a0\n\n\n(aForm addText: aString)\n    text: aString; \"set the value of the input\"\n    whenTextIsAccepted: [ :newValue | ]. \"observed change\"\n\n\n\naddTextInput:\n\n\nAdd a single line text field.\n\n\n\u00a0\n\n\n(aForm addText: aString)\n    text: aString; \"set the value\"\n    whenTextIsAccepted: [ :newValue | ].\n\n\n\naddCheckbox:\n\n\nAdd a single checkbox.\n\n\n\u00a0\n\n\n(aForm addCheckbox: aString)\n    state: aBoolean; \"set the state\"\n    whenChangedDo: [ :aBool | ]. \"observed change\"\n\n\n\naddDroplist:\n\n\nAdd a droplist with specified items.\n\n\n\u00a0\n\n\n(aForm addDroplist: aString)\n    items: #(#opt1 #opt2); \"collection of options available in the droplist\"\n    displayBlock: [ :item | item asString ]; \"if items are complex object, specify what should be displayed\"\n    setSelectedItem: oneOfTheItems; \"set specific value\"\n    whenSelectedItemChanged: [ :newValue | ]. \"observed change\"\n\n\n\nFor particularities of the models consult Spec's documentation.",
+            "title": "Form"
+        },
+        {
+            "location": "/dev/form/#form",
+            "text": "To be able to edit a model through a form you need model's controller to describe what and how should be edited.  Override  DCController>>buildEditorForm:  and describe all the elements required. The recieved  aForm  argument is an instance of  DCDynamicForm .  buildEditorForm: aForm\n    \"base class automatically adds edit field for `name`\"\n    super buildEditorForm: aForm.\n\n    (aForm addText: 'Alternative name')\n        text: self model altName;\n        whenTextIsAccepted: [ :newValue | self model altName: newValue ].  All  add*:  methods of  DCDynamicForm  return appropriate  Spec  models, so you have their full API at your disposal.\nThe argument of  add*:  is a string label that will be displayed alongside the control.  The description of available controls follows.",
+            "title": "Form"
+        },
+        {
+            "location": "/dev/form/#addlabel",
+            "text": "Add a single label.  \u00a0  aForm addLabel: aString.  Usually not needed as all the other methods add their own label automatically.",
+            "title": "addLabel:"
+        },
+        {
+            "location": "/dev/form/#addtext",
+            "text": "Add a multiline text area.  \u00a0  (aForm addText: aString)\n    text: aString; \"set the value of the input\"\n    whenTextIsAccepted: [ :newValue | ]. \"observed change\"",
+            "title": "addText:"
+        },
+        {
+            "location": "/dev/form/#addtextinput",
+            "text": "Add a single line text field.  \u00a0  (aForm addText: aString)\n    text: aString; \"set the value\"\n    whenTextIsAccepted: [ :newValue | ].",
+            "title": "addTextInput:"
+        },
+        {
+            "location": "/dev/form/#addcheckbox",
+            "text": "Add a single checkbox.  \u00a0  (aForm addCheckbox: aString)\n    state: aBoolean; \"set the state\"\n    whenChangedDo: [ :aBool | ]. \"observed change\"",
+            "title": "addCheckbox:"
+        },
+        {
+            "location": "/dev/form/#adddroplist",
+            "text": "Add a droplist with specified items.  \u00a0  (aForm addDroplist: aString)\n    items: #(#opt1 #opt2); \"collection of options available in the droplist\"\n    displayBlock: [ :item | item asString ]; \"if items are complex object, specify what should be displayed\"\n    setSelectedItem: oneOfTheItems; \"set specific value\"\n    whenSelectedItemChanged: [ :newValue | ]. \"observed change\"  For particularities of the models consult Spec's documentation.",
+            "title": "addDroplist:"
+        }
+    ]
+}

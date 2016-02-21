@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Peter Uhnák">
+        
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+
+	<title>Palette - DynaCASE</title>
+
+        <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
+        <link rel="stylesheet" href="../../css/highlight.css">
+        <link href="../../css/base.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+        <![endif]-->
+
+        
+    </head>
+
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Main title -->
+			<a class="navbar-brand" href="../..">DynaCASE</a>
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+            <!-- Main navigation -->
+            <ul class="nav navbar-nav">
+            
+            
+                <li >
+                    <a href="../..">DynaCASE</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../fsm/fsm/">FSM</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../uml/uml/">UML</a>
+                </li>
+            
+            
+            
+                <li >
+                    <a href="../../borm/borm/">BORM</a>
+                </li>
+            
+            
+            
+				
+					<li class="active">
+						<a href="../installation/">Development</a>
+					</li>
+				
+            
+            
+            </ul>
+
+            <!-- Search, Navigation and Repo links -->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                        <i class="fa fa-search"></i> Search
+                    </a>
+                </li>
+                <li >
+                    <a rel="next" href="../navigator/">
+                        <i class="fa fa-arrow-left"></i> Previous
+                    </a>
+                </li>
+                <li >
+                    <a rel="prev" href="../form/">
+                        Next <i class="fa fa-arrow-right"></i>
+                    </a>
+                </li>
+                
+                <li>
+                    <a href="https://github.com/dynacase/dynacase/">
+                        
+                            <i class="fa fa-github"></i>
+                        
+                        GitHub
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</div>
+
+        <div class="container">
+            <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+	
+	
+
+		
+			<li class="main "><a href="../installation/">Installation</a></li>
+			
+		
+			<li class="main "><a href="../overview/">Overview</a></li>
+			
+		
+			<li class="main "><a href="../gui/">GUI</a></li>
+			
+		
+			<li class="main "><a href="../plugin/">New plugin</a></li>
+			
+		
+			<li class="main "><a href="../navigator/">Navigator</a></li>
+			
+		
+			<li class="main active"><a href="./">Palette</a></li>
+			
+				
+				<li class="active"><a href="#palette"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Palette</a></li>
+					
+					<li><a href="#selection-tool"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Selection Tool</a></li>
+					
+					<li><a href="#creation-tool"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Creation Tool</a></li>
+					
+					<li><a href="#connection-creation-tool"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Connection Creation Tool</a></li>
+					
+					<li><a href="#separator"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Separator</a></li>
+					
+					<li><a href="#example"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Example</a></li>
+					
+				
+			
+		
+			<li class="main "><a href="../form/">Form</a></li>
+			
+		
+
+	
+    </ul>
+</div></div>
+            <div class="col-md-9" role="main">
+
+<h1 id="palette">Palette</h1>
+<p>Palette is a UI widget providing a <em>palette</em> of tools for interaction with the canvas.</p>
+<p><a name=""></a><img alt="" src="../../figures/palette-example.png" title="Finite State Machine palette" /></p>
+<p>Currently there are available three different kinds of tools.</p>
+<h2 id="selection-tool">Selection Tool</h2>
+<p>The purpose of selection tool is to select objects in canvas. This tool is also selected by default and is also switched to after some other tool has completed its purposed action.
+This tool is always available and cannot be removed.</p>
+<p>Selecting an element will highlight this element while removing the highlight of previously selected element. Highlight behavior of each element can be controlled via <code>DCController&gt;&gt;hideSelectionFeedback</code> and <code>DCController&gt;&gt;showSelectionFeedback</code>.
+Secondly selecting will also open editable form for this element (if provided). The form is to be specified in <code>DCController&gt;&gt;buildEditorForm:</code>.</p>
+<p><a name=""></a><img alt="" src="../../figures/selection%20sequence.png" title="file://../figures/selection%20sequence.png" /></p>
+<h2 id="creation-tool">Creation Tool</h2>
+<p>Creation tool is used to add new elements to the canvas. It can be added into the palette by sending <code>DCPalette&gt;&gt;newCreationTool:factory:</code>. Factory should a block producing a new instance of element's DCController.
+When adding a new element one always places the element inside a target - whether the canvas itself (represented by DCDiagramController) or another element (e.g. putting state inside statemachine region). To successfully add a new element the target must accept it, this is controlled by target's controller method <code>DCController&gt;&gt;canBeTargetFor: aController</code>; by default nobody accepts anything. If the target accepts it, it must also implement method <code>&gt;&gt;addAsTargetFor: aController</code> since the target is providing context within the new element is being created.</p>
+<p>Similarly to selection highlighting, Creation Tool uses accept/deny feedback to display whether target element accepts the creation. This behavior is provided by <code>DCAcceptDenyFeedbackBuilder</code> which at the moment displays green (accept) or red (deny) border around the target (or changes the color of a line if the target is an edge).</p>
+<p><a name=""></a><img alt="" src="../../figures/creation%20tool%20sequence.png" title="file://../figures/creation%20tool%20sequence.png" /></p>
+<h2 id="connection-creation-tool">Connection Creation Tool</h2>
+<p><code>DCPalette&gt;&gt;newConnectionCreationTool: aLabel factory: aBlock</code>
+This is a tool for creating connections between two other existing elements. The basis of functionality is similar to creation tool, but with two main differences.
+The first is that <code>DCController&gt;&gt;canBeTargetFor:</code> (and <code>DCController&gt;&gt;addAsTargetFor:</code>) is used for the second connected element, while for the specification of the first one there is <code>DCController&gt;&gt;canBeSourceFor:</code> (resp. <code>DCController&gt;&gt;addAsSourceFor:</code>).
+Secondly the new element's controller is must implement <code>DCRelationshipController&gt;&gt;connectionFeedback</code>. This provides visual feedback for the newly created line before it is finalized - essentially a connection between the source element and current mouse position. [[Pkg-DynaCASE-Roassal2#DCInteractiveLine\|DCInteractiveLine]] can be used to simplify creation of the feedback.</p>
+<p><a name=""></a><img alt="" src="../../figures/connection%20creation%20tool%20sequence.png" title="An attempt to visualize ConnectionCreationTool's behavior" /></p>
+<h2 id="separator">Separator</h2>
+<p>Currently there is no support for groups - so one cannot logically group together tools. As a temporary replacement one can add separator to provide extra horizontal spacing between tools. <code>DCPalette&gt;&gt;newSeparator</code></p>
+<h2 id="example">Example</h2>
+<pre><code>aPalette
+    newCreationTool: 'element' "tool label"
+        factory: [ ElementController new ] "a descendant of DCElementController"
+        icon: Smalltalk ui icons nautilusIcon; "optional icon"
+    newSeparator; "add extra spacing"
+    newConnectionCreationTool: 'edge'
+        factory: [ TransitionController new ] "a descendant of DCRelationshipController"
+</code></pre></div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            
+                <center><a href="mailto:i.uhnak(at)gmail.com"><span class="fa fa-envelope"></span> i.uhnak(at)gmail.com</a>
+<span class="point"> · </span>
+
+        <a href="https://github.com/dynacase/dynacase"><span class="fa fa-github"></span> Github</a>
+
+        <span class="point"> · </span>
+        <span>DynaCASE</span>
+        <span class="point"> · </span>
+        <span>Copyright &copy; 2014 <a href="https://twitter.com/peteruhnak">Peter Uhnák</a></span>
+        <span class="point"> · </span>
+        <a href="http://ccmi.fit.cvut.cz/" rel="noreferrer">
+              <span class="icon">
+                  <img src="/CCMi-logo_512.png" alt="logo" style="max-height:17px">
+              </span>
+            CCMi FIT ČVUT
+            <span></span>
+        <br><br>
+</center>
+            
+            <center>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</center>
+        </footer>
+
+        <script src="../../js/jquery-1.10.2.min.js"></script>
+        <script src="../../js/bootstrap-3.0.3.min.js"></script>
+        <script src="../../js/highlight.pack.js"></script>
+        <script>var base_url = '../..';</script>
+        <script data-main="../../mkdocs/js/search.js" src="../../mkdocs/js/require.js"></script>
+        <script src="../../js/base.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h4 class="modal-title" id="exampleModalLabel">Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            From here you can search these documents. Enter
+                            your search terms below.
+                        </p>
+                        <form role="form">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query">
+                            </div>
+                        </form>
+                        <div id="mkdocs-search-results"></div>
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
