@@ -26,6 +26,9 @@ pages:
 #theme: cosmo
 theme_dir: themes/mkdocs_bootswatch/cosmo
 
+
+google_analytics: ['UA-74827338-2', 'dynacase.github.io']
+
 copyright: |
     <a href="mailto:i.uhnak(at)gmail.com"><span class="fa fa-envelope"></span> i.uhnak(at)gmail.com</a>
     <span class="point"> · </span>
