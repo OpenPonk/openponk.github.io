@@ -9,7 +9,7 @@
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
 
-	<title>Navigator - DynaCASE</title>
+	<title>Extending menus - DynaCASE</title>
 
         <link href="../../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../../css/font-awesome-4.0.3.css" rel="stylesheet">
@@ -101,12 +101,12 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="next" href="../plugin/">
+                    <a rel="next" href="../navigator/">
                         <i class="fa fa-arrow-left"></i> Previous
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="../menus/">
+                    <a rel="prev" href="../palette/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -144,30 +144,19 @@
 			<li class="main "><a href="../plugin/">New plugin</a></li>
 			
 		
-			<li class="main active"><a href="./">Navigator</a></li>
-			
-				
-				<li class="active"><a href="#dcnavigator"><i class="fa fa-angle-right" style="margin-left: 30px"></i> DCNavigator</a></li>
-					
-					<li><a href="#mappings"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Mappings</a></li>
-					
-					<li><a href="#childrenmapping"><i class="fa fa-angle-right" style="margin-left: 30px"></i> childrenMapping</a></li>
-					
-					<li><a href="#displaymapping"><i class="fa fa-angle-right" style="margin-left: 30px"></i> displayMapping</a></li>
-					
-					<li><a href="#iconmapping"><i class="fa fa-angle-right" style="margin-left: 30px"></i> iconMapping</a></li>
-					
-					<li><a href="#actionmapping"><i class="fa fa-angle-right" style="margin-left: 30px"></i> actionMapping</a></li>
-					
-					<li><a href="#menumapping"><i class="fa fa-angle-right" style="margin-left: 30px"></i> menuMapping</a></li>
-					
-				
-				<li class=""><a href="#using-same-mapping-for-hierarchy-of-classes"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Using same mapping for hierarchy of classes</a></li>
-					
-				
+			<li class="main "><a href="../navigator/">Navigator</a></li>
 			
 		
-			<li class="main "><a href="../menus/">Extending menus</a></li>
+			<li class="main active"><a href="./">Extending menus</a></li>
+			
+				
+				<li class="active"><a href="#extending-menus"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Extending menus</a></li>
+					
+					<li><a href="#workbench-menu"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Workbench menu</a></li>
+					
+					<li><a href="#editor-menu"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Editor menu</a></li>
+					
+				
 			
 		
 			<li class="main "><a href="../palette/">Palette</a></li>
@@ -182,92 +171,52 @@
 </div></div>
             <div class="col-md-9" role="main">
 
-<h1 id="dcnavigator">DCNavigator</h1>
-<p><a name=""></a><img alt="" src="../../figures/navigator/navigator.png" /></p>
-<p>Navigator is a tree view of your project (models).</p>
-<p>As semantics of models vary, it may be needed to explicitly
-specify what kind of relations are between elements, what are elements
-named, or what kind of icon should accompany it.</p>
-<p>To do this, simply subclass <code>DCNavigatorAdapter</code> and define your mappings.
-If you do not specify some mapping (or do not create your adapter at all),
-the default one will be used instead <code>DCDefaultNavigatorAdapter</code>.</p>
-<h2 id="mappings">Mappings</h2>
-<p>The mapping itself is an array of mappings</p>
-<p><code>model class -&gt; block/symbol/object</code></p>
-<p>e.g.</p>
-<p><code>DCFsmVertex -&gt; #outgoing</code></p>
-<p>If the right value is block or symbol, it will be applied on actual model.
-So <code>#outgoing</code> is equivalent to [ :vertex \| vertex outgoing ].
-If it is some other object (string, collection, …), it will be returned
-as specified.</p>
-<h2 id="_1"></h2>
-<h3 id="childrenmapping"><code>childrenMapping</code></h3>
-<p>Children mapping defines what elements should be displayed as children
-in the navigator.</p>
-<pre><code>DCFsmNavigatorAdapter&gt;&gt;childrenMapping
-    ^ {
-        DCFsm -&gt; #states. "show all states of the diagram as children"
-        DCFsmVertex -&gt; #outgoing. "show all outgoing transitions"
-        DCFsmTransition -&gt; #() "transition has no children"
-    }
+<h1 id="extending-menus">Extending menus</h1>
+<p>You can extend both Workspace and Editor menus.</p>
+<h2 id="workbench-menu">Workbench menu</h2>
+<p>To add an item to the <em>Editor</em> item in the Workbench menu, create a method on the <strong>class-side</strong> of some class, preferably the class of your Plugin.</p>
+<pre><code class="st">DCFsmPlugin class&gt;&gt;toolbarFor: aBuilder
+    &lt;dcEditorToolbarMenu: #DCFsmPlugin&gt;
+    (aBuilder item: 'Help')
+        icon: Smalltalk ui icons help;
+        action: [ HelpBrowser openOn: DCFsmHelp ]
 </code></pre>
-<h3 id="displaymapping"><code>displayMapping</code></h3>
-<p>&nbsp;
-<p class="todo">Rename it to displaySuffixMapping?</p>
-Display mapping customizes the suffix of the displayed string, by default
-the class name is displayed 
-(so element named "Example" of class "DCDiagram" will show <em>Example (DCDiagram)</em>).</p>
-<p>&nbsp;</p>
-<pre><code>DCFsmNavigatorAdapter&gt;&gt;displayMapping
-    ^ {
-        DCFsm -&gt; 'Diagram'.
-        DCFsmInitialState -&gt; 'Initial State'.
-        DCFsmState -&gt; [ :o | o isNormal
-            ifTrue: [ 'State' ]
-            ifFalse: [ 'Final State' ]
-        ].
-        DCFsmTransition -&gt; 'Transition'
-    }
+
+<p>You can name the method however you want, but you must include the <code>&lt;dcEditorToolbarMenu:&gt;</code> pragma.</p>
+<p>The pragma takes as the argument the name of the plugin you wish the menu to be associated with; this way you can register the menu item from any class:</p>
+<pre><code class="st">DCFsmSimulator class&gt;&gt;toolbarFor: aBuilder
+    &lt;dcEditorToolbarMenu: #DCFsmPlugin&gt;
+    (aBuilder item: 'Open Simulator')
+        action: [ DCFsmSimulator new openOn: aBuilder model diagramController ]
 </code></pre>
-<h3 id="iconmapping"><code>iconMapping</code></h3>
-<p>Icon mapping defines the icon displayed for the item. Icon is a 16x16 <code>Form</code> instance.
-If you want to ease creation of icons, you can use <a href="http://smalltalkhub.com/#!/~peteruhnak/IconFactory">http://smalltalkhub.com/#!/~peteruhnak/IconFactory</a></p>
-<p>&nbsp;</p>
-<pre><code>DCFsmNavigatorAdapter&gt;&gt;iconMapping
-    ^ {
-        DCFsm -&gt; DCIcons current dcFsmDiagramIcon.
-        DCFsmInitialState -&gt; DCIcons current dcFsmInitialStateIcon.
-        DCFsmTransition -&gt; DCIcons current dcFsmTransitionIcon.
-    }
+
+<p>The menu items will be automatically collected from all methods matching the pragma and the plugin name:</p>
+<p><img alt="Workbench menu" src="../../figures/menus/workbench.png" /></p>
+<p>Too see all the available options you can specify for the menu item (submenu, icon, description, …) see the protocol of <code>PragmaMenuAndShortcutRegistrationItem</code>.</p>
+<p>Finally <code>aBuilder model</code> keeps a reference to the appropriate <code>DCEditor</code> instance.</p>
+<h2 id="editor-menu">Editor menu</h2>
+<p>The Editor menu is placed underneath the canvas, and works on the same principle.</p>
+<p>You just need to name the pragma <code>&lt;dcCanvasToolbar:&gt;</code>.</p>
+<pre><code class="st">DCUmlClassPlugin&gt;&gt;canvasToolbarFor: aBuilder
+    &lt;dcCanvasToolbar: #DCUmlClassPlugin&gt;
+    (aBuilder item: 'Layout') action: [  ].
+    aBuilder model diagramController addLayoutMenu: aBuilder parent: 'Layout'
+
+DCUmlClassDiagramController&gt;&gt;addLayoutMenu: builder parent: aParent
+    | classes inheritance associations centerY |
+    ...
+    (builder item: 'Sugiyama')
+        parent: aParent;
+        action: [ RTSugiyamaLayout new
+                doNotAttachPoint;
+                verticalGap: 100;
+                horizontalGap: 100;
+                on: classes edges: inheritance.
+            self view signalUpdate ].
 </code></pre>
-<h3 id="actionmapping"><code>actionMapping</code></h3>
-<p>&nbsp;
-<p class="todo">This is not yet implemented.</p>
-In the future action mapping should define the action that occures when double clicking on an element.
-Currently this is hardcoded to have no action for elements and open diagram for diagram.</p>
-<h3 id="menumapping"><code>menuMapping</code></h3>
-<p>&nbsp;
-<p class="todo">This is not yet implemented.</p>
-This will control menu displayed on right mouse click, currently there are only basic options available like Rename, Inspect, and Delete.</p>
-<h2 id="using-same-mapping-for-hierarchy-of-classes">Using same mapping for hierarchy of classes</h2>
-<p>When looking for mapping for an object, it's class hierarchy is used starting from the most generic one and stopping on the first match.</p>
-<p>So for hierarchy</p>
-<p>&nbsp;</p>
-<pre><code>DCNamedElement
- |
- |- DCFsmVertex
-     |
-     |- DCFsmInitialState
-     |- DCFsmState
-</code></pre>
-<p>you can specify the mapping for any class in the hierarchy.</p>
-<p><strong>Note:</strong> if you use class too far up in the hierarchy, like <code>DCNamedElement</code> you will also need a way to tell that your particular mapping is
-only for your specific model, e.g. any subclass of <code>DCNamedElement</code>, but only if the object is part of <code>FSM</code> plugin.</p>
-<p>To do so, override method <code>hasMappingFor:</code></p>
-<p>&nbsp;</p>
-<pre><code>DCFsmNavigatorAdapter&gt;&gt;hasMappingFor: anObject
-    ^ anObject className beginsWith: 'DCFsm' "define whatever rule you want as long as it returns boolean"
-</code></pre></div>
+
+<p>Here <code>aBuilder model</code> holds a reference to the appropriate <code>DCCanvasModel</code> instance.</p>
+<p><img alt="" src="../../figures/menus/editor.png" /></p></div>
         </div>
 
         <footer class="col-md-12">

@@ -146,14 +146,15 @@
 				
 				<li class="active"><a href="#creating-new-plugin"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Creating new plugin</a></li>
 					
-					<li><a href="#plugin-definition-file"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Plugin definition file</a></li>
-					
-					<li><a href="#extending-ui"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Extending UI</a></li>
+					<li><a href="#plugin-definition-class"><i class="fa fa-angle-right" style="margin-left: 30px"></i> Plugin definition class</a></li>
 					
 				
 			
 		
 			<li class="main "><a href="../navigator/">Navigator</a></li>
+			
+		
+			<li class="main "><a href="../menus/">Extending menus</a></li>
 			
 		
 			<li class="main "><a href="../palette/">Palette</a></li>
@@ -169,17 +170,14 @@
             <div class="col-md-9" role="main">
 
 <h1 id="creating-new-plugin">Creating new plugin</h1>
-<p class="todo">Work\-In\-Progress</p>
-
-<h2 id="plugin-definition-file">Plugin definition file</h2>
+<h2 id="plugin-definition-class">Plugin definition class</h2>
 <p>To provide basic description for your plugin subclass <code>DCPlugin</code> and provide basic information.</p>
-<p>&nbsp;</p>
 <pre><code>"Name of the plugin"
 MyCustomPlugin&gt;&gt;name
     ^ 'My Custom Plugin'
 
 "Toplevel class of the diagram"
-MyCustomPlugin&gt;&gt;diagramClass
+MyCustomPlugin&gt;&gt;modelClass
     ^ MCPDiagram
 
 "Controller for the diagramClass"
@@ -189,11 +187,10 @@ MyCustomPlugin&gt;&gt;diagramControllerClass
 "Icon, 16x16 Form instance"
 MyCustomPlugin&gt;&gt;icon
     ^ Smalltalk ui icons databaseIcon
-</code></pre>
-<h2 id="extending-ui">Extending UI</h2>
-<p>&nbsp;</p>
-<pre><code>MyCustomPlugin&gt;&gt;editorToolbarFor: aGroup
-    "extends DCEditor's toolbar"
+
+"Class responsible for serializing the model and diagram to text format"
+MyCustomPlugin&gt;&gt;serializerClass
+    ^ DCNullSerializer
 </code></pre></div>
         </div>
 
