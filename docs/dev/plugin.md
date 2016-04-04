@@ -1,15 +1,8 @@
-#Creating new plugin
+# Creating new plugin
 
-<p class="todo">Work\-In\-Progress</p>
+## Plugin definition class
 
-
-##Plugin definition file
-
-To provide basic description for your plugin subclass `DCPlugin` and provide basic information\.
-
-
-&nbsp;
-
+To provide basic description for your plugin subclass `DCPlugin` and provide basic information.
 
 
     "Name of the plugin"
@@ -17,7 +10,7 @@ To provide basic description for your plugin subclass `DCPlugin` and provide bas
     	^ 'My Custom Plugin'
     
     "Toplevel class of the diagram"
-    MyCustomPlugin>>diagramClass
+    MyCustomPlugin>>modelClass
     	^ MCPDiagram
     
     "Controller for the diagramClass"
@@ -28,17 +21,6 @@ To provide basic description for your plugin subclass `DCPlugin` and provide bas
     MyCustomPlugin>>icon
     	^ Smalltalk ui icons databaseIcon
 
-
-
-
-##Extending UI
-
-
-&nbsp;
-
-
-
-    MyCustomPlugin>>editorToolbarFor: aGroup
-    	"extends DCEditor's toolbar"
-
-
+	"Class responsible for serializing the model and diagram to text format"
+	MyCustomPlugin>>serializerClass
+		^ DCNullSerializer

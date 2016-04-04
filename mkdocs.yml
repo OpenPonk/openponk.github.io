@@ -19,6 +19,7 @@ pages:
         - GUI: dev/gui.md
         - 'New plugin': dev/plugin.md
         - Navigator: dev/navigator.md
+        - 'Extending menus': dev/menus.md
         - Palette: dev/palette.md
         - Form: dev/form.md
 #theme: readthedocs
