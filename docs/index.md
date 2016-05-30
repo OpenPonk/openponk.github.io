@@ -18,12 +18,14 @@ You can download preinstalled Pharo image containing all currently supported not
 * UML Class Diagrams
 
 Keep in mind that DynaCASE is still in alpha stage and contains many bugs and missing features.
+*Alpha stable* is the latest semi-stable version, *bleeding edge* is the very latest, possible broken, version.
 
 [//]: # (http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-image-latest.zip)
 
 | Build | Linux <i class="fa fa-linux"></i> | Mac <i class="fa fa-apple"></i> | Windows <i class="fa fa-windows"></i> | image only <i class="fa fa-code"></i> |
 | -- | -- | -- | -- | -- |
-| **all-in-one (alpha build)** | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-linux-latest.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-mac-latest.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-win-latest.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-image-latest.zip) |
+| **all-in-one (alpha stable)** | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-linux-latest.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-mac-latest.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-win-latest.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-image-latest.zip) |
+| **all-in-one (bleeding edge)** | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-linux-bleedingEdge.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-mac-bleedingEdge.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-win-bleedingEdge.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-image-bleedingEdge.zip) |
 
 ## Direct installation
 
