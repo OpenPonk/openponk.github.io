@@ -1,12 +1,12 @@
-site_name: DynaCASE
-site_description: DynaCASE software and business modeling platform
+site_name: OpenPonk
+site_description: OpenPonk software and business modeling platform
 site_author: Peter Uhnák
 copyright: '&copy; 2014, 2016 Peter Uhnák &gt;i.uhnak(at)gmail.com&lt;'
 
-repo_url: https://github.com/dynacase/dynacase/
+repo_url: https://github.com/openponk/openponk/
 repo_name: 'GitHub'
 
-remote_name: https://github.com/dynacase/dynacase.github.io/
+remote_name: https://github.com/openponk/openponk.github.io/
 
 pages:
     - DynaCASE: index.md
@@ -37,7 +37,7 @@ copyright: |
             <a href="https://github.com/dynacase/dynacase"><span class="fa fa-github"></span> Github</a>
 
             <span class="point"> · </span>
-            <span>DynaCASE</span>
+            <span>OpenPonk</span>
             <span class="point"> · </span>
             <span>Copyright &copy; 2014 Peter Uhnák, Robert Pergl</span>
             <span class="point"> · </span>
