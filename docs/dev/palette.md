@@ -36,7 +36,7 @@ Similarly to selection highlighting, Creation Tool uses accept/deny feedback to 
 `DCPalette>>newConnectionCreationTool: aLabel factory: aBlock`
 This is a tool for creating connections between two other existing elements\. The basis of functionality is similar to creation tool, but with two main differences\.
 The first is that `DCController>>canBeTargetFor:` \(and `DCController>>addAsTargetFor:`\) is used for the second connected element, while for the specification of the first one there is `DCController>>canBeSourceFor:` \(resp\. `DCController>>addAsSourceFor:`\)\.
-Secondly the new element's controller is must implement `DCRelationshipController>>connectionFeedback`\. This provides visual feedback for the newly created line before it is finalized \- essentially a connection between the source element and current mouse position\. \[\[Pkg\-DynaCASE\-Roassal2\#DCInteractiveLine\|DCInteractiveLine\]\] can be used to simplify creation of the feedback\.
+Secondly the new element's controller is must implement `DCRelationshipController>>connectionFeedback`\. This provides visual feedback for the newly created line before it is finalized \- essentially a connection between the source element and current mouse position\. \[\[Pkg\-OpenPonk\-Roassal2\#DCInteractiveLine\|DCInteractiveLine\]\] can be used to simplify creation of the feedback\.
 
 <a name=""></a>![](../figures/connection%20creation%20tool%20sequence.png "An attempt to visualize ConnectionCreationTool's behavior")
 

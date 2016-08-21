@@ -9,8 +9,8 @@
 For read\-write access make sure it's `git@github` and not `https://`
 
 ```bash
-    git clone git@github.com:dynacase/dynacase.git dynacase
-    git clone git@github.com:dynacase/dynacase-model.git dynacase-model
+    git clone git@github.com:openponk/openponk.git openponk
+    git clone git@github.com:openponk/openponk-model.git openponk-model
 ```
 
 
@@ -22,7 +22,7 @@ For read\-write access make sure it's `git@github` and not `https://`
 The script will complain about conflicts, allow them\.
 
 I strongly suggest adding this to a startup script — e\.g\. when your new image contains
-"DynaCASE" in it's name it will automatically download and setup everything\.
+"OpenPonk" in it's name it will automatically download and setup everything\.
 
 
 &nbsp;
@@ -35,16 +35,16 @@ I strongly suggest adding this to a startup script — e\.g\. when your new imag
         configurationOf: 'GitFileTree';
         loadDevelopment.
     
-    "load DynaCASE-Model"
+    "load OpenPonk-Model"
     Metacello new
-        baseline: 'DynaCASEModel';
-        repository: 'gitfiletree:///my_path_to_dynacase_model/repository';
+        baseline: 'OpenPonkModel';
+        repository: 'gitfiletree:///my_path_to_openponk_model/repository';
         lock.
     
-    "load DynaCASE"
+    "load OpenPonk"
     Metacello new
-        baseline: 'DynaCASE';
-        repository: 'gitfiletree:///my_path_to_dynacase/repository';
+        baseline: 'OpenPonk';
+        repository: 'gitfiletree:///my_path_to_openponk/repository';
         onConflict: [ :ex | ex allow ];
         load.
     
@@ -71,5 +71,5 @@ I strongly suggest adding this to a startup script — e\.g\. when your new imag
 
 
 
-    repository: 'gitfiletree:///C:/Users/Username/Pharo/dynacase/repository';
+    repository: 'gitfiletree:///C:/Users/Username/Pharo/openponk/repository';
 

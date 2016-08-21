@@ -1,10 +1,10 @@
 # Overall Architecture
 
-DynaCASE is attempting to follow in some respect MVC architecture\.
+OpenPonk is attempting to follow in some respect MVC architecture\.
 
 ## Model
 
-The model itself is separated from the rest of the application and in fact can be used completely independently on any other part of the DynaCASE application\.
+The model itself is separated from the rest of the application and in fact can be used completely independently on any other part of the OpenPonk application\.
 
 ![](../figures/Models.png)
 
@@ -35,7 +35,7 @@ More complex and chaotic model of interactions between model, controllers, gui, 
 
 ## View \(Roassal\)
 
-DynaCASE uses Roassal2 from [Moose project](http://www.moosetechnology.org/)
+OpenPonk uses Roassal2 from [Moose project](http://www.moosetechnology.org/)
 
 Roassal \(and Trachel\) is well documented at [Agile Visualization](http://agilevisualization.com/#book)
 

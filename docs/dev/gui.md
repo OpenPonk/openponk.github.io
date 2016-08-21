@@ -2,9 +2,9 @@
 
 ![](../figures/gui/gui.png)
 
-DynaCASE window with highlighted important models
+OpenPonk window with highlighted important models
 
-* DCWorkbench - top level window of DynaCASE
+* DCWorkbench - top level window of OpenPonk
 * topMenu - menu bar providing basic project operations
 * DCNavigator - sidebar displaying all models available in the opened project
 * DCEditor - composition of other widgets representing an opened diagram. DCEditors are organized as Spec Tabs
