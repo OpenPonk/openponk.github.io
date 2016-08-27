@@ -29,12 +29,14 @@ Keep in mind that OpenPonk is still in alpha stage and contains many bugs and mi
 
 ## Direct installation
 
+**Warning: we are in the process of migrating our infrastructure from DynaCASE to OpenPonk, so direct installation is currently not advised.**
+
 If you are an experienced Pharo user and you want to download OpenPonk directly into your image, you can do so by executing the following code:
 
 ```smalltalk
 Metacello new
-	baseline: 'OpenPonk';
-	repository: 'github://openponk/openponk/repository';
+	baseline: 'DynaCASE';
+	repository: 'github://dynacase/dynacase/repository';
 	load: 'complete'.
 ```
 
