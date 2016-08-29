@@ -1,6 +1,6 @@
 # OpenPonk (formerly DynaCASE)
 
-[![Build Status](https://travis-ci.org/dynacase/dynacase.svg?branch=master)](https://travis-ci.org/dynacase/dynacase) ![](license.svg)
+[![Build Status](https://travis-ci.org/openponk/openponk.svg?branch=master)](https://travis-ci.org/openponk/openponk) ![](license.svg)
 
 OpenPonk (formerly known as DynaCASE) is a metamodeling platform and a modeling workbench implemented in the dynamic environment [Pharo](https://pharo.org) aimed at supporting activities surrounding software and business engineering such as modeling, execution, simulation, source code generation, etc.
 
@@ -24,25 +24,23 @@ Keep in mind that OpenPonk is still in alpha stage and contains many bugs and mi
 
 | Build | Linux <i class="fa fa-linux"></i> | Mac <i class="fa fa-apple"></i> | Windows <i class="fa fa-windows"></i> | image only <i class="fa fa-code"></i> |
 | -- | -- | -- | -- | -- |
-| **all-in-one (alpha stable)** | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-linux-latest.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-mac-latest.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-win-latest.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-image-latest.zip) |
-| **all-in-one (bleeding edge)** | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-linux-bleedingEdge.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-mac-bleedingEdge.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-win-bleedingEdge.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/dynacase-image-bleedingEdge.zip) |
+| **all-in-one (alpha stable)** | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/openponk-linux-latest.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/openponk-mac-latest.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/openponk-win-latest.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/openponk-image-latest.zip) |
+| **all-in-one (bleeding edge)** | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/openponk-linux-bleedingEdge.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/openponk-mac-bleedingEdge.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/openponk-win-bleedingEdge.zip) | [download](http://dynacase.ccmi.fit.cvut.cz/builds/all-in-one/openponk-image-bleedingEdge.zip) |
 
 ## Direct installation
-
-**Warning: we are in the process of migrating our infrastructure from DynaCASE to OpenPonk, so direct installation is currently not advised.**
 
 If you are an experienced Pharo user and you want to download OpenPonk directly into your image, you can do so by executing the following code:
 
 ```smalltalk
 Metacello new
 	baseline: 'DynaCASE';
-	repository: 'github://dynacase/dynacase/repository';
+	repository: 'github://openponk/openponk/repository';
 	load: 'complete'.
 ```
 
 ## Opening
 
-The downloaded package contains `README.md` with additional instructions, however on properly configured system launching `dynacase.sh` (under Linux & Mac) or `OpenPonk.exe` (under Windows) should be sufficient.
+The downloaded package contains `README.md` with additional instructions, however on properly configured system launching `openponk.sh` (under Linux & Mac) or `OpenPonk.exe` (under Windows) should be sufficient.
 
 *@todo: in-image guide*
 
