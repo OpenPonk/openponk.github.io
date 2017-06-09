@@ -66,24 +66,6 @@
             
             
             
-                <li >
-                    <a href="fsm/fsm/">FSM</a>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="uml/uml/">UML</a>
-                </li>
-            
-            
-            
-                <li >
-                    <a href="borm/borm/">BORM</a>
-                </li>
-            
-            
-            
 				
 					<li >
 						<a href="dev/installation/">Development</a>
@@ -106,7 +88,7 @@
                     </a>
                 </li>
                 <li >
-                    <a rel="prev" href="fsm/fsm/">
+                    <a rel="prev" href="dev/installation/">
                         Next <i class="fa fa-arrow-right"></i>
                     </a>
                 </li>
@@ -164,6 +146,28 @@
 <li>UML Class Diagrams</li>
 </ul>
 <p>Keep in mind that OpenPonk is still in early development and contains many bugs and missing features.</p>
+<p>We are also performing a major overhaul of many parts (such as working on a full UML 2.5 metamodel, creating user documentation, and more) and we plan to do a release in late summer 2017.</p>
+<p><em>Alpha</em> is a semi-stable version, but possibly outdated compared to bleeding edge.</p>
+<table>
+<thead>
+<tr>
+<th>Build</th>
+<th>Linux <i class="fa fa-linux"></i></th>
+<th>Mac <i class="fa fa-apple"></i></th>
+<th>Windows <i class="fa fa-windows"></i></th>
+<th>image only <i class="fa fa-code"></i></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>all-in-one (alpha)</strong></td>
+<td><a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-linux-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'linux-latest')">download</a></td>
+<td><a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-mac-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'mac-latest')">download</a></td>
+<td><a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-win-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'win-latest')">download</a></td>
+<td><a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-image-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'image-latest')">download</a></td>
+</tr>
+</tbody>
+</table>
 <p><em>Bleeding edge</em> is the very latest version that passed CI, but is still possibly broken.</p>
 <table>
 <thead>
@@ -185,31 +189,10 @@
 </tr>
 </tbody>
 </table>
-<p><em>Alpha</em> is the latest semi-stable version</p>
-<table>
-<thead>
-<tr>
-<th>Build</th>
-<th>Linux <i class="fa fa-linux"></i></th>
-<th>Mac <i class="fa fa-apple"></i></th>
-<th>Windows <i class="fa fa-windows"></i></th>
-<th>image only <i class="fa fa-code"></i></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>all-in-one (alpha stable)</strong></td>
-<td><a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-linux-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'linux-latest')">download</a></td>
-<td><a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-mac-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'mac-latest')">download</a></td>
-<td><a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-win-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'win-latest')">download</a></td>
-<td><a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-image-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'image-latest')">download</a>)</td>
-</tr>
-</tbody>
-</table>
 <h2 id="direct-installation">Direct installation</h2>
 <p>If you are an experienced Pharo user and you want to download OpenPonk directly into your image, you can do so by executing the following code:</p>
 <pre><code class="smalltalk">Metacello new
-    baseline: 'DynaCASE';
+    baseline: 'OpenPonk';
     repository: 'github://openponk/openponk/repository';
     load: 'complete'.
 </code></pre>
@@ -226,13 +209,13 @@
 
         <footer class="col-md-12">
             <hr>
-			<center>
-				<a href="http://formetis.nl/" target="_blank">Sponsored by <img src="/formetis-logo.jpg" height="50" /></a>
-			</center>
-			<br/>
-
             
-                <center><a href="mailto:openponk@peteruhnak.com"><span class="fa fa-envelope"></span> openponk@peteruhnak.com</a>
+                <center><a href="https://www.elixir-czech.cz" target="_blank"><img src="/elixir-cz-logo.png" height="100" />OpenPonk is a registered Elixir CZ tool</a>
+<span style="border-left: 2px solid gray; line-height: 50px; margin: 20px; padding: 20px 0 20px 20px"></span>
+<a href="https://www.formetis.nl" target="_blank">Sponsored by <img src="/formetis-logo.jpg" height="50" /></a>
+<br>
+<br>
+<a href="mailto:openponk@gmail.com"><span class="fa fa-envelope"></span> openponk@gmail.com</a>
 <span class="point"> · </span>
 
         <a href="https://github.com/dynacase/dynacase"><span class="fa fa-github"></span> Github</a>
