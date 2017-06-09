@@ -19,19 +19,21 @@ You can download preinstalled Pharo image containing all currently supported not
 
 Keep in mind that OpenPonk is still in early development and contains many bugs and missing features.
 
+We are also performing a major overhaul of many parts (such as working on a full UML 2.5 metamodel, creating user documentation, and more) and we plan to do a release in late summer 2017.
+
 [//]: # (http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-image-latest.zip)
+
+*Alpha* is a semi-stable version, but possibly outdated compared to bleeding edge.
+
+| Build | Linux <i class="fa fa-linux"></i> | Mac <i class="fa fa-apple"></i> | Windows <i class="fa fa-windows"></i> | image only <i class="fa fa-code"></i> |
+| -- | -- | -- | -- | -- |
+| **all-in-one (alpha)** | <a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-linux-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'linux-latest')">download</a> | <a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-mac-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'mac-latest')">download</a> | <a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-win-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'win-latest')">download</a> | <a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-image-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'image-latest')">download</a> |
 
 *Bleeding edge* is the very latest version that passed CI, but is still possibly broken.
 
 | Build | Linux <i class="fa fa-linux"></i> | Mac <i class="fa fa-apple"></i> | Windows <i class="fa fa-windows"></i> | image only <i class="fa fa-code"></i> |
 | -- | -- | -- | -- | -- |
 | **all-in-one (bleeding edge)** | <a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-linux-bleedingEdge.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'linux-bleedingEdge')">download</a> | <a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-mac-bleedingEdge.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'mac-bleedingEdge')">download</a> | <a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-win-bleedingEdge.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'win-bleedingEdge')">download</a> | <a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-image-bleedingEdge.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'image-bleedingEdge')">download</a> |
-
-*Alpha* is the latest semi-stable version
-
-| Build | Linux <i class="fa fa-linux"></i> | Mac <i class="fa fa-apple"></i> | Windows <i class="fa fa-windows"></i> | image only <i class="fa fa-code"></i> |
-| -- | -- | -- | -- | -- |
-| **all-in-one (alpha stable)** | <a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-linux-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'linux-latest')">download</a> | <a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-mac-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'mac-latest')">download</a> | <a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-win-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'win-latest')">download</a> | <a href="http://openponk.ccmi.fit.cvut.cz/builds/all-in-one/openponk-image-latest.zip" onclick="ga('send', 'event', 'Downloads', 'download', 'image-latest')">download</a>) |
 
 
 
@@ -41,7 +43,7 @@ If you are an experienced Pharo user and you want to download OpenPonk directly 
 
 ```smalltalk
 Metacello new
-	baseline: 'DynaCASE';
+	baseline: 'OpenPonk';
 	repository: 'github://openponk/openponk/repository';
 	load: 'complete'.
 ```

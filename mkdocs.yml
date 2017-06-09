@@ -1,7 +1,6 @@
 site_name: OpenPonk
 site_description: OpenPonk software and business modeling platform
 site_author: Peter Uhnák
-copyright: '&copy; 2014, 2016 Peter Uhnák &gt;openponk(at)peteruhnak.com&lt;'
 
 repo_url: https://github.com/openponk/openponk/
 repo_name: 'GitHub'
@@ -10,9 +9,6 @@ remote_name: https://github.com/openponk/openponk.github.io/
 
 pages:
     - OpenPonk: index.md
-    - FSM: fsm/fsm.md
-    - UML: uml/uml.md
-    - BORM: borm/borm.md
     - Development:
         - Installation: dev/installation.md
         - Overview: dev/overview.md
@@ -31,7 +27,12 @@ theme_dir: themes/mkdocs_bootswatch/cosmo
 google_analytics: ['UA-74827338-2', 'dynacase.github.io']
 
 copyright: |
-    <a href="mailto:openponk@peteruhnak.com"><span class="fa fa-envelope"></span> openponk@peteruhnak.com</a>
+    <a href="https://www.elixir-czech.cz" target="_blank"><img src="/elixir-cz-logo.png" height="100" />OpenPonk is a registered Elixir CZ tool</a>
+    <span style="border-left: 2px solid gray; line-height: 50px; margin: 20px; padding: 20px 0 20px 20px"></span>
+    <a href="https://www.formetis.nl" target="_blank">Sponsored by <img src="/formetis-logo.jpg" height="50" /></a>
+    <br>
+    <br>
+    <a href="mailto:openponk@gmail.com"><span class="fa fa-envelope"></span> openponk@gmail.com</a>
     <span class="point"> · </span>
 
             <a href="https://github.com/dynacase/dynacase"><span class="fa fa-github"></span> Github</a>
@@ -48,4 +49,3 @@ copyright: |
                 CCMi FIT ČVUT
                 <span></span>
             <br><br>
-
