@@ -1,3 +1,7 @@
+!!! warning "Possibly outdated"
+
+    This page is possibly outdates and is pending review.
+
 #DCNavigator
 
 <a name=""></a>![](../figures/navigator/navigator.png)
@@ -62,7 +66,7 @@ in the navigator\.
 &nbsp;
 <p class="todo">Rename it to displaySuffixMapping?</p>
 Display mapping customizes the suffix of the displayed string, by default
-the class name is displayed 
+the class name is displayed
 \(so element named "Example" of class "DCDiagram" will show *Example \(DCDiagram\)*\)\.
 
 
@@ -157,4 +161,3 @@ To do so, override method `hasMappingFor:`
 
     DCFsmNavigatorAdapter>>hasMappingFor: anObject
     	^ anObject className beginsWith: 'DCFsm' "define whatever rule you want as long as it returns boolean"
-

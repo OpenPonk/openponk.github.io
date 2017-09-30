@@ -1,4 +1,9 @@
+!!! warning "Possibly outdated"
+
+    This page is possibly outdates and is pending review.
+
 #Palette
+
 
 Palette is a UI widget providing a *palette* of tools for interaction with the canvas\.
 
@@ -60,4 +65,3 @@ Currently there is no support for groups \- so one cannot logically group togeth
     	newSeparator; "add extra spacing"
     	newConnectionCreationTool: 'edge'
     		factory: [ TransitionController new ] "a descendant of DCRelationshipController"
-

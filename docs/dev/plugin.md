@@ -1,3 +1,7 @@
+!!! warning "Possibly outdated"
+
+    This page is possibly outdates and is pending review.
+
 # Creating new plugin
 
 ## Plugin definition class
@@ -8,15 +12,15 @@ To provide basic description for your plugin subclass `DCPlugin` and provide bas
     "Name of the plugin"
     MyCustomPlugin>>name
     	^ 'My Custom Plugin'
-    
+
     "Toplevel class of the diagram"
     MyCustomPlugin>>modelClass
     	^ MCPDiagram
-    
+
     "Controller for the diagramClass"
     MyCustomPlugin>>diagramControllerClass
     	^ MCPDiagramController
-    
+
     "Icon, 16x16 Form instance"
     MyCustomPlugin>>icon
     	^ Smalltalk ui icons databaseIcon

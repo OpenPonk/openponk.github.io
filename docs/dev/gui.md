@@ -1,3 +1,7 @@
+!!! warning "Possibly outdated"
+
+    This page is possibly outdates and is pending review.
+
 # GUI
 
 ![](../figures/gui/gui.png)

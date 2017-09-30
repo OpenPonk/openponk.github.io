@@ -1,3 +1,7 @@
+!!! warning "Possibly outdated"
+
+    This page is possibly outdates and is pending review.
+
 # Overall Architecture
 
 OpenPonk is attempting to follow in some respect MVC architecture\.
@@ -71,4 +75,3 @@ Most of interaction from Roassal TO application is made using events\. Any objec
 Trachel under it defines how exactly should shapes look \(TRShape\)\. All these shapes are drawn on surface called canvas \(TRCanvas\)\. For controlling what part of canvas is displayed Trachel uses TRCamera, defining zoom \(scale\), size and position of current crop of canvas\.
 
 Trachel uses callbacks, which are somewhat similar to announcements/events, making specified action if predefined events with Trachel shapes occur \(when trachel object is resized, moved or removed\)\.
-

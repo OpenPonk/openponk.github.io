@@ -1,3 +1,7 @@
+!!! warning "Possibly outdated"
+
+    This page is possibly outdates and is pending review.
+
 # Extending menus
 
 You can extend both Workspace and Editor menus.

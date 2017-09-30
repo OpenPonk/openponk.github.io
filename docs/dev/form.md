@@ -1,3 +1,7 @@
+!!! warning "Possibly outdated"
+
+    This page is possibly outdates and is pending review.
+
 #Form
 
 To be able to edit a model through a form you need model's controller to describe what and how should be edited\.
@@ -10,7 +14,7 @@ Override `DCController>>buildEditorForm:` and describe all the elements required
     buildEditorForm: aForm
     	"base class automatically adds edit field for `name`"
     	super buildEditorForm: aForm.
-    
+
     	(aForm addText: 'Alternative name')
     		text: self model altName;
     		whenTextIsAccepted: [ :newValue | self model altName: newValue ].
@@ -95,4 +99,3 @@ Add a droplist with specified items\.
 
 
 For particularities of the models consult Spec's documentation\.
-

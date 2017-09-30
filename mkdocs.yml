@@ -21,10 +21,32 @@ pages:
 #theme: readthedocs
 #theme: mkdocs
 #theme: cosmo
-theme_dir: themes/mkdocs_bootswatch/cosmo
+#theme_dir: themes/mkdocs-bootswatch/mkdocs_bootswatch/yeti
+theme_dir: themes/mkdocs-material/material
+site_favicon: favicon.ico
+extra:
+  palette:
+    primary: deep purple
+  logo: logos/logo.png
+  social:
+    - type: 'github'
+      link: 'https://github.com/OpenPonk'
+    - type: 'twitter'
+      link: 'https://twitter.com/openponk'
 
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.inlinehilite
+  - pymdownx.tasklist(custom_checkbox=true)
 
-google_analytics: ['UA-74827338-2', 'dynacase.github.io']
+extra_css:
+  - fa/css/font-awesome.min.css
+
+#google_analytics: ['UA-74827338-2', 'openponk.github.io']
+google_analytics:
+  - 'UA-74827338-2'
+  - 'auto'
 
 copyright: |
     <a href="https://www.elixir-czech.cz" target="_blank"><img src="/elixir-cz-logo.png" height="100" />OpenPonk is a registered Elixir CZ tool</a>

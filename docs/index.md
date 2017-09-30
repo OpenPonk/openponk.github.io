@@ -1,8 +1,8 @@
-# OpenPonk (formerly DynaCASE)
+<h1 id="openponk" style="margin: 0"><img src="../logos/big-logo.jpg" alt="OpenPonk logo" title="OpenPonk"></h1>
 
-[![Build Status](https://travis-ci.org/OpenPonk/openponk.svg?branch=master)](https://travis-ci.org/OpenPonk/openponk) ![](license.svg)
+![](license.svg)
 
-OpenPonk (formerly known as DynaCASE) is a metamodeling platform and a modeling workbench implemented in the dynamic environment [Pharo](https://pharo.org) aimed at supporting activities surrounding software and business engineering such as modeling, execution, simulation, source code generation, etc.
+OpenPonk (formerly DynaCASE) is a metamodeling platform and a modeling workbench implemented in the dynamic environment [Pharo](https://pharo.org) aimed at supporting activities surrounding software and business engineering such as modeling, execution, simulation, source code generation, etc.
 
 Showcase video for [ESUG 2016 conference](http://esug.org/wiki/pier/About)
 
@@ -14,7 +14,7 @@ You can download preinstalled Pharo image containing all currently supported not
 
 * FSM - Finite State Machines
 * BORM ORD — [Business Objects Relation Modeling](http://ccmi.fit.cvut.cz/methodologies/borm/) Object-Relation Diagrams
-* DEMO (early alpha) — [Design & Engineering Methodology for Organizations](http://ccmi.fit.cvut.cz/methodologies/demo/)
+<!-- * DEMO (early alpha) — [Design & Engineering Methodology for Organizations](http://ccmi.fit.cvut.cz/methodologies/demo/) -->
 * UML Class Diagrams
 
 Keep in mind that OpenPonk is still in early development and contains many bugs and missing features.
@@ -39,26 +39,26 @@ We are also performing a major overhaul of many parts (such as working on a full
 
 ## Direct installation
 
-If you are an experienced Pharo user and you want to download OpenPonk directly into your image, you can do so by executing the following code:
+To install OpenPonk with all default plugins to an existing image, use the following snippet:
 
 ```smalltalk
 Metacello new
 	baseline: 'OpenPonk';
 	repository: 'github://openponk/openponk/repository';
-	load: 'complete'.
+	load: 'complete'
 ```
 
 ## Opening
 
 The downloaded package contains `README.md` with additional instructions, however on properly configured system launching `openponk.sh` (under Linux & Mac) or `OpenPonk.exe` (under Windows) should be sufficient.
 
-*@todo: in-image guide*
+Once launched, clicking on the desktop will show a menu containing entries for OpenPonk.
 
 ## Requirements
 
-Under Windows and Mac it should work out of the box.
+Windows and Mac should work out of the box.
 
-**Linux may require extra configuration** as Pharo VM is currently only 32bit. Please refer to Pharo's [official guide](http://pharo.org/gnu-linux-installation).
+**Linux may require extra configuration** as Pharo VM is still primarily 32bit. Please refer to Pharo's [official guide](http://pharo.org/gnu-linux-installation).
 
 Additionally you will require 32bit `cairo2` library, usually available in distribution package managers as `libcairo2:i386` (debian), `libcairo2`, etc.
 
