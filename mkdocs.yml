@@ -39,6 +39,7 @@ markdown_extensions:
   - codehilite
   - pymdownx.inlinehilite
   - pymdownx.tasklist(custom_checkbox=true)
+  - plantuml
 
 extra_css:
   - fa/css/font-awesome.min.css

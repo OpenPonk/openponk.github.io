@@ -4,74 +4,86 @@
 
 # Overall Architecture
 
-OpenPonk is attempting to follow in some respect MVC architecture\.
+OpenPonk is attempting to follow in some respect MVC architecture.
 
 ## Model
 
-The model itself is separated from the rest of the application and in fact can be used completely independently on any other part of the OpenPonk application\.
+We assume that a model is supplied by the user, therefore we do not want to force them inherit from our magical classes.
+However some basic basic interoperability is still required. Therefore we expect from every model element to implement the following interface:
 
-![](../figures/Models.png)
+```plantuml
+interface Model {
+  announcer() : Announcer
+  announcer:(anAnnouncer : Announcer)
+  uuid() : Object
+  uuid:(aUUID : Object)
+}
 
-Element represents a singular object within the model \(e\.g\. UML class or UML generalization\)\. Diagram then encompasses all elements applicable to the given model\.
+note right of Model::uuid
+Typically one would return (and store) an instance of UUID,
+but any globally unique id (e.g. as a string) is acceptable.
+end note
+```
 
-Project is abstraction on top of collection of diagrams\. This is mainly for application use, however it can still be used independently\. It is also aware of layout of each diagram\.
+::uml::
+interface Model {
+  announcer() : Announcer
+  announcer:(anAnnouncer : Announcer)
+  uuid() : Object
+  uuid:(aUUID : Object)
+}
+::end-uml::
+
+Element represents a singular object within the model (e.g. UML class or UML generalization). Diagram then encompasses all elements applicable to the given model.
+
+Project is abstraction on top of collection of diagrams. This is mainly for application use, however it can still be used independently. It is also aware of layout of each diagram.
+
+## Controller
+
+Controllers provide binding between model and visualization (or GUI). Generally each model is controlled by it's own controller, which in turn is a subclass of `OPController`. The responsibility of controller is to update model when some outside event requests it (e.g. value is changed from a form field), and in turn update the visualization (after model has changed).
+
+For the canvas view an extra controller is expected. This controller subclasses from `OPDiagramController` and manages general operations related to the canvas -- layouting, clicking on empty space in the canvas, as well as managing the remaining controllers.
+
+!!! warning "image outdated"
+    ![](../figures/All%20layers%20simplified.png)
 
 
 
-## Events
 
-Model is communicating with the outside world through it's API and events\.
-![](../figures/Events.png "file://../figures/Events.png")
+More complex and chaotic model of interactions between model, controllers, gui, roassal and trachel.
 
-Added/Removed event is fired when an element is added/removed into a diagram\. Change event is fired when either element or a digram has changed in any respect\. This could be change of some value \(e\.g\. name of an element\), or for diagram when the collection of elements is changed\. So for example when we add an element into diagram, both AddedEvent is fired from added element and ChangedEvent from the diagram\.
-
+!!! warning "image outdated"
+    ![](../figures/Architecture%20layers.png)
 
 
-## Controllers
 
-Controllers provide binding between model, visualization and GUI\. Generally each model is controlled by it's own controller \(an appropriate descendant of DCController\)\. The responsibility of controller is to update model when some outside event requests it \(e\.g\. value is changed from a form\), and in turn update the visualization \(when model is changed\)\.
+## View (Roassal)
 
-![](../figures/All%20layers%20simplified.png)
+OpenPonk uses [Roassal2](http://www.agilevisualization.com).
 
-More complex and chaotic model of interactions between model, controllers, gui, roassal and trachel\.
-![](../figures/Architecture%20layers.png)
-
-
-## View \(Roassal\)
-
-OpenPonk uses Roassal2 from [Moose project](http://www.moosetechnology.org/)
-
-Roassal \(and Trachel\) is well documented at [Agile Visualization](http://agilevisualization.com/#book)
-
-Visualisation comes in multiple layers, application itself interacts mostly only with the top one
-
+Roassal project comes in multiple layers; we interact mostly only with the top one:
 
 - Roassal
-- Trachel \(part of Roassal\)
-- Athens \(part of Pharo\)
+- Trachel (part of Roassal)
+- Athens (part of Pharo)
 - graphics library we should not care about
-
 
 
 ### Roassal
 
-Roassal2 is layer for manipulation with visual aspects in high\-level manners, for example manipulating with elements and connecting them with edges\.
-
+Roassal is layer for manipulation with visual aspects in high\-level manners, for example manipulating with elements and connecting them with edges.
 Main behavior and drawing via Roassal is based on these Roassal parts:
 
-&nbsp;
-
-
-- RTShapedObject \(RTElement or RTEdge\), which are semantic part, telling what we have and what is connected
-- RTShape \(RTEllipse, RTArrowedLine, etc\.\), which control what shapes and looks should elements and edges use
+- RTShapedObject (RTElement or RTEdge), which are semantic part, telling what we have and what is connected
+- RTShape (RTEllipse, RTArrowedLine, etc.), which control what shapes and looks should elements and edges use
 - RTView, which is where objects above take place
 
-Most of interaction from Roassal TO application is made using events\. Any object can tell \(subscribe\) RTAnnouncableObject \(RTShapedObject and RTView\) to make given action \(announce\) when given event occurs\. For example, when mouse clicks on such object \(Trachel event TRMouseClick occurs\)\.
+Most of interaction from Roassal TO application is made using events. Any object can tell (subscribe) RTAnnouncableObject (RTShapedObject and RTView) to make given action (announce) when given event occurs. For example, when mouse clicks on such object (Trachel event TRMouseClick occurs).
 
+For complex cases it may be better to write "shapes" library on top of Roassal to cater to your specific diagramming needs, such as https://github.com/OpenPonk/uml-shapes.
 
+### Trachel
 
-###Trachel
+Trachel defines how exactly should shapes look (TRShape). All these shapes are drawn on surface called canvas (TRCanvas). For controlling what part of canvas is displayed Trachel uses TRCamera, defining zoom (scale), size and position of current crop of canvas.
 
-Trachel under it defines how exactly should shapes look \(TRShape\)\. All these shapes are drawn on surface called canvas \(TRCanvas\)\. For controlling what part of canvas is displayed Trachel uses TRCamera, defining zoom \(scale\), size and position of current crop of canvas\.
-
-Trachel uses callbacks, which are somewhat similar to announcements/events, making specified action if predefined events with Trachel shapes occur \(when trachel object is resized, moved or removed\)\.
+Trachel uses callbacks, which are somewhat similar to announcements/events, making specified action if predefined events with Trachel shapes occur (when trachel object is resized, moved or removed).
