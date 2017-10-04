@@ -1,7 +1,3 @@
-!!! warning "Possibly outdated"
-
-    This page is possibly outdates and is pending review.
-
 # Overall Architecture
 
 OpenPonk is attempting to follow in some respect MVC architecture.
@@ -11,7 +7,9 @@ OpenPonk is attempting to follow in some respect MVC architecture.
 We assume that a model is supplied by the user, therefore we do not want to force them inherit from our magical classes.
 However some basic basic interoperability is still required. Therefore we expect from every model element to implement the following interface:
 
-```plantuml
+
+::uml::
+title Interface expected from all model elements
 interface Model {
   announcer() : Announcer
   announcer:(anAnnouncer : Announcer)
@@ -23,15 +21,6 @@ note right of Model::uuid
 Typically one would return (and store) an instance of UUID,
 but any globally unique id (e.g. as a string) is acceptable.
 end note
-```
-
-::uml::
-interface Model {
-  announcer() : Announcer
-  announcer:(anAnnouncer : Announcer)
-  uuid() : Object
-  uuid:(aUUID : Object)
-}
 ::end-uml::
 
 Element represents a singular object within the model (e.g. UML class or UML generalization). Diagram then encompasses all elements applicable to the given model.
@@ -44,17 +33,75 @@ Controllers provide binding between model and visualization (or GUI). Generally 
 
 For the canvas view an extra controller is expected. This controller subclasses from `OPDiagramController` and manages general operations related to the canvas -- layouting, clicking on empty space in the canvas, as well as managing the remaining controllers.
 
-!!! warning "image outdated"
-    ![](../figures/All%20layers%20simplified.png)
 
+::uml::
+skinparam nodesep 150
 
+title MVC
 
+package ImaginaryModel {
+  class ContainerModel
+  class ElementModel
+  ContainerModel *--> "elements *" ElementModel
+}
 
-More complex and chaotic model of interactions between model, controllers, gui, roassal and trachel.
+package OpenPonk::Controllers {
+  class OPController
+  class OPDiagramController
+  class OPElementController
 
-!!! warning "image outdated"
-    ![](../figures/Architecture%20layers.png)
+  OPController <|-- OPDiagramController
+  OPController <|-- OPElementController
+}
 
+ContainerModel "model 1" <- OPDiagramController
+ElementModel "model 1" <- OPElementController
+
+package "Roassal (View)" {
+  class RTElement
+  class RTView
+
+  RTElement "elements *" <---left--* "view 1" RTView
+}
+
+OPDiagramController --> "view (figure)" RTView
+OPElementController --> "figure" RTElement
+::end-uml::
+
+::uml::
+
+title Controllers and UI
+
+package OpenPonk::Models {
+  class OPProject
+}
+
+package OpenPonk::Controllers {
+  class OPProjectController
+  class OPDiagramController
+
+  OPController <|-- OPDiagramController
+}
+
+OPProject "model 1" <- OPProjectController
+
+package "OpenPonk::UI" {
+  class OPWorkbench
+  class OPEditor
+  class OPCanvasModel
+
+  OPWorkbench "workbench 1" *--> "editors *" OPEditor
+  OPEditor "editor 1" --> "canvasModel 1" OPCanvasModel
+}
+
+package "Roassal (View)" {
+  class RTView
+}
+
+OPProjectController "projectController 1" <-- "workbench 1" OPWorkbench
+OPDiagramController "diagramController 1" <-- "editor 1" OPEditor
+RTView "roassalView 1" <-left- OPCanvasModel
+::end-uml::
 
 
 ## View (Roassal)
