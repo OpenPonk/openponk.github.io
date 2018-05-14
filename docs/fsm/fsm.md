@@ -1,3 +1,0 @@
-# Finite State Machines
-
-@todo

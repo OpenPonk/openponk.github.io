@@ -1,3 +1,0 @@
-#BORM OR Diagrams
-
-@todo
