@@ -1,4 +1,12 @@
-.. list-table:: Download Matrix   :header-rows: 1   * - Build     - Version     - Linux     - Windows     - image only
+.. list-table:: Download Matrix
+   :header-rows: 1
+
+   * - Build
+     - Version
+     - Linux
+     - Windows
+     - image only
+
    * - **All in One**
      - outdated
      - :download-link:`all-in-one,latest,linux`
@@ -20,12 +28,12 @@
      - 
      - 
    * - **Petri Nets**
-     - p
-     - :download-link:`,,e,linux`
-     - :download-link:`,,e,windows`
-     - :download-link:`,,e,image`
+     - TBA
+     - 
+     - 
+     - 
    * - **DEMO (WIP)**
-     - d
-     - :download-link:`,,e,linux`
-     - :download-link:`,,e,windows`
-     - :download-link:`,,e,image`
+     - TBA
+     - 
+     - 
+     - 

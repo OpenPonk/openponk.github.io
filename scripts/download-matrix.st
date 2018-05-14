@@ -27,8 +27,8 @@ tbl := String << [ :stream | |types|
 		('UML CD + OntoUML' 'uml' ('0.9.x' '0.9.3'))
 		('BORM ORD' 'borm' ())
 		('FSM' 'fsm' ())
-		('Petri Nets', 'petrinets', ())
-		('DEMO (WIP)', 'demo', ())
+		('Petri Nets' 'petrinets' ())
+		('DEMO (WIP)' 'demo' ())
 	).
 
 	types do: [ :arr | |name type versions|
