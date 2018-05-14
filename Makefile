@@ -15,6 +15,10 @@ help:
 matrix:
 	py -2 scripts/download-matrix.py
 
+docs: html
+	xcopy /E _build\html ..\openponk.github.io.master
+	pushd ..\openponk.github.io.master && git add . && git commit -m "update" && git push && popd
+
 .PHONY: help Makefile matrix
 
 # Catch-all target: route all unknown targets to Sphinx using the new
