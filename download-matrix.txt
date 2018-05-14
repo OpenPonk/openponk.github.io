@@ -1,0 +1,21 @@
+.. list-table:: Download Matrix   :header-rows: 1   * - Build     - Version     - Linux     - Windows     - image only
+   * - **All in One**
+     - outdated
+     - :download-link:`all-in-one,latest,linux`
+     - :download-link:`all-in-one,latest,windows`
+     - :download-link:`all-in-one,latest,image`
+   * - **UML CD + OntoUML**
+     - 0.9.x
+     - :download-link:`uml,0.9.3,linux`
+     - :download-link:`uml,0.9.3,windows`
+     - :download-link:`uml,0.9.3,image`
+   * - **BORM ORD**
+     - TBA
+     - 
+     - 
+     - 
+   * - **FSM**
+     - TBA
+     - 
+     - 
+     - 
