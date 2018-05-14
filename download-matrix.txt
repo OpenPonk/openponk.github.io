@@ -19,3 +19,13 @@
      - 
      - 
      - 
+   * - **Petri Nets**
+     - p
+     - :download-link:`,,e,linux`
+     - :download-link:`,,e,windows`
+     - :download-link:`,,e,image`
+   * - **DEMO (WIP)**
+     - d
+     - :download-link:`,,e,linux`
+     - :download-link:`,,e,windows`
+     - :download-link:`,,e,image`
