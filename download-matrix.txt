@@ -10,7 +10,7 @@
    * - **All in One**
      - outdated
      - :download-link:`all-in-one,latest,linux`
-     - :download-link:`all-in-one,latest,windows`
+     - :download-link:`all-in-one,latest,win`
      - :download-link:`all-in-one,latest,image`
    * - **UML CD + OntoUML**
      - 0.9.x
