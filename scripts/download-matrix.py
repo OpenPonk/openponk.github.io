@@ -2,10 +2,10 @@ import StringIO
 
 types = [
     ('All in One', 'all-in-one', ('outdated', 'latest')),
-    ('UML CD + OntoUML', 'uml', ('0.9.x', '0.9.3')),
+    ('UML CD + OntoUML', 'uml', ('1.', '1.0.0')),
     ('BORM ORD', 'borm', ()),
-    ('FSM', 'fsm', ()),
-    ('Petri Nets', 'petrinets', ()),
+    ('FSM', 'fsm', ('beta', 'latest')),
+    ('Petri Nets', 'petrinets', ('beta', 'latest')),
     ('DEMO (WIP)', 'demo', ()),
 ]
 
@@ -14,14 +14,16 @@ header = '''.. list-table:: Download Matrix
 
    * - Build
      - Version
-     - Linux
-     - Windows
-     - image only
+     - Linux 32b
+     - Linux 64b
+     - Windows (32b)
+     - 32b image only
+     - 64b image only
 '''
 
 baseUrl = 'https://openponk.ccmi.fit.cvut.cz/builds'
 
-platforms = ['linux', 'windows', 'image']
+platforms = ['linux', 'linux64', 'windows', 'image', 'image64']
 
 ga = 'ga(''send'', ''event'', ''Downloads'', ''download'', ''{type}-{platform}-stable'')'
 
