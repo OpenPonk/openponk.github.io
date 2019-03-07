@@ -2,7 +2,7 @@ import StringIO
 
 types = [
     ('All in One', 'all-in-one', ('outdated', 'latest')),
-    ('UML CD + OntoUML', 'uml', ('1.', '1.0.0')),
+    ('UML CD + OntoUML', 'uml', ('1.x', '1.0.0')),
     ('BORM ORD', 'borm', ()),
     ('FSM', 'fsm', ('beta', 'latest')),
     ('Petri Nets', 'petrinets', ('beta', 'latest')),
