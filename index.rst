@@ -33,6 +33,7 @@ You can download preinstalled builds for each supported notation.
 * UML Class Diagrams with semi-complete UML 2.5 metamodel and XMI support
 * `OntoUML <https://ccmi.fit.cvut.cz/methodologies/ontouml/>`_
 * FSM - Finite State Machines
+* Petri nets - PT Petri nets with arc weights and inhibitor and reset arcs
 * BORM ORD — `Business Objects Relation Modeling <http://ccmi.fit.cvut.cz/methodologies/borm/>`_ Object-Relation Diagrams
 
 
