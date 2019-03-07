@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = u'OpenPonk modeling platform'
-copyright = u'2018, Peter Uhnak'
+copyright = u'2019, Peter Uhnak'
 author = u'Peter Uhnak'
 
 # The short X.Y version
