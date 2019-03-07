@@ -17,11 +17,11 @@
      - :download-link:`all-in-one,latest,image`
      -
    * - **UML CD + OntoUML**
-     - 0.9.x
-     - :download-link:`uml,0.9.3,linux`
+     - 1.x
+     - :download-link:`uml,1.0.0,linux`
      -
-     - :download-link:`uml,0.9.3,windows`
-     - :download-link:`uml,0.9.3,image`
+     - :download-link:`uml,1.0.0,windows`
+     - :download-link:`uml,1.0.0,image`
      -
    * - **BORM ORD**
      - TBA
