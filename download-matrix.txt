@@ -3,37 +3,52 @@
 
    * - Build
      - Version
-     - Linux
-     - Windows
-     - image only
+     - Linux 32b
+     - Linux 64b
+     - Windows (32b)
+     - 32b image only
+     - 64b image only
 
    * - **All in One**
      - outdated
      - :download-link:`all-in-one,latest,linux`
+     -
      - :download-link:`all-in-one,latest,win`
      - :download-link:`all-in-one,latest,image`
+     -
    * - **UML CD + OntoUML**
      - 0.9.x
      - :download-link:`uml,0.9.3,linux`
+     -
      - :download-link:`uml,0.9.3,windows`
      - :download-link:`uml,0.9.3,image`
+     -
    * - **BORM ORD**
      - TBA
      - 
      - 
-     - 
+     -
+     -
+     -
    * - **FSM**
-     - TBA
-     - 
-     - 
-     - 
+     - beta
+     - :download-link:`fsm,latest,linux`
+     - :download-link:`fsm,latest,linux64`
+     - :download-link:`fsm,latest,windows`
+     - :download-link:`fsm,latest,image`
+     - :download-link:`fsm,latest,image64`
+     
    * - **Petri Nets**
-     - TBA
-     - 
-     - 
-     - 
+     - beta
+     - :download-link:`fsm,latest,linux`
+     - :download-link:`fsm,latest,linux64`
+     - :download-link:`fsm,latest,windows`
+     - :download-link:`fsm,latest,image`
+     - :download-link:`fsm,latest,image64`
    * - **DEMO (WIP)**
      - TBA
      - 
+     -
+     -
      - 
-     - 
+     -
