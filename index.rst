@@ -34,7 +34,7 @@ You can download preinstalled builds for each supported notation.
 * `OntoUML <https://ccmi.fit.cvut.cz/methodologies/ontouml/>`_
 * FSM - Finite State Machines
 * Petri nets - PT Petri nets with arc weights and inhibitor and reset arcs
-* BORM ORD — `Business Objects Relation Modeling <http://ccmi.fit.cvut.cz/methodologies/borm/>`_ Object-Relation Diagrams
+* BORM ORD — `Business Objects Relation Modeling <https://ccmi.fit.cvut.cz/methodologies/borm/>`_ Object-Relation Diagrams
 
 
 Direct installation
