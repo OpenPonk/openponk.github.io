@@ -59,9 +59,9 @@ Once launched, clicking on the desktop will show a menu containing entries for O
 Requirements
 ============
 
-Windows should work out of the box.
+On Windows or with 64b OpenPonk, you should not need any additional prerequisities.
 
-**Linux may require extra configuration** as Pharo VM is still primarily 32bit. Please refer to Pharo's [official guide](http://pharo.org/gnu-linux-installation).
+**32b OpenPonk on Linux may require extra configuration**. Please refer to Pharo's [official guide](http://pharo.org/gnu-linux-installation#64-bit-System-Setup).
 
 Additionally you will require 32bit `cairo2` library, usually available in distribution package managers as `libcairo2:i386` (debian), `libcairo2`, etc.
 
