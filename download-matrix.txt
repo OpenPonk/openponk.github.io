@@ -40,11 +40,11 @@
      
    * - **Petri Nets**
      - beta
-     - :download-link:`fsm,latest,linux`
-     - :download-link:`fsm,latest,linux64`
-     - :download-link:`fsm,latest,windows`
-     - :download-link:`fsm,latest,image`
-     - :download-link:`fsm,latest,image64`
+     - :download-link:`petrinets,latest,linux`
+     - :download-link:`petrinets,latest,linux64`
+     - :download-link:`petrinets,latest,windows`
+     - :download-link:`petrinets,latest,image`
+     - :download-link:`petrinets,latest,image64`
    * - **DEMO (WIP)**
      - TBA
      - 
