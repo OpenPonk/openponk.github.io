@@ -16,9 +16,9 @@ header = '''.. list-table:: Download Matrix
      - Version
      - Linux 32b
      - Linux 64b
-     - Windows (32b)
-     - 32b image only
-     - 64b image only
+     - Windows
+     - 32b image
+     - 64b image
 '''
 
 baseUrl = 'https://openponk.ccmi.fit.cvut.cz/builds'
