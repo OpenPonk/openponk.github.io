@@ -29,18 +29,17 @@ You can download preinstalled builds for each supported notation.
 .. include:: download-matrix.txt
 
 
-* All in One -- All notations in one image
+* All in One -- All notations together
 * UML Class Diagrams with semi-complete UML 2.5 metamodel and XMI support
 * `OntoUML <https://ccmi.fit.cvut.cz/methodologies/ontouml/>`_
-* FSM - Finite State Machines
-* Petri nets - PT Petri nets with arc weights and inhibitor and reset arcs
 * BORM ORD — `Business Objects Relation Modeling <https://ccmi.fit.cvut.cz/methodologies/borm/>`_ Object-Relation Diagrams
-
+* FSM - Finite State Machines
+* Petri nets - Prototype of PT Petri nets with arc weights
 
 Direct installation
 ===================
 
-To install OpenPonk with all default plugins to an existing image, use the following snippet:
+To install latest OpenPonk with all default plugins to an existing Pharo 7, 8 or 9 image, use the following snippet:
 
 .. code-block:: smalltalk
 
@@ -49,23 +48,38 @@ To install OpenPonk with all default plugins to an existing image, use the follo
    	repository: 'github://openponk/openponk/repository';
    	load: 'complete'
 
+Just beware that this is the master branch and might be unstable.
+
+For downloading specific version, add the version to the repository path. For example:
+
+.. code-block:: smalltalk
+
+   Metacello new
+   	baseline: 'OpenPonk';
+   	repository: 'github://openponk/openponk:2.x/repository';
+   	load: 'complete'
+
 Opening
 =======
 
-The downloaded package contains `README.md` with additional instructions, however on properly configured system launching `openponk.sh` (Linux) or `Pharo.exe` (Windows) should be sufficient.
+On most systems extracting the archive and launching the executable file should be sufficient (for example openponk-class-editor.exe on Windows and openponk-class-editor on Linux).
+
+In case of errors, make sure you have write privileges to the extracted directory.
 
 Once launched, clicking on the desktop will show a menu containing entries for OpenPonk.
 
 Requirements
 ============
 
-On Windows or with 64b OpenPonk, you should not need any additional prerequisities.
+* **Windows** builds: Windows 7 and higher (64bit)
+* **Linux** builds: any recent 64bit distro except OpenSUSE and Fedora-like ones
+* **Image-only** builds use following Pharo image versions:
 
-**32b OpenPonk on Linux may require extra configuration**. Please refer to Pharo's [official guide](http://pharo.org/gnu-linux-installation#64-bit-System-Setup).
+	* 2.x and latest: Pharo 8 64bit
+	* 0.x and 1.x: Pharo 6.1 32bit
 
+**Versions 1.x and lower may require extra configuration on Linux**. Please refer to Pharo's `official guide <http://pharo.org/gnu-linux-installation#64-bit-System-Setup>`_. 
 Additionally you will require 32bit `cairo2` library, usually available in distribution package managers as `libcairo2:i386` (debian), `libcairo2`, etc.
-
-The bundled launcher will check those requirements and will warn you and provide some tips if your system is not configured properly.
 
 Contact
 =======
