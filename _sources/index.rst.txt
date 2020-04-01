@@ -71,7 +71,7 @@ Once launched, clicking on the desktop will show a menu containing entries for O
 Requirements
 ============
 
-* **Windows** builds: Windows 7 and higher (64bit)
+* **Windows** builds: Windows 7 or higher (64bit)
 * **Linux** builds: any recent 64bit distro except OpenSUSE and Fedora-like ones
 * **Image-only** builds use following Pharo image versions:
 
@@ -83,6 +83,30 @@ Additionally you will require 32bit `cairo2` library, usually available in distr
 
 Contact
 =======
+
+**Bug reports and feature requests:**
+
+To report a bug or request a feature related to implementation of specific kind of models/notations, use the related build repository. For general OpenPonk issues, use the OpenPonk core repository. If you are not sure whether is it related to the model/notation implementation or OpenPonk core itself, use the model/notation issue tracker and we will move the issue to its proper place.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 150 500
+   :align: left
+   :stub-columns: 1
+
+   *  -  Build
+      -  Issue tracker
+   *  -  OpenPonk core
+      -  https://github.com/OpenPonk/openponk/issues
+   *  -  UML & OntoUML
+      -  https://github.com/OpenPonk/class-editor/issues
+   *  -  BORM
+      -  https://github.com/OpenPonk/borm-editor/issues
+   *  -  Petrinets
+      -  https://github.com/OpenPonk/petrinets/issues
+   *  -  FSM
+      -  https://github.com/OpenPonk/fsm-editor/issues
+
 
 **Centre For Conceptual Modeling and Implementation (CCMi):** https://ccmi.fit.cvut.cz
 
