@@ -126,10 +126,10 @@
                       <tr class="row-even">
                         <td><strong>All in one</strong></td>
                         <td><a class="reference external"
-                          href="https://github.com/OpenPonk/all-in-one/releases/latest"
+                          href="https://github.com/OpenPonk/plugins/releases/latest"
                           target="_blank">Latest release</a></td>
                         <td><a class="reference external"
-                          href="https://github.com/OpenPonk/all-in-one/releases/tag/nightly"
+                          href="https://github.com/OpenPonk/plugins/releases/tag/nightly"
                           target="_blank">Nightly build</a></td>
                         <td><a class="reference external" href="https://github.com/OpenPonk/openponk/issues"
                           target="_blank">Issue tracker</a></td>
@@ -207,7 +207,7 @@
                     <li>All in one – All notations together</li>
                     <li>UML Class Diagrams with semi-complete UML 2.5 metamodel and XMI support</li>
                     <li><a class="reference external" href="https://ccmi.fit.cvut.cz/methodologies/ontouml/"
-                      target="_blank">OntoUML</a></li>
+                      target="_blank">OntoUML</a> - Ontologically focused profile for UML</li>
                     <li>BORM ORD — <a class="reference external"
                       href="https://ccmi.fit.cvut.cz/methodologies/borm/" target="_blank">Business
                       Objects Relation Modeling</a> Object-Relation Diagrams
@@ -216,52 +216,6 @@
                     <li>Petri nets - Prototype of PT Petri nets with arc weights</li>
                     <li>BPMN - Prototype of partial implementation of Business Process Model and Notation</li>
                   </ul>
-                </div>
-                <div class="section" id="direct-installation">
-                  <h1>Direct installation<a class="headerlink" href="#direct-installation"
-                    title="Permalink to this headline">¶</a></h1>
-                  <p>To install latest OpenPonk with all default plugins to an existing Pharo 8 image,
-                    use the following snippet:
-                  </p>
-                  <div class="highlight-smalltalk notranslate">
-                    <div class="highlight">
-                      <pre><span></span><span class="nc">Metacello</span> <span
-                        class="nb">new</span>
-     <span class="nf">baseline:</span> <span class="s">&#39;OpenPonk&#39;</span><span class="p">;</span>
-     <span class="nf">repository:</span> <span class="s">&#39;github://openponk/openponk/repository&#39;</span><span
-                        class="p">;</span>
-     <span class="nf">load:</span> <span class="s">&#39;complete&#39;</span>
-</pre>
-                    </div>
-                  </div>
-                  <p>Just beware that this is the master branch and might be unstable.</p>
-                  <p>For downloading specific version, add the version to the repository path. For
-                    example:
-                  </p>
-                  <div class="highlight-smalltalk notranslate">
-                    <div class="highlight">
-                      <pre><span></span><span class="nc">Metacello</span> <span
-                        class="nb">new</span>
-     <span class="nf">baseline:</span> <span class="s">&#39;OpenPonk&#39;</span><span class="p">;</span>
-     <span class="nf">repository:</span> <span
-                        class="s">&#39;github://openponk/openponk:v2.x/repository&#39;</span><span
-                        class="p">;</span>
-     <span class="nf">load:</span> <span class="s">&#39;complete&#39;</span>
-</pre>
-                    </div>
-                  </div>
-                </div>
-                <div class="section" id="opening">
-                  <h1>Opening<a class="headerlink" href="#opening" title="Permalink to this headline">¶</a>
-                  </h1>
-                  <p>On most systems extracting the archive and launching the executable file should be
-                    sufficient (for example openponk-class-editor.exe on Windows and openponk-class-editor
-                    on Linux).
-                  </p>
-                  <p>In case of errors, make sure you have write privileges to the extracted directory.</p>
-                  <p>Once launched, clicking on the desktop will show a menu containing entries for
-                    OpenPonk.
-                  </p>
                 </div>
                 <div class="section" id="requirements">
                   <h1>Requirements<a class="headerlink" href="#requirements"
@@ -276,18 +230,70 @@
                       </p>
                     </li>
                     <li>
-                      <p class="first"><strong>Image-only</strong> builds use following Pharo image
-                        versions:
+                      <p class="first"><strong>Direct installation</strong> to own Pharo image
+                        requires following version:
                       </p>
                       <blockquote>
                         <div>
                           <ul class="simple">
-                            <li>2.x and latest: Pharo 8 64bit</li>
+                            <li>OP 3.x and nightly (master): Pharo 9 64bit</li>
+                            <li>OP 2.x: Pharo 8 or 7 64bit</li>
                           </ul>
                         </div>
                       </blockquote>
                     </li>
                   </ul>
+                </div>
+                <div class="section" id="direct-installation">
+                  <h1>Direct installation<a class="headerlink" href="#direct-installation"
+                    title="Permalink to this headline">¶</a></h1>
+                  <p>To install latest OpenPonk with all default plugins to an existing Pharo 9 image,
+                    use the following snippet:
+                  </p>
+                  <div class="highlight-smalltalk notranslate">
+                    <div class="highlight">
+                      <pre><span></span><span class="nc">Metacello</span> <span
+                        class="nb">new</span>
+     <span class="nf">baseline:</span> <span class="s">&#39;OpenPonkPlugins&#39;</span><span class="p">;</span>
+     <span class="nf">repository:</span> <span class="s">&#39;github://openponk/plugins&#39;</span><span
+                        class="p">;</span>
+     <span class="nf">load:</span> <span class="s">&#39;all&#39;</span>
+</pre>
+                    </div>
+                  </div>
+                  <p>Just beware that this is the master branch and might be unstable.</p>
+                  <p>For downloading specific version, add the version to the repository path. For
+                    example:
+                  </p>
+                  <div class="highlight-smalltalk notranslate">
+                    <div class="highlight">
+                      <pre><span></span><span class="nc">Metacello</span> <span
+                        class="nb">new</span>
+     <span class="nf">baseline:</span> <span class="s">&#39;OpenPonkPlugins&#39;</span><span class="p">;</span>
+     <span class="nf">repository:</span> <span
+                        class="s">&#39;github://openponk/plugins:v3.x/repository&#39;</span><span
+                        class="p">;</span>
+     <span class="nf">load:</span> <span class="s">&#39;all&#39;</span>
+</pre>
+                    </div>
+                  </div>
+                  <p>
+                    Master branch and version 3 of OpenPonk supports Pharo 9 only. To download OpenPonk on Pharo 7 or 8, use OpenPonk version 2. Pharo 10 is not officially supported, but latest version or master branch might work.
+                  <br />
+                  Pharo 6 and below is not supported and OpenPonk version 1 and below cannot be loaded anymore.
+                  </p>
+                </div>
+                <div class="section" id="opening">
+                  <h1>Opening<a class="headerlink" href="#opening" title="Permalink to this headline">¶</a>
+                  </h1>
+                  <p>On most systems extracting the archive and launching the executable file should be
+                    sufficient (for example openponk-class-editor.exe on Windows and openponk-class-editor
+                    on Linux).
+                  </p>
+                  <p>In case of errors, make sure you have write privileges to the extracted directory.</p>
+                  <p>Once launched, clicking on the desktop will show a menu containing entries for
+                    OpenPonk.
+                  </p>
                 </div>
                 <div class="section" id="contact">
                   <h1>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a>
